@@ -1,0 +1,26 @@
+@import '~styles/const/_palette.scss';
+@import '~styles/scss/_font-weight.scss';
+
+.Badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff7043;
+  border: 1px solid #ff7043;
+  color: $white;
+  font-size: 10px;
+  line-height: 1.54;
+  letter-spacing: 0.1px;
+  border-radius: 100%;
+  font-weight: $font-medium;
+  text-align: center;
+  min-width: 10px;
+  white-space: nowrap;
+
+  @each $class, $color in $THEMES {
+    &.#{$class} {
+      background-color: $color;
+      border-color: $color;
+    }
+  }
+}

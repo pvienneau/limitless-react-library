@@ -1,0 +1,59 @@
+@import '~styles/const/_palette.scss';
+@import '~styles/scss/_font-weight.scss';
+
+.Card {
+  &.Panel {
+    .panel-header {
+      display: none;
+    }
+
+    .panel-body {
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 0;
+    }
+  }
+
+  .card-header {
+    padding: 15px;
+
+    .card-title {
+      margin: 0;
+      font-size: 13px;
+      font-weight: $font-bold;
+    }
+
+    .card-description {
+      margin: 0;
+      color: #999;
+    }
+  }
+
+  .card-body {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    background-color: #37474f;
+
+    .card-inner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .card-hint-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      color: $white;
+      background-color: rgba(0, 0, 0, 0.3);
+      text-align: center;
+      padding: 4px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@import '~styles/const/_palette.scss';
+@import '~styles/scss/_font-weight.scss';
+
+.PageHeader {
+  background-color: $white;
+
+  .page-header-main-section {
+    display: flex;
+    align-items: center;
+    height: 90px;
+    padding: 0 20px;
+    border-bottom: 1px solid #ddd;
+
+    .title {
+      font-weight: $font-medium;
+    }
+  }
+
+  .page-header-secondary-section {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 20px;
+    background-color: #fcfcfc;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .Breadcrumb {
+    color: #999;
+
+    a {
+      color: #333
+    }
+  }
+}

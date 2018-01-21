@@ -1,0 +1,169 @@
+@import '~styles/const/_palette.scss';
+
+// VARIABLES
+
+$height: 36px;
+$padding-vertical: 8px;
+$padding-horizontal: 10px;
+$padding: $padding-vertical $padding-horizontal;
+
+// EXTENSIONS
+
+%transition {
+  transition-property: background-color, border-color, color;
+  transition-duration: 100ms;
+  transition-timing-function: ease-in-out;
+}
+
+// STYLES
+
+.Button {
+  @extend %transition;
+
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 3px;
+  background-color: #FCFCFC;
+  color: #333;
+  border: 1px solid #DDD;
+  outline: none;
+  font: inherit;
+  min-width: 100px;
+  min-height: $height;
+  padding: $padding;
+  cursor: pointer;
+  overflow: hidden;
+
+  & > .inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 -3px;
+
+    & > * {
+      margin: 0 3px;
+    }
+  }
+
+  .label {
+    cursor: inherit;
+    flex-grow: 1;
+  }
+
+  .button-icon {
+    font-size: 16px;
+    line-height: 16px;
+    color: inherit;
+  }
+
+  &:hover {
+      background-color: darken(#FCFCFC, 7%);
+      border-color: darken(#DDD, 20%);
+  }
+
+  &.icon-position-right {
+    .inner {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &.rounded {
+    border-radius: $height;
+  }
+
+  &.labeled {
+    padding: 0;
+
+    .inner {
+      & > * {
+        padding: $padding;
+      }
+    }
+
+    &.icon-position-left {
+      .inner {
+        & > .label {
+          padding-left: 0;
+        }
+      }
+    }
+
+    &.icon-position-right {
+      .inner {
+        & > .label {
+          padding-right: 0;
+        }
+      }
+    }
+
+    &.rounded {
+      .button-icon {
+        border-radius: 100%;
+      }
+    }
+  }
+
+  // COLORS
+
+  @each $class, $color in $THEMES {
+    &.#{$class} {
+      background-color: $color;
+      border-color: darken($color, 10%);
+      color: $white;
+
+      &:hover {
+        background-color: darken($color, 10%);
+        border-color: darken($color, 20%);
+      }
+
+      &.labeled {
+        .button-icon {
+          @extend %transition;
+
+          background-color: darken($color, 10%);
+        }
+
+        &:hover {
+          .button-icon {
+            background-color: darken($color, 15%);
+          }
+        }
+      }
+    }
+  }
+
+  &.flat {
+    &, &:hover {
+      background-color: transparent;
+    }
+
+    @each $class, $color in $THEMES {
+      &.#{$class} {
+        border-color: $color;
+        color: $color;
+
+        &:hover {
+          border-color: lighten($color, 10%);
+          color: lighten($color, 10%);
+        }
+      }
+    }
+  }
+
+  &.no-fill {
+    &, &:hover {
+      min-height: 0;
+      min-width: 0;
+      border-radius: 0;
+
+      background-color: transparent;
+      color: inherit;
+      border-color: transparent;
+      outline: none;
+
+      &:hover {
+        color: $primary-700;
+      }
+    }
+  }
+}

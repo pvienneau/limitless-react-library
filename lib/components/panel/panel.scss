@@ -1,0 +1,54 @@
+@import '~styles/const/_palette.scss';
+
+.Panel {
+  background-color: $white;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  color: #333;
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fcfcfc;
+
+    .panel-title {
+      flex-grow: 1;
+      margin: 0;
+    }
+
+    .panel-actions {
+      display: flex;
+    }
+  }
+
+  .panel-body {
+    padding: 15px;
+  }
+
+  @each $class, $color in $THEMES {
+    &.#{$class} {
+      border-color: $color;
+
+      .panel-header {
+        background-color: $color;
+        color: $white;
+      }
+    }
+  }
+
+  &.no-fill {
+    .panel-header {
+      background-color: transparent;
+    }
+  }
+
+  &.flat {
+    .panel-header {
+      background-color: transparent;
+      border-bottom: none;
+    }
+  }
+}

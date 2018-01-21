@@ -1,0 +1,64 @@
+@import 'font-weight';
+
+body {
+  color: #333;
+  background-color: #f5f5f5
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: $font-regular;
+  line-height: 1.54;
+  color: inherit;
+  margin: 10px 0;
+
+  small {
+    display: block;
+    margin-top: 3px;
+    font-size: 13px;
+    font-weight: $font-regular;
+    line-height: 1;
+    color: #999;
+  }
+}
+
+h1 {
+  font-size: 21px;
+}
+
+h2 {
+  font-size: 19px;
+}
+
+h3 {
+  font-size: 17px;
+}
+
+h4 {
+  font-size: 15px;
+}
+
+h5 {
+  font-size: inherit;
+  font-weight: $font-bold;
+}
+
+h6 {
+  font-size: inherit;
+  font-weight: $font-medium;
+}
+
+code {
+  display: inline-block;
+  border-radius: 2px;
+  word-wrap: break-word;
+  padding: 2px 4px;
+  background-color: #f9f2f4;
+  color: #c7254e;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

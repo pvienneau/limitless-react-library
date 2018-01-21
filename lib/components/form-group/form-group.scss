@@ -1,0 +1,14 @@
+.FormGroup {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  .formgroup-label {
+    width: 180px;
+    padding-right: 10px;
+  }
+
+  .formgroup-input {
+    flex-grow: 1;
+  }
+}

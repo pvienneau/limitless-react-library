@@ -1,0 +1,42 @@
+@import '~styles/const/_palette.scss';
+
+.Icons {
+  .filter-options {
+    margin-bottom: 25px;
+  }
+
+  .results {
+    margin: 0 -5px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .Card {
+      cursor: pointer;
+      width: 150px;
+      margin: 0 5px 15px;
+
+      .icon-display {
+        display: block;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .Icon {
+          font-size: 32px;
+          color: $white;
+          transition: transform ease-in-out 250ms;
+        }
+      }
+
+      &:hover {
+        .icon-display {
+          .Icon {
+            transform: scale(1.5);
+          }
+        }
+      }
+    }
+  }
+}

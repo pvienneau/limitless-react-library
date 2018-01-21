@@ -1,0 +1,29 @@
+@import './icons.json';
+@import '~styles/scss/extensions/_iconize.scss';
+
+.Icon {
+  @extend %iconize;
+
+  display: inline-block;
+
+  .inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+
+    &::before {
+      display: block;
+    }
+  }
+
+  @each $name, $icon in $icons {
+    &.icon-#{$name} {
+      .inner::before {
+        content: $icon;
+      }
+    }
+  }
+}

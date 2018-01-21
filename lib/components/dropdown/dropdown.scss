@@ -1,0 +1,18 @@
+@import '../icon/icons.json';
+@import '~styles/scss/extensions/_iconize.scss';
+
+.Dropdown {
+  display: inline-block;
+
+  .Button .label::after {
+    @extend %iconize;
+
+    display: inline-block;
+    content: map-get($icons, 'point-down');
+    margin-left: 7px;
+  }
+
+  .Menu {
+    position: absolute;
+  }
+}

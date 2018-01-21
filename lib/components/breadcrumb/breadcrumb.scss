@@ -1,0 +1,25 @@
+.Breadcrumb {
+  display: block;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .path {
+    display: inline-block;
+
+    &::after {
+      display: inline-block;
+      content: '/';
+      margin: 0 5px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

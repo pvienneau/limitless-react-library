@@ -1,0 +1,38 @@
+@import '~styles/const/_colors.scss';
+
+$primary-800: darken($primary, 30%);
+$primary-700: darken($primary, 20%);
+$primary-600: darken($primary, 10%);
+$primary-500: $primary;
+$primary-400: lighten($primary, 10%);
+$primary-300: lighten($primary, 20%);
+
+$danger-800: darken($danger, 30%);
+$danger-700: darken($danger, 20%);
+$danger-600: darken($danger, 10%);
+$danger-500: $danger;
+$danger-400: lighten($danger, 10%);
+$danger-300: lighten($danger, 20%);
+
+$info-800: darken($info, 30%);
+$info-700: darken($info, 20%);
+$info-600: darken($info, 10%);
+$info-500: $info;
+$info-400: lighten($info, 10%);
+$info-300: lighten($info, 20%);
+
+$success-800: darken($success, 30%);
+$success-700: darken($success, 20%);
+$success-600: darken($success, 10%);
+$success-500: $success;
+$success-400: lighten($success, 10%);
+$success-300: lighten($success, 20%);
+
+$warning-800: darken($warning, 30%);
+$warning-700: darken($warning, 20%);
+$warning-600: darken($warning, 10%);
+$warning-500: $warning;
+$warning-400: lighten($warning, 10%);
+$warning-300: lighten($warning, 20%);
+
+$THEMES: primary $primary, danger $danger, info $info, success $success, warning $warning;

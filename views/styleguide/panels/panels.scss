@@ -1,0 +1,14 @@
+.Panels {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 -5px;
+
+    .col {
+      width: 50%;
+      padding: 0 5px;
+      margin: 0 0 25px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@import '~styles/const/_palette.scss';
+
+%form-control {
+  display: block;
+  width: 100%;
+  height: 36px;
+  padding: 7px 12px;
+  font-size: 13px;
+  line-height: 1.54px;
+  color: #333;
+  background-color: $white;
+  border-radius: 3px;
+  appearance: none;
+  box-shadow: none;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: border-color ease-in-out 100ms,
+              box-shadow ease-in-out 100ms;
+
+  &:focus, &:active {
+    border-color: darken(#ddd, 20%);
+  }
+
+  &.disabled, &.readonly {
+    background-color: #fafafa;
+
+    &:focus, &:active {
+      border-color: #ddd;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "label": "Dashboard",
+      "icon": "home"
+    },
+    {
+      "label": "Page Layouts",
+      "icon": "home"
+    },
+    {
+      "label": "Layouts",
+      "icon": "home"
+    },
+    {
+      "label": "Color System",
+      "icon": "home"
+    },
+    {
+      "label": "Starter Kit",
+      "icon": "home"
+    },
+    {
+      "label": "Changelog",
+      "icon": "home"
+    },
+    {
+      "label": "RTL Version",
+      "icon": "home"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+@import '~styles/scss/extensions/_form-control.scss';
+
+.Input {
+  display: block;
+  width: 100%;
+
+  input {
+    @extend %form-control;
+  }
+}
