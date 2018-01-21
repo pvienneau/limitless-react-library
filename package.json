@@ -49,6 +49,7 @@
         "lodash.split": "^4.4.2",
         "lodash.startcase": "^4.4.0",
         "lodash.trim": "^4.5.1",
+        "lodash.uniqueid": "^4.0.1",
         "lodash.upperfirst": "^4.3.1",
         "polished": "^1.8.2",
         "ramda": "^0.25.0",

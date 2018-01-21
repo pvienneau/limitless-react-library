@@ -1,0 +1,28 @@
+@import '~styles/scss/_font-weight.scss';
+
+.RadioGroup {
+  margin-bottom: 20px;
+
+  .radio-group-title {
+    display: block;
+    width: 100%;
+    color: inherit;
+    font-weight: $font-medium;
+    margin-bottom: 7px;
+  }
+
+  .Radio {
+    margin-bottom: 5px;
+  }
+
+  &.inline {
+    .Radio {
+      display: inline-block;
+      width: auto;
+
+      & ~ .Radio {
+        margin-left: 15px;
+      }
+    }
+  }
+}

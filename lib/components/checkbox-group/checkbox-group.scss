@@ -1,0 +1,28 @@
+@import '~styles/scss/_font-weight.scss';
+
+.CheckboxGroup {
+  margin-bottom: 20px;
+
+  .checkbox-group-title {
+    display: block;
+    width: 100%;
+    color: inherit;
+    font-weight: $font-medium;
+    margin-bottom: 7px;
+  }
+
+  .Checkbox {
+    margin-bottom: 5px;
+  }
+
+  &.inline {
+    .Checkbox {
+      display: inline-block;
+      width: auto;
+
+      & ~ .Checkbox {
+        margin-left: 15px;
+      }
+    }
+  }
+}
