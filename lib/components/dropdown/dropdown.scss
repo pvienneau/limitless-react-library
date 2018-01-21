@@ -3,16 +3,24 @@
 
 .Dropdown {
   display: inline-block;
+  position:relative;
 
-  .Button .label::after {
-    @extend %iconize;
+  .dropdown-button {
+    .label::after {
+      @extend %iconize;
 
-    display: inline-block;
-    content: map-get($icons, 'point-down');
-    margin-left: 7px;
+      display: inline-block;
+      content: map-get($icons, 'point-down');
+      margin-left: 7px;
+    }
   }
 
   .Menu {
     position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translateY(100%);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 }

@@ -2,11 +2,11 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 
 import { hash } from 'utils/js';
-
 import MenuItem from './menu-item';
-import { Container, MenuList, Title } from './menu.styled';
+import './menu.scss';
 
 export default class Menu extends React.Component {
     static propTypes = {
@@ -18,19 +18,25 @@ export default class Menu extends React.Component {
     };
 
     itemFactory(item, index) {
-        return <MenuItem key={hash(`${item.label}-${index}`)} {...item} />;
+        return (
+          <li key={hash(`${item.label}-${index}`)}>
+            <MenuItem {...item} />
+          </li>
+        );
     }
 
     render() {
         const { items, title, className } = this.props;
 
+        if(isEmpty(items)) return null;
+
         return (
-          <Container className={classNames('Menu', className)}>
-            {title && <Title>{title}</Title>}
-            <MenuList>
+          <div className={classNames('Menu', className)}>
+            {title && <div className="menu-title">{title}</div>}
+            <ul>
               {items.map(this.itemFactory)}
-            </MenuList>
-          </Container>
+            </ul>
+          </div>
         );
     }
 }

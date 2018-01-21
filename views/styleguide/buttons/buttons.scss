@@ -13,7 +13,14 @@
     margin: 0 10px;
 
     .Button {
+      display: block;
       margin-bottom: 7px;
+    }
+
+    .Dropdown {
+      .Button {
+        margin-bottom: 0;
+      }
     }
   }
 }

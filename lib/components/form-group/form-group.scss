@@ -1,11 +1,11 @@
 .FormGroup {
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: top;
 
   .formgroup-label {
     width: 180px;
-    padding-right: 10px;
+    padding: 10px;
   }
 
   .formgroup-input {

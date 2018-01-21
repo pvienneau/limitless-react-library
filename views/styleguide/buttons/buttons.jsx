@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Panel, Container, Dropdown } from 'components';
+import { Button, Panel, Container, DropdownMenu } from 'components';
 import './buttons.scss';
 
 const ITEMS = [
@@ -22,7 +22,7 @@ export default class Buttons extends React.Component {
         <h1>Buttons Styleguide</h1>
 
         <div className="row-theme">
-          <Panel primary>
+          <Panel>
             <h6>Default button</h6>
 
             <p>Default light button example</p>
@@ -32,7 +32,7 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Default with icon</h6>
 
             <p>Available in both directions</p>
@@ -46,19 +46,19 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Default with menu</h6>
 
             <p>Default button with dropdown</p>
 
-            <Dropdown items={ITEMS}>
+            <DropdownMenu items={ITEMS}>
               Dropdown
-            </Dropdown>
+            </DropdownMenu>
           </Panel>
         </div>
 
         <div className="row-theme">
-          <Panel primary>
+          <Panel>
             <h6>Colored button</h6>
 
             <p>Default light button example</p>
@@ -68,7 +68,7 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Colored with icon</h6>
 
             <p>Available in both directions</p>
@@ -89,22 +89,22 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Colored with menu</h6>
 
             <p>Colored button with dropdown</p>
 
-            <Dropdown
+            <DropdownMenu
               primary
               items={ITEMS}
             >
               Dropdown
-            </Dropdown>
+            </DropdownMenu>
           </Panel>
         </div>
 
         <div className="row-theme">
-          <Panel primary>
+          <Panel>
             <h6>Rounded button</h6>
 
             <p>Works with all button types</p>
@@ -117,7 +117,7 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Rounded with icon</h6>
 
             <p>Available in both directions</p>
@@ -140,23 +140,23 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Rounded with menu</h6>
 
             <p>Rounded button with dropdown</p>
 
-            <Dropdown
+            <DropdownMenu
               danger
               rounded
               items={ITEMS}
             >
               Dropdown
-            </Dropdown>
+            </DropdownMenu>
           </Panel>
         </div>
 
         <div className="row-theme">
-          <Panel primary>
+          <Panel>
             <h6>Labeled button</h6>
 
             <p>Works with all button colors</p>
@@ -170,7 +170,7 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Rounded with label</h6>
 
             <p>Available in both directions</p>
@@ -195,24 +195,24 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Labeled with menu</h6>
 
             <p>Labeled button with dropdown</p>
 
-            <Dropdown
+            <DropdownMenu
               danger
               labeled
               icon="home"
               items={ITEMS}
             >
               Dropdown
-            </Dropdown>
+            </DropdownMenu>
           </Panel>
         </div>
 
         <div className="row-theme">
-          <Panel primary>
+          <Panel>
             <h6>Flat button</h6>
 
             <p>Transparent background</p>
@@ -225,7 +225,7 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Flat with icon</h6>
 
             <p>Available in both directions</p>
@@ -248,23 +248,23 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Flat with menu</h6>
 
             <p>Flat button with dropdown</p>
 
-            <Dropdown
+            <DropdownMenu
               danger
               flat
               items={ITEMS}
             >
               Dropdown
-            </Dropdown>
+            </DropdownMenu>
           </Panel>
         </div>
 
         <div className="row-theme">
-          <Panel primary>
+          <Panel>
             <h6>Transparent button</h6>
 
             <p>Transparent background</p>
@@ -277,7 +277,7 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Transparent with icon</h6>
 
             <p>Available in both directions</p>
@@ -300,18 +300,18 @@ export default class Buttons extends React.Component {
             </Button>
           </Panel>
 
-          <Panel primary>
+          <Panel>
             <h6>Transparent with menu</h6>
 
             <p>Transparent button with dropdown</p>
 
-            <Dropdown
+            <DropdownMenu
               danger
               fill={false}
               items={ITEMS}
             >
               Dropdown
-            </Dropdown>
+            </DropdownMenu>
           </Panel>
         </div>
       </Container>

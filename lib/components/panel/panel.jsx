@@ -2,6 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import isEmpty from 'lodash.isempty';
 
 import { Button } from 'components';
 import './panel.scss';
@@ -96,23 +97,27 @@ export default class Panel extends React.Component {
           }
         )}
       >
-        <div className="panel-header">
-          <h4 className="panel-title">
-            {title}
-            {
-              subtitle && <small>{subtitle}</small>
-            }
-          </h4>
-          {
-            actionButtons && (
-              <div className="panel-actions">
+        {
+          (title || !isEmpty(actionButtons)) && (
+            <div className="panel-header">
+              <h4 className="panel-title">
+                {title}
                 {
-                  actionButtons
+                  subtitle && <small>{subtitle}</small>
                 }
-              </div>
-            )
-          }
-        </div>
+              </h4>
+              {
+                actionButtons && (
+                  <div className="panel-actions">
+                    {
+                      actionButtons
+                    }
+                  </div>
+                )
+              }
+            </div>
+          )
+        }
         {
           isOpen && (
             <div className="panel-body">

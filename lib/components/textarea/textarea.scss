@@ -1,0 +1,16 @@
+@import '~styles/scss/extensions/_form-control.scss';
+
+.Textarea {
+  display: block;
+  width: 100%;
+
+  textarea{
+    @extend %form-control;
+
+    min-height: 115px;
+
+    &.no-resize {
+      resize: none;
+    }
+  }
+}

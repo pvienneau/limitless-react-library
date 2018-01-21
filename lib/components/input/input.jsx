@@ -7,7 +7,7 @@ import './input.scss';
 
 export default class Input extends React.Component {
   render () {
-    const { className, disabled, readonly, ...props } = this.props;
+    const { className, disabled, readOnly, ...props } = this.props;
 
     return (
       <div className={classNames('Input', className)}>
@@ -16,7 +16,7 @@ export default class Input extends React.Component {
           disabled={disabled}
           className={classNames({
             disabled,
-            readonly,
+            readOnly,
           })}
         />
       </div>
@@ -25,12 +25,6 @@ export default class Input extends React.Component {
 }
 
 Input.propTypes = {
-  type: PropTypes.string,
-  disabled: PropTypes.bool,
-  readonly: PropTypes.bool,
-}
-
-Input.defaultProps = {
   type: PropTypes.oneOf([
     'date',
     'email',
@@ -42,6 +36,12 @@ Input.defaultProps = {
     'text',
     'url',
   ]),
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
+}
+
+Input.defaultProps = {
+  type: 'text',
   disabled: false,
-  readonly: false,
+  readOnly: false,
 }

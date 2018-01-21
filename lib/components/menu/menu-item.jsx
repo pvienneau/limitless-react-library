@@ -1,21 +1,27 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import { Container, Button } from './menu-item.styled';
+import { Button } from 'components';
+import './menu-item.scss';
 
 export default class MenuItem extends React.Component {
-    static propTypes = {
-        label: PropTypes.string,
-    };
+  static propTypes = {
+    label: PropTypes.string,
+  };
 
-    render() {
-        const { label, ...props } = this.props;
+  render() {
+    const { label, className, ...props } = this.props;
 
-        return (
-            <Container>
-                <Button fill={false} {...props}>{label}</Button>
-            </Container>
-        );
-    }
+    return (
+      <Button
+        {...props}
+        className={classNames('MenuItem', className)}
+        fill={false}
+      >
+        {label}
+      </Button>
+    );
+  }
 }

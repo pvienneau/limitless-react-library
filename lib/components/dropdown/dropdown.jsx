@@ -2,65 +2,68 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash.isempty';
+import clickOutside from 'react-click-outside';
+import classNames from 'classnames';
 
 import { Button, Icon } from 'components';
-import { Menu } from 'components/menu';
 import './dropdown.scss';
 
-export default class Dropdown extends React.Component {
+class Dropdown extends React.Component {
     static propTypes = {
-        items: Menu.propTypes.items,
-        onClick: PropTypes.func,
+      onClick: PropTypes.func,
     };
 
-    static defaultProps = {
-      items: [],
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        isOpen: false,
+      };
+
+      this.onClickHandler = this.onClickHandler.bind(this);
+      this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isOpen: false,
-        };
-
-        this.onClickHandler = this.onClickHandler.bind(this);
+    handleClickOutside() {
+      this.setState({
+        isOpen: false,
+      });
     }
 
     onClickHandler(e, ...args) {
-        const { onClick, items } = this.props;
+      const { onClick } = this.props;
 
-        this.setState(
-            state => ({
-                isOpen: !isEmpty(items) && !state.isOpen,
-            }),
-            () => {
-                onClick && onClick(e, ...args);
-            }
-        );
-    }
-
-    buildMenu() {
-        const { items } = this.props;
-
-        if (!this.state.isOpen) return null;
-
-        return <Menu items={items} />;
+      this.setState(
+        state => ({
+            isOpen: !state.isOpen,
+        }),
+        () => {
+          onClick && onClick(e, ...args);
+        }
+      );
     }
 
     render() {
-        const { children, onClick, ...props } = this.props;
+      const { children, onClick, body, className, ...props } = this.props;
+      const { isOpen } = this.state;
 
-        return (
-            <div className="Dropdown">
-                <Button
-                  {...this.props}
-                  onClick={this.onClickHandler}
-                >
-                    {children}
-                </Button>
-                {this.buildMenu()}
+      return (
+        <div className="Dropdown">
+          <Button
+          {...props}
+          onClick={this.onClickHandler}
+          className={classNames('dropdown-button', className)}
+          >
+              {children}
+          </Button>
+          { isOpen && (
+            <div className="dropdown-body">
+              {body}
             </div>
-        );
+          )}
+        </div>
+      );
     }
 }
+
+export default clickOutside(Dropdown);
