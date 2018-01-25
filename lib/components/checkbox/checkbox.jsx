@@ -22,7 +22,7 @@ export default class Checkbox extends React.Component {
     } = this.props;
 
     return (
-      <div className={classNames('Checkbox', classNames, {
+      <div className={classNames('Checkbox', className, {
         checked,
         primary,
         success,
@@ -31,15 +31,15 @@ export default class Checkbox extends React.Component {
         info,
         disabled,
       })}>
-      <label
-        className="checkbox-container"
-      >
-        <input
-          {...props}
-          type="checkbox"
-        />
-        {name}
-      </label>
+        <label className="checkbox-label">
+          <span className="checkbox-container">
+            <input
+              {...props}
+              type="checkbox"
+            />
+          </span>
+          {name}
+        </label>
       </div>
     );
   }

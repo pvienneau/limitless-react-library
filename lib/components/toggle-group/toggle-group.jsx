@@ -5,22 +5,23 @@ import includes from 'lodash.includes';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Checkbox } from 'components/checkbox';
-import './checkbox-group.scss';
+import { Toggle } from 'components/toggle';
+import './toggle-group.scss';
 
-export default class CheckboxGroup extends React.Component {
+export default class ToggleGroup extends React.Component {
   constructor(props) {
     super(props);
 
-    this.buildCheckboxElement = this.buildCheckboxElement.bind(this);
+    this.buildToggleElement = this.buildToggleElement.bind(this);
   }
 
-  buildCheckboxElement() {
+  buildToggleElement() {
     const { options, value: initialValues, initialDisabled, name } = this.props;
 
     return map(options, option => {
+
       if (typeof option !== 'object') return (
-        <Checkbox
+        <Toggle
           key={option}
           name={name}
           value={option}
@@ -32,7 +33,7 @@ export default class CheckboxGroup extends React.Component {
       const { value, disabled, ...props } = option;
 
       return (
-        <Checkbox
+        <Toggle
           {...props}
           key={value}
           value={value}
@@ -49,30 +50,30 @@ export default class CheckboxGroup extends React.Component {
     return (
       <div
         {...props}
-        className={classNames('CheckboxGroup', className, {
+        className={classNames('ToggleGroup', className, {
           inline,
         })}
       >
         {
           label && (
             <label
-              className="checkbox-group-title"
+              className="toggle-group-title"
             >
               {label}
             </label>
           )
         }
-        {this.buildCheckboxElement()}
+        {this.buildToggleElement()}
       </div>
     );
   }
 }
 
-CheckboxGroup.propTypes = {
+ToggleGroup.propTypes = {
   name: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      ...Checkbox.PropTypes,
+      ...Toggle.PropTypes,
     }),
   ),
   checked: PropTypes.bool,

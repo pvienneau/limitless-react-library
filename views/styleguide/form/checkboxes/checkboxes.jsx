@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, RadioGroup, CheckboxGroup, Panel } from 'components';
+import { Container, RadioGroup, CheckboxGroup, Panel, ToggleGroup } from 'components';
 
 export default class Checkboxes extends React.Component {
   render() {
@@ -13,35 +13,37 @@ export default class Checkboxes extends React.Component {
           <div className="flex">
             <div className="flex-grow">
               <CheckboxGroup
-                label="Stacked default"
+                label="Stacked default checkboxes"
+                value={['checked-default']}
                 options={[
                   {
                     name: 'Checked default',
-                    value: 'default',
+                    value: 'checked-default',
                   },
                   {
                     name: 'Unchecked default',
-                    value: 'unchecked',
+                    value: 'unchecked-default',
                   },
                   {
                     name: 'Disabled default',
-                    value: 'disabled',
+                    value: 'disabled-default',
                     disabled: true,
                   }
                 ]}
               />
 
               <CheckboxGroup
-                label="Inline default"
+                label="Inline default checkboxes"
+                value={['checked-default']}
                 inline
                 options={[
                   {
                     name: 'Checked default',
-                    value: 'default',
+                    value: 'checked-default',
                   },
                   {
                     name: 'Unchecked default',
-                    value: 'unchecked',
+                    value: 'unchecked-default',
                   }
                 ]}
               />
@@ -49,7 +51,7 @@ export default class Checkboxes extends React.Component {
 
             <div className="flex-grow">
               <RadioGroup
-                label="Stacked default"
+                label="Stacked default radios"
                 value="default"
                 options={[
                   {
@@ -69,7 +71,7 @@ export default class Checkboxes extends React.Component {
               />
 
               <RadioGroup
-                label="Inline default"
+                label="Inline default radios"
                 value="default"
                 inline
                 options={[
@@ -128,7 +130,7 @@ export default class Checkboxes extends React.Component {
 
             <div className="flex-grow">
               <RadioGroup
-                label="Checkboxes"
+                label="Radios"
                 value="primary"
                 options={[
                   {
@@ -159,6 +161,101 @@ export default class Checkboxes extends React.Component {
                 ]}
               />
             </div>
+          </div>
+        </Panel>
+
+        <Panel
+          title="Switchery toggles"
+          canCollapse
+        >
+          <div className="flex">
+            <div className="flex-grow">
+              <h3>Single label</h3>
+              <ToggleGroup
+                value={['checked-default', 'checked-disabled']}
+                options={[
+                  {
+                    name: 'Checked switch',
+                    value: 'checked-default',
+                  },
+                  {
+                    name: 'Unchecked switch',
+                    value: 'unchecked-default',
+                  },
+                  {
+                    name: 'Checked disabled',
+                    value: 'checked-disabled',
+                    disabled: true,
+                  },
+                  {
+                    name: 'Unchecked disabled',
+                    value: 'unchecked-disabled',
+                    disabled: true,
+                  },
+                ]}
+              />
+            </div>
+
+            <div className="flex-grow">
+              <h3>Switcher colors</h3>
+              <ToggleGroup
+                value={['toggle-primary', 'toggle-danger', 'toggle-info', 'toggle-warning']}
+                options={[
+                  {
+                    name: 'Switch using the <code>primary</code> prop',
+                    value: 'toggle-primary',
+                    primary: true,
+                  },
+                  {
+                    name: 'Switch using the <code>danger</code> prop',
+                    value: 'toggle-danger',
+                    danger: true,
+                  },
+                  {
+                    name: 'Switch using the <code>info</code> prop',
+                    value: 'toggle-info',
+                    info: true,
+                  },
+                  {
+                    name: 'Switch using the <code>warning</code> prop',
+                    value: 'toggle-warning',
+                    warning: true,
+                  },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div className="flex">
+            <div className="flex-grow">
+              <h3>Single label</h3>
+              <ToggleGroup
+                value={['toggle-large', 'toggle-default', 'toggle-small', 'toggle-mini']}
+                options={[
+                  {
+                    name: 'Switch using the <code>primary</code> prop',
+                    value: 'toggle-large',
+                    large: true,
+                  },
+                  {
+                    name: 'Switch using the <code>danger</code> prop',
+                    value: 'toggle-default',
+                  },
+                  {
+                    name: 'Switch using the <code>info</code> prop',
+                    value: 'toggle-small',
+                    small: true,
+                  },
+                  {
+                    name: 'Switch using the <code>warning</code> prop',
+                    value: 'toggle-mini',
+                    mini: true,
+                  },
+                ]}
+              />
+            </div>
+
+            <div className="flex-grow"></div>
           </div>
         </Panel>
       </Container>
