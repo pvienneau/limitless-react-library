@@ -18,6 +18,11 @@
     }
   }
 
+  .menu-item-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &.header {
     padding: 8px 10px;
     margin-top:8px;

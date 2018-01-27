@@ -11,6 +11,7 @@ $width: $height;
     display: flex;
     align-items: center;
     position: relative;
+    cursor: inherit;
 
     input[type="radio"] {
       visibility: hidden;

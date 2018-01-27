@@ -40,10 +40,10 @@ export default class MenuItem extends React.Component {
   }
 
   render() {
-    const { label, className, items, divider, active, header, highlight, ...props } = this.props;
+    const { label, className, items, divider, active, header, highlight, children, ...props } = this.props;
     const { isOpen } = this.state;
 
-    const buttonIcon = this.hasItems() && (isOpen ? 'point-down' : 'point-right')
+    // const buttonIcon = this.hasItems() && (isOpen ? 'point-down' : 'point-right')
     const showSubItems = this.hasItems() && isOpen;
 
     return (
@@ -59,10 +59,15 @@ export default class MenuItem extends React.Component {
               {...props}
               onClick={this.onClickHandler}
               fill={false}
-              icon={buttonIcon}
-              iconPosition="right"
             >
-              {label}
+              <span className="menu-item-content">
+                <span className="menu-item-label">
+                  {label}
+                </span>
+                <span className="menu-item-secondary-label">
+                  {children}
+                </span>
+              </span>
             </Button>
           ) : (
             <div>

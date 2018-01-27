@@ -314,6 +314,161 @@ export default class Buttons extends React.Component {
             </DropdownMenu>
           </Panel>
         </div>
+
+        <section>
+          <div className="flex">
+            <div className="flex-grow">
+              <Panel>
+                <h6 className="align-center">Available button styling</h6>
+
+                <p className="align-center">Button sizing and color presets</p>
+
+                <Button
+                  xlarge
+                  primary
+                  icon="bubbles2"
+                >
+                  Extra large size
+                </Button>
+
+                <Button
+                  large
+                  danger
+                  icon="bubbles2"
+                >
+                  Large size
+                </Button>
+
+                <Button
+                  success
+                  icon="bubbles2"
+                >
+                  Default size
+                </Button>
+
+                <Button
+                  small
+                  warning
+                  icon="bubbles2"
+                >
+                  Small size
+                </Button>
+
+                <Button
+                  mini
+                  info
+                  icon="bubbles2"
+                >
+                  Mini size
+                </Button>
+              </Panel>
+            </div>
+
+            <div className="flex-grow">
+              <Panel>
+                <h6 className="align-center">Labeled button styling</h6>
+
+                <p className="align-center">Available styling of <code>labeled</code> button</p>
+
+                <Button
+                  xlarge
+                  primary
+                  icon="bubbles2"
+                  labeled
+                >
+                  Extra large size
+                </Button>
+
+                <Button
+                  large
+                  danger
+                  icon="bubbles2"
+                  labeled
+                >
+                  Large size
+                </Button>
+
+                <Button
+                  success
+                  icon="bubbles2"
+                  labeled
+                >
+                  Default size
+                </Button>
+
+                <Button
+                  small
+                  warning
+                  icon="bubbles2"
+                  labeled
+                >
+                  Small size
+                </Button>
+
+                <Button
+                  mini
+                  info
+                  icon="bubbles2"
+                  labeled
+                >
+                  Mini size
+                </Button>
+              </Panel>
+            </div>
+
+            <div className="flex-grow">
+              <Panel>
+                <h6 className="align-center">Rounded button styling</h6>
+
+                <p className="align-center">Available styling of <code>rounded</code> button</p>
+
+                <Button
+                  xlarge
+                  primary
+                  icon="bubbles2"
+                  rounded
+                >
+                  Extra large size
+                </Button>
+
+                <Button
+                  large
+                  danger
+                  icon="bubbles2"
+                  rounded
+                >
+                  Large size
+                </Button>
+
+                <Button
+                  success
+                  icon="bubbles2"
+                  rounded
+                >
+                  Default size
+                </Button>
+
+                <Button
+                  small
+                  warning
+                  icon="bubbles2"
+                  rounded
+                >
+                  Small size
+                </Button>
+
+                <Button
+                  mini
+                  info
+                  icon="bubbles2"
+                  rounded
+                >
+                  Mini size
+                </Button>
+              </Panel>
+            </div>
+          </div>
+        </section>
       </Container>
     );
   }

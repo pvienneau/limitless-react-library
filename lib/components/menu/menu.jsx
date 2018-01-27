@@ -12,18 +12,36 @@ import './menu.scss';
 export default class Menu extends React.Component {
     static propTypes = {
         items: PropTypes.arrayOf(PropTypes.shape(...MenuItem.propTypes)),
+        large: PropTypes.bool,
+        small: PropTypes.bool,
+        mini: PropTypes.bool,
     };
 
     static defaultProps = {
         items: [],
+        large: false,
+        small: false,
+        mini: false,
     };
 
+    constructor(props) {
+      super(props);
+
+      this.itemFactory = this.itemFactory.bind(this);
+    }
+
     itemFactory(item, index) {
+        const { large, small, mini } = this.props;
         const itemObj = typeof item === 'string' ? { label: item } : item;
 
         return (
           <li key={hash(`${item.label}-${index}`)}>
-            <MenuItem {...itemObj} />
+            <MenuItem
+              {...itemObj}
+              large={large}
+              small={small}
+              mini={mini}
+            />
           </li>
         );
     }

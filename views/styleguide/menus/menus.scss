@@ -1,7 +1,7 @@
 @import '~styles/scss/_font-weight.scss';
 
 .Menus {
-  .flex {
+  section > .flex {
     margin: 0 -10px;
 
     & > .flex-grow {

@@ -22,7 +22,7 @@ const Badge = ({
   })}>
     {children}
   </span>
-)
+);
 
 Badge.propTypes = {
   primary: PropTypes.bool,
@@ -30,4 +30,6 @@ Badge.propTypes = {
   info: PropTypes.bool,
   success: PropTypes.bool,
   danger: PropTypes.bool,
-}
+};
+
+export default Badge;

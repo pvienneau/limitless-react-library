@@ -22,6 +22,10 @@ export default class Button extends React.Component {
         labeled: PropTypes.bool,
         flat: PropTypes.bool,
         disabled: PropTypes.bool,
+        xlarge: PropTypes.bool,
+        large: PropTypes.bool,
+        small: PropTypes.bool,
+        mini: PropTypes.bool,
     };
 
     static defaultProps = {
@@ -36,6 +40,10 @@ export default class Button extends React.Component {
       labeled: false,
       flat: false,
       disabled: false,
+      xlarge: false,
+      large: false,
+      small: false,
+      mini: false,
     };
 
     render() {
@@ -55,6 +63,10 @@ export default class Button extends React.Component {
           flat,
           to,
           disabled,
+          xlarge,
+          large,
+          small,
+          mini,
           ...props
         } = this.props
 
@@ -82,6 +94,10 @@ export default class Button extends React.Component {
                 labeled,
                 flat,
                 disabled,
+                xlarge,
+                large,
+                small,
+                mini,
               })}
             >
                 <div className="inner">
