@@ -3,8 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import isUndefined from 'lodash.isundefined';
 
-import { Icon } from 'components';
+import { Icon, Badge } from 'components';
 import './button.scss'
 
 export default class Button extends React.Component {
@@ -26,6 +27,11 @@ export default class Button extends React.Component {
         large: PropTypes.bool,
         small: PropTypes.bool,
         mini: PropTypes.bool,
+        active: PropTypes.bool,
+        badge: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number,
+        ])
     };
 
     static defaultProps = {
@@ -44,6 +50,7 @@ export default class Button extends React.Component {
       large: false,
       small: false,
       mini: false,
+      active: false,
     };
 
     render() {
@@ -67,6 +74,8 @@ export default class Button extends React.Component {
           large,
           small,
           mini,
+          active,
+          badge,
           ...props
         } = this.props
 
@@ -98,13 +107,19 @@ export default class Button extends React.Component {
                 large,
                 small,
                 mini,
+                active,
               })}
             >
                 <div className="inner">
                     {
-                      !!icon && <Icon className="button-icon">{icon}</Icon>
+                      icon && <Icon className="button-icon">{icon}</Icon>
                     }
-                    <label className="label">{children}</label>
+                    {
+                      children && <label className="label">{children}</label>
+                    }
+                    {
+                      !isUndefined(badge) && <Badge className="button-badge">{badge}</Badge>
+                    }
                 </div>
             </Element>
         );

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import './badge.scss';
 
 const Badge = ({
+  className,
   children,
   primary,
   warning,
@@ -13,7 +14,7 @@ const Badge = ({
   success,
   danger,
 }) => (
-  <span className={classNames('Badge', {
+  <span className={classNames('Badge', className, {
     primary,
     warning,
     info,

@@ -315,6 +315,43 @@ export default class Buttons extends React.Component {
           </Panel>
         </div>
 
+        <div className="row-theme">
+          <Panel>
+            <h6>Single icon button</h6>
+
+            <p>Button with a single icon only</p>
+
+            <Button
+              primary
+              icon="menu"
+            />
+          </Panel>
+
+          <Panel>
+            <h6>Rounded icon button</h6>
+
+            <p>Work with <em>all</em> button types</p>
+
+            <Button
+              rounded
+              primary
+              icon="menu"
+            />
+          </Panel>
+
+          <Panel>
+            <h6>Icon with menu</h6>
+
+            <p>Icon buttons with dropdown</p>
+
+            <DropdownMenu
+              primary
+              icon="menu"
+              items={ITEMS}
+            />
+          </Panel>
+        </div>
+
         <section>
           <div className="flex">
             <div className="flex-grow">

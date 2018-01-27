@@ -1,0 +1,43 @@
+@import '~styles/const/_palette.scss';
+
+.ButtonGroup {
+  display: block;
+  height: 46px;
+
+  .button-group-inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    & > * {
+      margin: 0 5px;
+
+      &:first-child{
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    & > .Button {
+      height: 100%;
+      margin: 0;
+    }
+  }
+
+  & .Button {
+    background-color: transparent;
+    border: 0;
+    color: inherit;
+    height: 46px;
+    width: 46px;
+    box-shadow: none;
+    border-radius: 0;
+
+    &:hover, &:focus, &:active, &.active {
+      background-color: rgba($black, 0.2);
+    }
+  }
+}

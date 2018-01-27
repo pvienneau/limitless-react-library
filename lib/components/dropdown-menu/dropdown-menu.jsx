@@ -14,7 +14,7 @@ export default class DropdownMenu extends React.Component {
 
   buildMenu() {
       const { items } = this.props;
-
+      console.log(items);
       return <Menu items={items} />;
   }
 

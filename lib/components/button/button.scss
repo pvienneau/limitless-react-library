@@ -21,6 +21,7 @@ $padding: $padding-vertical $padding-horizontal;
   @extend %transition;
 
   display: inline-block;
+  position: relative;
   vertical-align: middle;
   border-radius: 3px;
   background-color: #FCFCFC;
@@ -28,7 +29,6 @@ $padding: $padding-vertical $padding-horizontal;
   border: 1px solid #DDD;
   outline: none;
   font: inherit;
-  min-width: 100px;
   padding: $padding;
   cursor: pointer;
   overflow: hidden;
@@ -39,7 +39,7 @@ $padding: $padding-vertical $padding-horizontal;
     flex-direction: row;
     margin: 0 -3px;
 
-    & > * {
+    & > .Icon, & > .label {
       margin: 0 3px;
     }
   }
@@ -59,6 +59,11 @@ $padding: $padding-vertical $padding-horizontal;
   &:hover {
       background-color: darken(#FCFCFC, 7%);
       border-color: darken(#DDD, 20%);
+  }
+
+  &:focus, &:active, &.active {
+    background-color: darken(#FCFCFC, 14%);
+    border-color: darken(#DDD, 40%);
   }
 
   &.icon-position-right {
@@ -110,6 +115,11 @@ $padding: $padding-vertical $padding-horizontal;
         border-color: darken($color, 20%);
       }
 
+      &:focus, &:active, &.active {
+        background-color: darken($color, 20%);
+        border-color: darken($color, 40%);
+      }
+
       &.labeled {
         .button-icon {
           @extend %transition;
@@ -122,12 +132,18 @@ $padding: $padding-vertical $padding-horizontal;
             background-color: darken($color, 15%);
           }
         }
+
+        &:focus, &:active, &.active {
+          .button-icon {
+            background-color: darken($color, 30%);
+          }
+        }
       }
     }
   }
 
   &.flat {
-    &, &:hover {
+    &, &:hover, &:focus, &:active, &.active {
       background-color: transparent;
     }
 
@@ -140,12 +156,17 @@ $padding: $padding-vertical $padding-horizontal;
           border-color: lighten($color, 10%);
           color: lighten($color, 10%);
         }
+
+        &:focus, &:active, &.active {
+          border-color: lighten($color, 20%);
+          color: lighten($color, 20%);
+        }
       }
     }
   }
 
   &.no-fill {
-    &, &:hover {
+    &, &:hover, &:focus, &:active, &.active {
       min-height: 0;
       min-width: 0;
       border-radius: 0;
@@ -169,7 +190,7 @@ $padding: $padding-vertical $padding-horizontal;
     padding: 0;
 
     .inner {
-      & > * {
+      & > .Icon, & > .label {
         padding: $padding;
       }
     }
@@ -200,5 +221,11 @@ $padding: $padding-vertical $padding-horizontal;
   &.disabled {
     opacity: 0.5;
     cursor: default !important;
+  }
+
+  .button-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }

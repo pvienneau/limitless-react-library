@@ -11,7 +11,12 @@ import './menu.scss';
 
 export default class Menu extends React.Component {
     static propTypes = {
-        items: PropTypes.arrayOf(PropTypes.shape(...MenuItem.propTypes)),
+        items: PropTypes.arrayOf(
+          PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.shape(...MenuItem.propTypes),
+          ]),
+        ),
         large: PropTypes.bool,
         small: PropTypes.bool,
         mini: PropTypes.bool,
