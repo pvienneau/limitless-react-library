@@ -2,7 +2,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from 'lodash.isempty';
+import isObject from 'lodash.isobject';
 
 import { hash } from 'utils/js';
 import MenuItem from './menu-item';
@@ -18,9 +19,11 @@ export default class Menu extends React.Component {
     };
 
     itemFactory(item, index) {
+        const itemObj = typeof item === 'string' ? { label: item } : item;
+
         return (
           <li key={hash(`${item.label}-${index}`)}>
-            <MenuItem {...item} />
+            <MenuItem {...itemObj} />
           </li>
         );
     }

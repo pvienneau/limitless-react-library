@@ -2,6 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import { Icon } from 'components';
 import './button.scss'
@@ -20,6 +21,7 @@ export default class Button extends React.Component {
         rounded: PropTypes.bool,
         labeled: PropTypes.bool,
         flat: PropTypes.bool,
+        disabled: PropTypes.bool,
     };
 
     static defaultProps = {
@@ -33,17 +35,8 @@ export default class Button extends React.Component {
       rounded: false,
       labeled: false,
       flat: false,
+      disabled: false,
     };
-
-    getElement() {
-        const { to } = this.props;
-
-        if (to) {
-            return React.createElement('a', { to });
-        }
-
-        return React.createElement('button');
-    }
 
     render() {
         const {
@@ -60,14 +53,21 @@ export default class Button extends React.Component {
           rounded,
           labeled,
           flat,
+          to,
+          disabled,
           ...props
         } = this.props
 
-        const Element = !!props.to ? 'a' : 'button';
+        const Element = !!to ? Link : 'button';
+        const computedProps = {};
+
+        if (disabled) computedProps.disabled = true;
 
         return (
             <Element
               {...props}
+              {...computedProps}
+              to={to}
               className={classNames('Button', className, {
                 'no-fill': !fill,
                 'has-children': !!children,
@@ -81,6 +81,7 @@ export default class Button extends React.Component {
                 rounded,
                 labeled,
                 flat,
+                disabled,
               })}
             >
                 <div className="inner">

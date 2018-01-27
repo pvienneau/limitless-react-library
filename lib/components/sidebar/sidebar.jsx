@@ -1,24 +1,33 @@
 import React from 'react';
 
-import { Menu, Button } from 'components';
+import classNames from 'classnames';
 
+import { Menu, Button, Avatar } from 'components';
 import { menusFixture } from 'utils/spec/fixtures/menu';
-import { Container, Header, Avatar, Title } from './sidebar.styled';
+import './sidebar.scss';
 
 export default class Sidebar extends React.Component {
   render() {
+    const { className } = this.props;
+
     return (
-      <Container>
-        <Header>
-          <Avatar />
+      <div className={classNames('Sidebar', className)}>
+        <div className="sidebar-header">
+          <div className="sidebar-avatar" />
           <div>
-            <Title>Victoria Baker</Title>
+            <div className="sidebar-title">
+              Victoria Baker
+            </div>
             Santa Ana, CA
           </div>
           <Button icon="cog" />
-        </Header>
-        <Menu title="Main" items={menusFixture.items} />
-      </Container>
+        </div>
+        <Menu
+          className="sidebar-menu"
+          title="Main"
+          items={menusFixture.items}
+        />
+      </div>
     );
   }
 }

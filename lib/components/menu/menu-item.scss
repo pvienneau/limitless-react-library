@@ -1,14 +1,51 @@
+@import '~styles/const/_palette.scss';
+
 .MenuItem {
   display: block;
   width: 100%;
 
-  &, &.Button {
-    color: inherit;
-    text-align: left;
+  color: inherit;
+  text-align: left;
+
+  .Button {
+    display: block;
+    width: 100%;
 
     &:hover {
-      color: inherit !important;
-      background-color: #f5f5f5
+      &:not(.disabled) {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+
+  &.header {
+    padding: 8px 10px;
+    margin-top:8px;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #999;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &.highlight {
+      background-color: #f8f8f8;
+    }
+  }
+
+  &.divider {
+    border-top: 1px solid #e5e5e5;
+    margin-top: 7px;
+    padding-top: 7px;
+  }
+
+  &.active {
+    .Button {
+      &, &:hover {
+        background-color: $primary;
+        color: $white;
+      }
     }
   }
 }

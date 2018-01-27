@@ -1,0 +1,76 @@
+@import '~styles/const/_palette.scss';
+@import '~styles/scss/_font-weight.scss';
+
+.Sidebar {
+  width: 260;
+  background-color: #263238;
+  color: $white;
+
+  .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 80px;
+    padding: 20px;
+    font-size: 12px;
+
+    .sidebar-title {
+      font-weight: $font-bold;
+      font-size: 14px;
+    }
+
+    .sidebar-avatar {
+      width: 36px;
+      height: 36px;
+
+      border-radius: 100%;
+      overflow: hidden;
+      background-size: cover;
+      background-color: red;
+    }
+  }
+
+  .Menu {
+    background-color: transparent;
+    color: rgba(255,255,255,.75);
+    border: none;
+    padding: 0;
+
+    .menu-title {
+      color: rgba($black, 0.5);
+      text-transform: uppercase;
+      padding: 0 10px;
+      font-size: 11px;
+      line-height: 1.82;
+    }
+
+    .MenuItem {
+      .Button {
+        padding-left: 30px;
+        width: 100%;
+      }
+
+      .MenuItem {
+        .Button {
+          padding-left: 45px;
+        }
+
+        .MenuItem {
+          .Button {
+            padding-left: 60px;
+          }
+        }
+      }
+
+      &:hover, &.active {
+        &, & .Button {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        &, & > .Button {
+          color: $white;
+        }
+      }
+    }
+  }
+}

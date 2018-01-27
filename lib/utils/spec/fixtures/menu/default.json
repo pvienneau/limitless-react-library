@@ -1,32 +1,48 @@
 {
   "items": [
     {
-      "label": "Dashboard",
-      "icon": "home"
+      "label": "Dashboard"
     },
     {
-      "label": "Page Layouts",
-      "icon": "home"
+      "label": "Page Layouts"
     },
     {
-      "label": "Layouts",
-      "icon": "home"
+      "label": "Layouts"
     },
     {
-      "label": "Color System",
-      "icon": "home"
+      "label": "Color System"
     },
     {
-      "label": "Starter Kit",
-      "icon": "home"
+      "label": "Starter Kit"
     },
     {
-      "label": "Changelog",
-      "icon": "home"
+      "label": "Changelog"
     },
     {
-      "label": "RTL Version",
-      "icon": "home"
+      "label": "Components",
+      "items": [
+        {
+          "label": "Buttons",
+          "to": "styleguide/buttons"
+        },
+        {
+          "label": "Icons",
+          "to": "styleguide/icons"
+        }
+      ]
+    },
+    {
+      "label": "Form components",
+      "items": [
+        {
+          "label": "Basic inputs",
+          "to": "/styleguide/form/inputs"
+        },
+        {
+          "label": "Checkboxes & radios",
+          "to": "/styleguide/form/checkboxes"
+        }
+      ]
     }
   ]
 }
