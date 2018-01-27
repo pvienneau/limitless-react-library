@@ -20,7 +20,10 @@ export default class Sidebar extends React.Component {
             </div>
             Santa Ana, CA
           </div>
-          <Button icon="cog" />
+          <Button
+            fill={false}
+            icon="cog"
+          />
         </div>
         <Menu
           className="sidebar-menu"
