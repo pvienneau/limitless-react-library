@@ -32,7 +32,7 @@ Avatar.propTypes = {
   mini: PropTypes.bool,
 }
 
-Avatar.propTypes = {
+Avatar.defaultProps = {
   xlarge: false,
   large: false,
   small: false,
