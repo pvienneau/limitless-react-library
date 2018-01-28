@@ -13,7 +13,10 @@ export default class Sidebar extends React.Component {
     return (
       <div className={classNames('Sidebar', className)}>
         <div className="sidebar-header">
-          <div className="sidebar-avatar" />
+          <Avatar
+            className="sidebar-avatar"
+            image="http://demo.interface.club/limitless/layout_1/LTR/default/assets/images/demo/users/face16.jpg"
+          />
           <div>
             <div className="sidebar-title">
               Victoria Baker

@@ -1,0 +1,31 @@
+.Avatar {
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+  border-radius: 100%;
+  vertical-align: middle;
+  background-color: #fafafa;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  &.xlarge {
+    height: 46px;
+    width: 46px;
+  }
+
+  &.large {
+    height: 40px;
+    width: 40px;
+  }
+
+  &.small {
+    height: 34px;
+    width: 34px;
+  }
+
+  &.mini {
+    height: 30px;
+    width: 30px;
+  }
+}

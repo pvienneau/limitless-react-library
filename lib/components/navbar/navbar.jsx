@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, ButtonGroup, Badge, DropdownMenu } from 'components';
+import { Button, ButtonGroup, Badge, DropdownMenu, Avatar } from 'components';
 import { Tag } from 'components/tag';
 import './Navbar.scss';
 
@@ -58,6 +58,10 @@ export default class Navbar extends React.Component {
                 'Logout',
               ]}
             >
+              <Avatar
+                mini
+                image="http://demo.interface.club/limitless/layout_1/LTR/default/assets/images/demo/users/face16.jpg"
+              />
               Victoria
             </DropdownMenu>
           </ButtonGroup>
