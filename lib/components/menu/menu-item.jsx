@@ -12,28 +12,12 @@ export default class MenuItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onClickHandler = this.onClickHandler.bind(this);
     this.hasItems = this.hasItems.bind(this);
-
-    this.state = {
-      isOpen: false,
-    }
   }
 
   static propTypes = {
     label: PropTypes.string,
   };
-
-  onClickHandler(e) {
-    const { onClick, items } = this.props;
-
-    if (onClick) onClick(e);
-
-    if (this.hasItems())
-      this.setState(({ isOpen }) => ({
-        isOpen: !isOpen
-      }));
-  }
 
   hasItems() {
     return !isEmpty(this.props.items);
@@ -41,15 +25,18 @@ export default class MenuItem extends React.Component {
 
   render() {
     const { label, className, items, divider, active, header, highlight, children, ...props } = this.props;
-    const { isOpen } = this.state;
 
-    // const buttonIcon = this.hasItems() && (isOpen ? 'point-down' : 'point-right')
-    // const showSubItems = this.hasItems() && isOpen;
-    const ButtonElement = this.hasItems() ? DropdownMenu : Button;
+    const computedProps = {};
+    let ButtonElement = Button;
+
+    if (this.hasItems()) {
+      ButtonElement = DropdownMenu;
+      computedProps.items = items;
+      computedProps.position = 'right';
+    }
 
     return (
       <div className={classNames('MenuItem', className, {
-        active: active || isOpen,
         divider,
         header,
         highlight,
@@ -58,7 +45,7 @@ export default class MenuItem extends React.Component {
           label && !header ? (
             <ButtonElement
               {...props}
-              onClick={this.onClickHandler}
+              {...computedProps}
               fill={false}
               items={items}
             >

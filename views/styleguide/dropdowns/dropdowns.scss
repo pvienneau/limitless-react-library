@@ -1,0 +1,19 @@
+.Dropdowns {
+  section > .flex {
+    margin: 0 -10px;
+
+    & > .flex-grow {
+      margin: 10px;
+    }
+  }
+
+  .Panel .panel-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > .Button {
+      margin: 10px 0;
+    }
+  }
+}

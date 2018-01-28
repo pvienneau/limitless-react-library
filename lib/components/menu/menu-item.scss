@@ -45,12 +45,10 @@
     padding-top: 7px;
   }
 
-  &.active {
-    .Button {
-      &, &:hover {
-        background-color: $primary;
-        color: $white;
-      }
+  & > .Dropdown.dropdown-open > .dropdown-button {
+    &, &:hover {
+      background-color: $primary;
+      color: $white;
     }
   }
 }

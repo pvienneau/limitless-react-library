@@ -4,3 +4,4 @@ export * from './panels';
 export * from './icons';
 export * from './form';
 export * from './menus';
+export * from './dropdowns';

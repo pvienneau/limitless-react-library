@@ -5,7 +5,7 @@ import './menus.scss';
 
 export default () => (
   <Container className="Menus">
-    <h1>Menu Styleguide</h1>
+    <h6>Menu Styleguide</h6>
 
     <section>
       <h6>Basic Menus</h6>

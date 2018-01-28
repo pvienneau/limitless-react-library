@@ -1,9 +1,11 @@
 @import '../icon/icons.json';
 @import '~styles/scss/extensions/_iconize.scss';
 
+$DROPDOWN_POSITIONS: 'top' 'up', 'right' 'right', 'bottom' 'down', 'left' 'left';
+
 .Dropdown {
   display: inline-block;
-  position:relative;
+  position: relative;
 
   .dropdown-button {
     .label {
@@ -24,6 +26,14 @@
     }
   }
 
+  @each $position, $icon-name in $DROPDOWN_POSITIONS {
+    &.dropdown-position-#{$position} {
+      .dropdown-button .label::after {
+        content: map-get($icons, 'caret-' + $icon-name + '-22')
+      }
+    }
+  }
+
   .Menu {
     position: absolute;
     right: 0;
@@ -31,5 +41,28 @@
     transform: translateY(100%);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    z-index: 1;
+  }
+
+  &.dropdown-position-top .Menu {
+    bottom: auto;
+    top: 0;
+    transform: translateY(-100%);
+  }
+
+  &.dropdown-position-right .Menu {
+    bottom: auto;
+    top: 0;
+    transform: translateX(100%);
+    margin-top: -7px;
+  }
+
+  &.dropdown-position-left .Menu {
+    bottom: auto;
+    right: auto;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    margin-top: -7px;
   }
 }

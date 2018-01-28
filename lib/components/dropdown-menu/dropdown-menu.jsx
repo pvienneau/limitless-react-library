@@ -32,5 +32,6 @@ export default class DropdownMenu extends React.Component {
 }
 
 DropdownMenu.propTypes = {
+  ...Dropdown.propTypes,
   items: Menu.propTypes.items,
 };

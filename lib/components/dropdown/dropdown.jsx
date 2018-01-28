@@ -44,11 +44,13 @@ class Dropdown extends React.Component {
     }
 
     render() {
-      const { children, onClick, body, className, ...props } = this.props;
+      const { children, onClick, body, className, position, ...props } = this.props;
       const { isOpen } = this.state;
 
       return (
-        <div className={classNames('Dropdown', className)}>
+        <div className={classNames('Dropdown', className, `dropdown-position-${position}`, {
+          'dropdown-open': isOpen,
+        })}>
           <Button
           {...props}
           onClick={this.onClickHandler}
@@ -66,6 +68,19 @@ class Dropdown extends React.Component {
         </div>
       );
     }
+}
+
+Dropdown.propTypes = {
+  position: PropTypes.oneOf([
+    'top',
+    'right',
+    'bottom',
+    'left',
+  ]),
+}
+
+Dropdown.defaultProps = {
+  position: 'bottom',
 }
 
 export default clickOutside(Dropdown);
