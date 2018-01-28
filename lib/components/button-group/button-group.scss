@@ -2,8 +2,7 @@
 
 .ButtonGroup {
   display: block;
-  height: 46px;
-
+  
   .button-group-inner {
     display: flex;
     align-items: center;
@@ -33,7 +32,6 @@
     color: inherit;
     box-shadow: none;
     border-radius: 0;
-    height: 46px;
 
     &.has-icon:not(.has-children) {
       width: 46px;
