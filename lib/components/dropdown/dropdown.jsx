@@ -48,13 +48,15 @@ class Dropdown extends React.Component {
       const { isOpen } = this.state;
 
       return (
-        <div className="Dropdown">
+        <div className={classNames('Dropdown', className)}>
           <Button
           {...props}
           onClick={this.onClickHandler}
-          className={classNames('dropdown-button', className)}
+          className="dropdown-button"
           >
-              {children}
+              <span className="dropdown-button-content">
+                {children}
+              </span>
           </Button>
           { isOpen && (
             <div className="dropdown-body">

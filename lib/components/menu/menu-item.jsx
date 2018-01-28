@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import isEmpty from 'lodash.isempty';
 
 import { Menu } from 'components/menu';
-import { Button } from 'components';
+import { Button, DropdownMenu } from 'components';
 import './menu-item.scss';
 
 export default class MenuItem extends React.Component {
@@ -44,7 +44,8 @@ export default class MenuItem extends React.Component {
     const { isOpen } = this.state;
 
     // const buttonIcon = this.hasItems() && (isOpen ? 'point-down' : 'point-right')
-    const showSubItems = this.hasItems() && isOpen;
+    // const showSubItems = this.hasItems() && isOpen;
+    const ButtonElement = this.hasItems() ? DropdownMenu : Button;
 
     return (
       <div className={classNames('MenuItem', className, {
@@ -55,10 +56,11 @@ export default class MenuItem extends React.Component {
       })}>
         {
           label && !header ? (
-            <Button
+            <ButtonElement
               {...props}
               onClick={this.onClickHandler}
               fill={false}
+              items={items}
             >
               <span className="menu-item-content">
                 <span className="menu-item-label">
@@ -68,16 +70,13 @@ export default class MenuItem extends React.Component {
                   {children}
                 </span>
               </span>
-            </Button>
+            </ButtonElement>
           ) : (
             <div>
               {label}
             </div>
           )
         }
-        {showSubItems && (
-          <Menu items={items} />
-        )}
       </div>
     );
   }
