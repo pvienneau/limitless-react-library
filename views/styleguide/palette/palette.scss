@@ -1,8 +1,5 @@
 @import '~styles/const/_palette.scss';
 
-$COLORS: 'primary', 'danger', 'success', 'info', 'warning';
-$GRADES: 800, 700, 600, 500, 400, 300;
-
 .Palette {
   .color-spectrum {
     display: flex;
@@ -18,37 +15,37 @@ $GRADES: 800, 700, 600, 500, 400, 300;
   // PRIMARY
 
   .color-primary-800 {
-    .body {
+    .card-body {
       background-color: $primary-800;
     }
   }
 
   .color-primary-700 {
-    .body {
+    .card-body {
       background-color: $primary-700;
     }
   }
 
   .color-primary-600 {
-    .body {
+    .card-body {
       background-color: $primary-600;
     }
   }
 
   .color-primary-500 {
-    .body {
+    .card-body {
       background-color: $primary-500;
     }
   }
 
   .color-primary-400 {
-    .body {
+    .card-body {
       background-color: $primary-400;
     }
   }
 
   .color-primary-300 {
-    .body {
+    .card-body {
       background-color: $primary-300;
     }
   }
@@ -56,37 +53,37 @@ $GRADES: 800, 700, 600, 500, 400, 300;
   // DANGER
 
   .color-danger-800 {
-    .body {
+    .card-body {
       background-color: $danger-800;
     }
   }
 
   .color-danger-700 {
-    .body {
+    .card-body {
       background-color: $danger-700;
     }
   }
 
   .color-danger-600 {
-    .body {
+    .card-body {
       background-color: $danger-600;
     }
   }
 
   .color-danger-500 {
-    .body {
+    .card-body {
       background-color: $danger-500;
     }
   }
 
   .color-danger-400 {
-    .body {
+    .card-body {
       background-color: $danger-400;
     }
   }
 
   .color-danger-300 {
-    .body {
+    .card-body {
       background-color: $danger-300;
     }
   }
@@ -94,37 +91,37 @@ $GRADES: 800, 700, 600, 500, 400, 300;
   // INFO
 
   .color-info-800 {
-    .body {
+    .card-body {
       background-color: $info-800;
     }
   }
 
   .color-info-700 {
-    .body {
+    .card-body {
       background-color: $info-700;
     }
   }
 
   .color-info-600 {
-    .body {
+    .card-body {
       background-color: $info-600;
     }
   }
 
   .color-info-500 {
-    .body {
+    .card-body {
       background-color: $info-500;
     }
   }
 
   .color-info-400 {
-    .body {
+    .card-body {
       background-color: $info-400;
     }
   }
 
   .color-info-300 {
-    .body {
+    .card-body {
       background-color: $info-300;
     }
   }
@@ -132,37 +129,37 @@ $GRADES: 800, 700, 600, 500, 400, 300;
   // WARNING
 
   .color-warning-800 {
-    .body {
+    .card-body {
       background-color: $warning-800;
     }
   }
 
   .color-warning-700 {
-    .body {
+    .card-body {
       background-color: $warning-700;
     }
   }
 
   .color-warning-600 {
-    .body {
+    .card-body {
       background-color: $warning-600;
     }
   }
 
   .color-warning-500 {
-    .body {
+    .card-body {
       background-color: $warning-500;
     }
   }
 
   .color-warning-400 {
-    .body {
+    .card-body {
       background-color: $warning-400;
     }
   }
 
   .color-warning-300 {
-    .body {
+    .card-body {
       background-color: $warning-300;
     }
   }
@@ -170,38 +167,456 @@ $GRADES: 800, 700, 600, 500, 400, 300;
   // SUCCESS
 
   .color-success-800 {
-    .body {
+    .card-body {
       background-color: $success-800;
     }
   }
 
   .color-success-700 {
-    .body {
+    .card-body {
       background-color: $success-700;
     }
   }
 
   .color-success-600 {
-    .body {
+    .card-body {
       background-color: $success-600;
     }
   }
 
   .color-success-500 {
-    .body {
+    .card-body {
       background-color: $success-500;
     }
   }
 
   .color-success-400 {
-    .body {
+    .card-body {
       background-color: $success-400;
     }
   }
 
   .color-success-300 {
-    .body {
+    .card-body {
       background-color: $success-300;
+    }
+  }
+
+  // PINK
+
+  .color-pink-800 {
+    .card-body {
+      background-color: $pink-800;
+    }
+  }
+
+  .color-pink-700 {
+    .card-body {
+      background-color: $pink-700;
+    }
+  }
+
+  .color-pink-600 {
+    .card-body {
+      background-color: $pink-600;
+    }
+  }
+
+  .color-pink-500 {
+    .card-body {
+      background-color: $pink-500;
+    }
+  }
+
+  .color-pink-400 {
+    .card-body {
+      background-color: $pink-400;
+    }
+  }
+
+  .color-pink-300 {
+    .card-body {
+      background-color: $pink-300;
+    }
+  }
+
+  // VIOLET
+
+  .color-violet-800 {
+    .card-body {
+      background-color: $violet-800;
+    }
+  }
+
+  .color-violet-700 {
+    .card-body {
+      background-color: $violet-700;
+    }
+  }
+
+  .color-violet-600 {
+    .card-body {
+      background-color: $violet-600;
+    }
+  }
+
+  .color-violet-500 {
+    .card-body {
+      background-color: $violet-500;
+    }
+  }
+
+  .color-violet-400 {
+    .card-body {
+      background-color: $violet-400;
+    }
+  }
+
+  .color-violet-300 {
+    .card-body {
+      background-color: $violet-300;
+    }
+  }
+
+  // PURPLE
+
+  .color-purple-800 {
+    .card-body {
+      background-color: $purple-800;
+    }
+  }
+
+  .color-purple-700 {
+    .card-body {
+      background-color: $purple-700;
+    }
+  }
+
+  .color-purple-600 {
+    .card-body {
+      background-color: $purple-600;
+    }
+  }
+
+  .color-purple-500 {
+    .card-body {
+      background-color: $purple-500;
+    }
+  }
+
+  .color-purple-400 {
+    .card-body {
+      background-color: $purple-400;
+    }
+  }
+
+  .color-purple-300 {
+    .card-body {
+      background-color: $purple-300;
+    }
+  }
+
+  // INDIGO
+
+  .color-indigo-800 {
+    .card-body {
+      background-color: $indigo-800;
+    }
+  }
+
+  .color-indigo-700 {
+    .card-body {
+      background-color: $indigo-700;
+    }
+  }
+
+  .color-indigo-600 {
+    .card-body {
+      background-color: $indigo-600;
+    }
+  }
+
+  .color-indigo-500 {
+    .card-body {
+      background-color: $indigo-500;
+    }
+  }
+
+  .color-indigo-400 {
+    .card-body {
+      background-color: $indigo-400;
+    }
+  }
+
+  .color-indigo-300 {
+    .card-body {
+      background-color: $indigo-300;
+    }
+  }
+
+  // SUCCESS
+
+  .color-blue-800 {
+    .card-body {
+      background-color: $blue-800;
+    }
+  }
+
+  .color-blue-700 {
+    .card-body {
+      background-color: $blue-700;
+    }
+  }
+
+  .color-blue-600 {
+    .card-body {
+      background-color: $blue-600;
+    }
+  }
+
+  .color-blue-500 {
+    .card-body {
+      background-color: $blue-500;
+    }
+  }
+
+  .color-blue-400 {
+    .card-body {
+      background-color: $blue-400;
+    }
+  }
+
+  .color-blue-300 {
+    .card-body {
+      background-color: $blue-300;
+    }
+  }
+
+  // TEAL
+
+  .color-teal-800 {
+    .card-body {
+      background-color: $teal-800;
+    }
+  }
+
+  .color-teal-700 {
+    .card-body {
+      background-color: $teal-700;
+    }
+  }
+
+  .color-teal-600 {
+    .card-body {
+      background-color: $teal-600;
+    }
+  }
+
+  .color-teal-500 {
+    .card-body {
+      background-color: $teal-500;
+    }
+  }
+
+  .color-teal-400 {
+    .card-body {
+      background-color: $teal-400;
+    }
+  }
+
+  .color-teal-300 {
+    .card-body {
+      background-color: $teal-300;
+    }
+  }
+
+  // GREEN
+
+  .color-green-800 {
+    .card-body {
+      background-color: $green-800;
+    }
+  }
+
+  .color-green-700 {
+    .card-body {
+      background-color: $green-700;
+    }
+  }
+
+  .color-green-600 {
+    .card-body {
+      background-color: $green-600;
+    }
+  }
+
+  .color-green-500 {
+    .card-body {
+      background-color: $green-500;
+    }
+  }
+
+  .color-green-400 {
+    .card-body {
+      background-color: $green-400;
+    }
+  }
+
+  .color-green-300 {
+    .card-body {
+      background-color: $green-300;
+    }
+  }
+
+  // ORANGE
+
+  .color-orange-800 {
+    .card-body {
+      background-color: $orange-800;
+    }
+  }
+
+  .color-orange-700 {
+    .card-body {
+      background-color: $orange-700;
+    }
+  }
+
+  .color-orange-600 {
+    .card-body {
+      background-color: $orange-600;
+    }
+  }
+
+  .color-orange-500 {
+    .card-body {
+      background-color: $orange-500;
+    }
+  }
+
+  .color-orange-400 {
+    .card-body {
+      background-color: $orange-400;
+    }
+  }
+
+  .color-orange-300 {
+    .card-body {
+      background-color: $orange-300;
+    }
+  }
+
+  // BROWN
+
+  .color-brown-800 {
+    .card-body {
+      background-color: $brown-800;
+    }
+  }
+
+  .color-brown-700 {
+    .card-body {
+      background-color: $brown-700;
+    }
+  }
+
+  .color-brown-600 {
+    .card-body {
+      background-color: $brown-600;
+    }
+  }
+
+  .color-brown-500 {
+    .card-body {
+      background-color: $brown-500;
+    }
+  }
+
+  .color-brown-400 {
+    .card-body {
+      background-color: $brown-400;
+    }
+  }
+
+  .color-brown-300 {
+    .card-body {
+      background-color: $brown-300;
+    }
+  }
+
+  // GREY
+
+  .color-grey-800 {
+    .card-body {
+      background-color: $grey-800;
+    }
+  }
+
+  .color-grey-700 {
+    .card-body {
+      background-color: $grey-700;
+    }
+  }
+
+  .color-grey-600 {
+    .card-body {
+      background-color: $grey-600;
+    }
+  }
+
+  .color-grey-500 {
+    .card-body {
+      background-color: $grey-500;
+    }
+  }
+
+  .color-grey-400 {
+    .card-body {
+      background-color: $grey-400;
+    }
+  }
+
+  .color-grey-300 {
+    .card-body {
+      background-color: $grey-300;
+    }
+  }
+
+  // SLATE
+
+  .color-slate-800 {
+    .card-body {
+      background-color: $slate-800;
+    }
+  }
+
+  .color-slate-700 {
+    .card-body {
+      background-color: $slate-700;
+    }
+  }
+
+  .color-slate-600 {
+    .card-body {
+      background-color: $slate-600;
+    }
+  }
+
+  .color-slate-500 {
+    .card-body {
+      background-color: $slate-500;
+    }
+  }
+
+  .color-slate-400 {
+    .card-body {
+      background-color: $slate-400;
+    }
+  }
+
+  .color-slate-300 {
+    .card-body {
+      background-color: $slate-300;
     }
   }
 }

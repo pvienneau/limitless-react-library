@@ -35,4 +35,81 @@ $warning-500: $warning;
 $warning-400: lighten($warning, 10%);
 $warning-300: lighten($warning, 20%);
 
+$pink-800: darken($pink, 30%);
+$pink-700: darken($pink, 20%);
+$pink-600: darken($pink, 10%);
+$pink-500: $pink;
+$pink-400: lighten($pink, 10%);
+$pink-300: lighten($pink, 20%);
+
+$purple-800: darken($purple, 30%);
+$purple-700: darken($purple, 20%);
+$purple-600: darken($purple, 10%);
+$purple-500: $purple;
+$purple-400: lighten($purple, 10%);
+$purple-300: lighten($purple, 20%);
+
+$violet-800: darken($violet, 30%);
+$violet-700: darken($violet, 20%);
+$violet-600: darken($violet, 10%);
+$violet-500: $violet;
+$violet-400: lighten($violet, 10%);
+$violet-300: lighten($violet, 20%);
+
+$indigo-800: darken($indigo, 30%);
+$indigo-700: darken($indigo, 20%);
+$indigo-600: darken($indigo, 10%);
+$indigo-500: $indigo;
+$indigo-400: lighten($indigo, 10%);
+$indigo-300: lighten($indigo, 20%);
+
+$blue-800: darken($blue, 30%);
+$blue-700: darken($blue, 20%);
+$blue-600: darken($blue, 10%);
+$blue-500: $blue;
+$blue-400: lighten($blue, 10%);
+$blue-300: lighten($blue, 20%);
+
+$teal-800: darken($teal, 30%);
+$teal-700: darken($teal, 20%);
+$teal-600: darken($teal, 10%);
+$teal-500: $teal;
+$teal-400: lighten($teal, 10%);
+$teal-300: lighten($teal, 20%);
+
+$green-800: darken($green, 30%);
+$green-700: darken($green, 20%);
+$green-600: darken($green, 10%);
+$green-500: $green;
+$green-400: lighten($green, 10%);
+$green-300: lighten($green, 20%);
+
+$orange-800: darken($orange, 30%);
+$orange-700: darken($orange, 20%);
+$orange-600: darken($orange, 10%);
+$orange-500: $orange;
+$orange-400: lighten($orange, 10%);
+$orange-300: lighten($orange, 20%);
+
+$brown-800: darken($brown, 30%);
+$brown-700: darken($brown, 20%);
+$brown-600: darken($brown, 10%);
+$brown-500: $brown;
+$brown-400: lighten($brown, 10%);
+$brown-300: lighten($brown, 20%);
+
+$grey-800: darken($grey, 30%);
+$grey-700: darken($grey, 20%);
+$grey-600: darken($grey, 10%);
+$grey-500: $grey;
+$grey-400: lighten($grey, 10%);
+$grey-300: lighten($grey, 20%);
+
+$slate-800: darken($slate, 30%);
+$slate-700: darken($slate, 20%);
+$slate-600: darken($slate, 10%);
+$slate-500: $slate;
+$slate-400: lighten($slate, 10%);
+$slate-300: lighten($slate, 20%);
+
 $THEMES: primary $primary, danger $danger, info $info, success $success, warning $warning;
