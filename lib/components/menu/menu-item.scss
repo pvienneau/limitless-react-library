@@ -10,12 +10,10 @@
   .Button, .DropdownMenu {
     display: block;
     width: 100%;
+  }
 
-    &:hover {
-      &:not(.disabled) {
-        background-color: #f5f5f5;
-      }
-    }
+  .Button:hover:not(.disabled) {
+    background-color: #f5f5f5;
   }
 
   .menu-item-content {

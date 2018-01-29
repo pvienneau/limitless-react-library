@@ -27,6 +27,10 @@
     border: none;
     padding: 0;
 
+    .Menu {
+      background-color: rgba($black, 0.15);
+    }
+
     .menu-title {
       color: rgba($white, 0.5);
       text-transform: uppercase;
@@ -53,12 +57,31 @@
         }
       }
 
-      &:hover, &.active {
-        &, & .Button {
-          background-color: rgba(0, 0, 0, 0.1);
+      .DropdownMenu {
+        .Menu {
+          position: static;
+          transform: none;
+          margin-top: 0;
         }
 
-        &, & > .Button {
+        .dropdown-button .label::after {
+          transition: transform 200ms ease-in-out;
+        }
+
+        &.dropdown-open .dropdown-button {
+          background-color: #26a69a !important;
+          color: $white;
+
+
+          .label::after {
+            transform: rotate(90deg);
+          }
+        }
+      }
+
+      &:hover {
+        & > .Button, & > .DropdownMenu > .dropdown-button {
+          background-color: rgba(0, 0, 0, 0.1);
           color: $white;
         }
       }
