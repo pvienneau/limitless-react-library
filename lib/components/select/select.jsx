@@ -17,7 +17,7 @@ class Select extends React.Component {
       isOpen: false,
     };
 
-    this.onInputFocus = this.onInputFocus.bind(this);
+    this.onInputClickHandler = this.onInputClickHandler.bind(this);
     this.buildOptionsForMenu = this.buildOptionsForMenu.bind(this);
     this.buildOptionsForSelect = this.buildOptionsForSelect.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -30,10 +30,10 @@ class Select extends React.Component {
     });
   }
 
-  onInputFocus() {
-    this.setState({
-      isOpen: true,
-    });
+  onInputClickHandler() {
+    this.setState(({ isOpen }) => ({
+      isOpen: !isOpen,
+    }));
   }
 
   buildOptionsForSelect() {
@@ -69,7 +69,7 @@ class Select extends React.Component {
   }
 
   buildElements() {
-    const { multiple, onFocus } = this.props;
+    const { multiple, onFocus, onClick } = this.props;
     const { isOpen, value } = this.state;
 
     let element;
@@ -99,7 +99,7 @@ class Select extends React.Component {
             className="select-input"
             readOnly
             value={value}
-            onFocus={coCall(onFocus, this.onInputFocus)}
+            onClick={coCall(onClick, this.onInputClickHandler)}
           />
           {
             isOpen &&
