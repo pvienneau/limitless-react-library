@@ -68,8 +68,8 @@
           transition: transform 200ms ease-in-out;
         }
 
-        &.dropdown-open .dropdown-button {
-          background-color: #26a69a !important;
+        &.dropdown-open > .dropdown-button {
+          background-color: $teal-500 !important;
           color: $white;
 
 
