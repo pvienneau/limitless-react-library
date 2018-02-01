@@ -24,14 +24,18 @@ class PageHeader extends React.Component {
   render() {
     return (
       <div className="PageHeader">
-        <Container className="page-header-main-section">
-          <h2>
-            {this.getTitle()}
-          </h2>
-        </Container>
-        <Container className="page-header-secondary-section">
-          <Breadcrumb />
-        </Container>
+        <div className="page-header-main-section">
+          <Container>
+            <h2>
+              {this.getTitle()}
+            </h2>
+          </Container>
+        </div>
+        <div className="page-header-secondary-section">
+          <Container>
+            <Breadcrumb />
+          </Container>
+        </div>
       </div>
     )
   }
