@@ -1,17 +1,16 @@
 @import '~styles/const/_palette.scss';
+@import '~styles/scss/extensions/_paper.scss';
 
 %form-control {
+  @extend %paper;
+
   display: block;
   width: 100%;
   height: 36px;
   padding: 7px 12px;
   font-size: 13px;
-  color: #333;
-  background-color: $white;
-  border-radius: 3px;
   appearance: none;
   box-shadow: none;
-  border: 1px solid #ddd;
   outline: none;
   transition: border-color ease-in-out 100ms,
               box-shadow ease-in-out 100ms;

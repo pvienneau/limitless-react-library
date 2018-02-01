@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import isEmpty from 'lodash.isempty';
 
-import { Button } from 'components';
+import { Button, Paper } from 'components';
 import './panel.scss';
 
 export default class Panel extends React.Component {
@@ -81,7 +81,7 @@ export default class Panel extends React.Component {
     const actionButtons = this.generateActionButtons();
 
     return (
-      <div
+      <Paper
         {...props}
         className={classNames(
           'Panel',
@@ -125,7 +125,7 @@ export default class Panel extends React.Component {
             </div>
           )
         }
-      </div>
+      </Paper>
     );
   }
 }

@@ -7,6 +7,7 @@ import isObject from 'lodash.isobject';
 
 import { hash } from 'utils/js';
 import MenuItem from './menu-item';
+import { Paper } from 'components';
 import './menu.scss';
 
 export default class Menu extends React.Component {
@@ -57,12 +58,12 @@ export default class Menu extends React.Component {
         if(isEmpty(items)) return null;
 
         return (
-          <div className={classNames('Menu', className)}>
+          <Paper className={classNames('Menu', className)}>
             {title && <div className="menu-title">{title}</div>}
             <ul>
               {items.map(this.itemFactory)}
             </ul>
-          </div>
+          </Paper>
         );
     }
 }
