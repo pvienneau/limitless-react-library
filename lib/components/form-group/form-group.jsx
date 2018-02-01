@@ -3,9 +3,10 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import { Input } from 'components/input';
+import { InputGroup } from 'components/input-group';
 import { Textarea } from 'components/textarea';
 import { Select } from 'components/select';
+import { DatePicker } from 'components/date-picker';
 import './form-group.scss';
 
 export default class FormGroup extends React.Component {
@@ -23,9 +24,11 @@ export default class FormGroup extends React.Component {
         return Textarea;
       case 'select':
         return Select;
+      case 'date':
+        return DatePicker;
     }
 
-    return Input;
+    return InputGroup;
   }
 
   render() {

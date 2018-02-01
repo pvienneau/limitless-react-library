@@ -1,8 +1,3 @@
-@import '../icon/icons.json';
-@import '~styles/scss/extensions/_iconize.scss';
-
-$DROPDOWN_POSITIONS: 'top' 'up', 'right' 'right', 'bottom' 'down', 'left' 'left';
-
 .Dropdown {
   display: inline-block;
   position: relative;
@@ -15,26 +10,10 @@ $DROPDOWN_POSITIONS: 'top' 'up', 'right' 'right', 'bottom' 'down', 'left' 'left'
       .dropdown-button-content {
         flex-grow: 1;
       }
-
-      &::after {
-        @extend %iconize;
-
-        display: inline-block;
-        content: map-get($icons, 'caret-down-22');
-        margin-left: 7px;
-      }
     }
   }
 
-  @each $position, $icon-name in $DROPDOWN_POSITIONS {
-    &.dropdown-position-#{$position} {
-      .dropdown-button .label::after {
-        content: map-get($icons, 'caret-' + $icon-name + '-22')
-      }
-    }
-  }
-
-  .Menu {
+  .dropdown-body {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -44,20 +23,20 @@ $DROPDOWN_POSITIONS: 'top' 'up', 'right' 'right', 'bottom' 'down', 'left' 'left'
     z-index: 1;
   }
 
-  &.dropdown-position-top .Menu {
+  &.dropdown-position-top .dropdown-body {
     bottom: auto;
     top: 0;
     transform: translateY(-100%);
   }
 
-  &.dropdown-position-right .Menu {
+  &.dropdown-position-right .dropdown-body {
     bottom: auto;
     top: 0;
     transform: translateX(100%);
     margin-top: -7px;
   }
 
-  &.dropdown-position-left .Menu {
+  &.dropdown-position-left .dropdown-body {
     bottom: auto;
     right: auto;
     top: 0;

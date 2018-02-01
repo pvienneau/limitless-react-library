@@ -1,0 +1,47 @@
+@import '~styles/scss/extensions/_form-control.scss';
+
+.InputGroup {
+  display: inline-block;
+
+  .input-group-inner {
+    @extend %form-control;
+
+    display: flex;
+    padding: 0;
+    overflow: hidden;
+
+    &, &:hover, &:focus, &:active {
+      border: 1px solid #ddd;
+    }
+
+    .input-group-addon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      background-color: #fcfcfc;
+
+      &.input-group-addon-left {
+        border-right: 1px solid #ddd;
+      }
+
+      &.input-group-addon-right {
+        border-left: 1px solid #ddd;
+      }
+    }
+
+    .input-group-input {
+      flex-grow: 1;
+      flex-basis: 0;
+
+      input {
+        height: 100%;
+
+        &, &:hover, &:focus, &:active {
+          border: none;
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}

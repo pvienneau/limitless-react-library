@@ -58,14 +58,14 @@
       }
 
       .DropdownMenu {
-        .Menu {
+        .dropdown-body {
           position: static;
           transform: none;
           margin-top: 0;
         }
 
         .dropdown-button .label::after {
-          transition: transform 200ms ease-in-out;
+        transition: transform 200ms ease-in-out;
         }
 
         &.dropdown-open > .dropdown-button {

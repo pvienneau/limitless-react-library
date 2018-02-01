@@ -2,10 +2,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash.isempty';
-import clickOutside from 'react-click-outside';
 import classNames from 'classnames';
 
-import { Button, Icon } from 'components';
 import './dropdown.scss';
 
 class Dropdown extends React.Component {
@@ -16,51 +14,18 @@ class Dropdown extends React.Component {
     constructor(props) {
       super(props);
 
-      this.state = {
-        isOpen: false,
-      };
-
-      this.onClickHandler = this.onClickHandler.bind(this);
-      this.handleClickOutside = this.handleClickOutside.bind(this);
-    }
-
-    handleClickOutside() {
-      this.setState({
-        isOpen: false,
-      });
-    }
-
-    onClickHandler(e, ...args) {
-      const { onClick } = this.props;
-
-      this.setState(
-        state => ({
-            isOpen: !state.isOpen,
-        }),
-        () => {
-          onClick && onClick(e, ...args);
-        }
-      );
+      // this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
     render() {
-      const { children, onClick, body, className, position, ...props } = this.props;
-      const { isOpen } = this.state;
+      const { children, onClick, body, className, open, position, ...props } = this.props;
 
       return (
         <div className={classNames('Dropdown', className, `dropdown-position-${position}`, {
-          'dropdown-open': isOpen,
+          'dropdown-open': open,
         })}>
-          <Button
-          {...props}
-          onClick={this.onClickHandler}
-          className="dropdown-button"
-          >
-              <span className="dropdown-button-content">
-                {children}
-              </span>
-          </Button>
-          { isOpen && (
+          { children }
+          { open && (
             <div className="dropdown-body">
               {body}
             </div>
@@ -71,6 +36,7 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = {
+  open: PropTypes.bool,
   position: PropTypes.oneOf([
     'top',
     'right',
@@ -80,7 +46,8 @@ Dropdown.propTypes = {
 }
 
 Dropdown.defaultProps = {
+  open: false,
   position: 'bottom',
 }
 
-export default clickOutside(Dropdown);
+export default Dropdown;

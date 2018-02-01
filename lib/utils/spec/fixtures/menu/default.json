@@ -41,6 +41,15 @@
         {
           "label": "Checkboxes & radios",
           "to": "/styleguide/form/checkboxes"
+        },
+        {
+          "label": "Pickers",
+          "items": [
+            {
+              "label": "Date pickers",
+              "to": "/styleguide/form/pickers/date-pickers"
+            }
+          ]
         }
       ]
     }

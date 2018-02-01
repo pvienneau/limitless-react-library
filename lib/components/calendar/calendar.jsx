@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Button } from 'components';
-
 import PropTypes from 'prop-types';
 import map from 'lodash.map';
 import fill from 'lodash.fill';
@@ -10,6 +8,7 @@ import slice from 'lodash.slice';
 import now from 'lodash.now';
 import classNames from 'classnames';
 
+import { Button } from 'components';
 import './calendar.scss';
 
 const DAYS_OF_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurdsay', 'Friday', 'Saturday'];
