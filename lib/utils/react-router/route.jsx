@@ -2,32 +2,37 @@ import React from 'react';
 
 import { Route as ReactRouterRoute } from 'react-router-dom';
 import trimStart from 'lodash.trimstart';
+import trim from 'lodash.trim';
 import assign from 'lodash.assign';
+import isEmpty from 'lodash.isempty';
+import join from 'lodash.join';
+
+import { makeArray } from 'utils/js';
 
 export default class Route extends React.Component {
-  render() {
-    const { children, path, ...props } = this.props;
+  extendChildrenPaths(nodes, basePath = '') {
+    if (!nodes) return nodes;
 
-    const computedChildren = React.Children.map(children, child => {
-      const { children, props: childProps } = child;
-      const computedProps = assign({}, childProps);
+    return React.Children.map(nodes, child => {
+      const { props, type } = child;
+      const computedProps = {};
 
-      console.log(child);
+      if (type === Route) {
+        computedProps.path = `/${trim(basePath, '/')}/${trim(props.path, '/')}`
+      }
 
-      if (child.type !== Route) return child;
-
-      console.log(child)
-
-      computedProps.path = `${path}/${trimStart(childProps.path, '/')}`;
-
-      console.log(computedProps);
 
       return React.cloneElement(
         child,
-        computedProps,
-        children
+        assign({}, props, computedProps),
+        this.extendChildrenPaths(props.children, computedProps.path || basePath)
       )
     });
+  }
+
+  render() {
+    const { path, children, ...props } = this.props;
+    const computedChildren = this.extendChildrenPaths(children, path);
 
     return (
       <ReactRouterRoute
