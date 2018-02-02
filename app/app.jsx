@@ -5,22 +5,23 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { Route } from 'utils/react-router';
 import Routes from 'app/routes';
-import { Navbar, PageHeader } from 'components';
+import { Navbar, PageHeader, PageFooter } from 'components';
 import { Sidebar, View } from './app.styled';
 
 export default class App extends React.Component {
     render() {
       return (
         <BrowserRouter>
-          <div>
+          <div id="app">
             <Navbar />
-            <div className="flex">
+            <div className="flex flex-grow">
               <Sidebar />
-              <div className="flex-grow">
+              <div className="flex column flex-grow">
                 <PageHeader />
-                <View>
+                <View className="flex-grow">
                   <Routes />
                 </View>
+                <PageFooter />
               </div>
             </div>
           </div>
