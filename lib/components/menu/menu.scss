@@ -1,13 +1,11 @@
 @import '~styles/const/_palette.scss';
 
 .Menu {
+  display: block;
   padding: 7px 0;
-  color: #333;
   min-width: 180px;
-  border: 1px solid #ddd;
-  box-shadow: 0 1px 3px rgba(0,0,0,.1);
-  background-color: $white;
   border-radius: 2px;
+  width: 100%;
 
   ul {
     list-style: none;

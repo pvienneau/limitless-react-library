@@ -1,11 +1,6 @@
 @import '~styles/const/_palette.scss';
 
 .Panel {
-  background-color: $white;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  box-shadow: 0 1px 1px rgba(0,0,0,.05);
-  color: #333;
   margin-bottom: 25px;
 
   .panel-header {

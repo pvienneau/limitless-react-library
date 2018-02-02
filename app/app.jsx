@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 
 import { Route } from 'utils/react-router';
 import Routes from 'app/routes';
-import { defer } from 'utils/js';
 import { Navbar, PageHeader } from 'components';
 import { Sidebar, View } from './app.styled';
 

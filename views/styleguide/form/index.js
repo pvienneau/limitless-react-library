@@ -1,2 +1,4 @@
 export * from './inputs';
-export * from './checkboxes'
+export * from './input-groups';
+export * from './checkboxes';
+export * from './pickers';
