@@ -1,25 +1,27 @@
 import React from 'react';
 
-import { Switch, Route, Redirect } from 'react-router';
+import { Switch, Redirect } from 'react-router';
 
-import { Buttons, Dropdowns, Palette, Icons, Inputs, Panels, Checkboxes, Menus, DatePickers, InputGroups } from './'
+import { Route } from 'utils/react-router';
+import { Buttons, Dropdowns, Palette, Icons, Inputs, Panels, Checkboxes, Menus, DatePickers, InputGroups } from './';
 
 export default class StyleguideRouter extends React.Component {
   render() {
     return (
-      <Switch>
-        <Route path="/styleguide/buttons" component={Buttons} />
-        <Route path="/styleguide/dropdowns" component={Dropdowns} />
-        <Route path="/styleguide/palette" component={Palette} />
-        <Route path="/styleguide/panels" component={Panels} />
-        <Route path="/styleguide/icons" component={Icons} />
-        <Route path="/styleguide/menus" component={Menus} />
-        <Route path="/styleguide/form/inputs" component={Inputs} />
-        <Route path="/styleguide/form/checkboxes" component={Checkboxes} />
-        <Route path="/styleguide/form/input-groups" component={InputGroups} />
-        <Route path="/styleguide/form/pickers/date-pickers" component={DatePickers} />
-        <Redirect to="/" />
-      </Switch>
+      <Route path="styleguide">
+        <div>
+          <Route path="buttons" component={Buttons} />
+          <Route path="dropdowns" component={Dropdowns} />
+          <Route path="palette" component={Palette} />
+          <Route path="panels" component={Panels} />
+          <Route path="icons" component={Icons} />
+          <Route path="menus" component={Menus} />
+          <Route path="form/inputs" component={Inputs} />
+          <Route path="form/checkboxes" component={Checkboxes} />
+          <Route path="form/input-groups" component={InputGroups} />
+          <Route path="form/pickers/date-pickers" component={DatePickers} />
+        </div>
+      </Route>
     );
   }
 }

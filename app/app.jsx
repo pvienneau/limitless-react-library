@@ -2,6 +2,8 @@ import React from 'react';
 
 import { BrowserRouter } from 'react-router-dom';
 
+
+import { Route } from 'utils/react-router';
 import Routes from 'app/routes';
 import { Navbar, PageHeader } from 'components';
 import { Sidebar, View } from './app.styled';
