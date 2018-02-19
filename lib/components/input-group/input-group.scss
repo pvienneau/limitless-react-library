@@ -1,7 +1,8 @@
 @import '~styles/scss/extensions/_form-control.scss';
 
 .InputGroup {
-  display: inline-block;
+  display: block;
+  width: 100%;
 
   .input-group-inner {
     @extend %form-control;

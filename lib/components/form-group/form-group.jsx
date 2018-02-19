@@ -47,7 +47,7 @@ export default class FormGroup extends React.Component {
           {...props}
           id={name}
           className="formgroup-input"
-          defaultValue={value}
+          value={value}
         />
       </div>
     );

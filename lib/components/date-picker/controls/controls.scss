@@ -1,0 +1,40 @@
+@import '~styles/const/_palette.scss';
+
+.Controls {
+  .Button {
+    text-align: center;
+    margin-bottom: 10px;
+
+    &.primary {
+      background-color: $slate-600;
+      border-color: darken($slate-600, 10%);
+    }
+  }
+
+  fieldset {
+    display: block;
+    border-top: 1px solid $grey-100;
+    padding: 10px;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &.actions {
+      display: flex;
+      flex-direction: column;
+
+      & > * {
+        margin: 5px 0;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

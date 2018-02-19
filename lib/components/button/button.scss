@@ -32,6 +32,7 @@ $padding: $padding-vertical $padding-horizontal;
   padding: $padding;
   cursor: pointer;
   overflow: hidden;
+  text-align: left;
 
   & > .inner {
     display: flex;
@@ -47,7 +48,7 @@ $padding: $padding-vertical $padding-horizontal;
   .label {
     cursor: inherit;
     flex-grow: 1;
-    text-align: left;
+    text-align: inherit;
   }
 
   .button-icon {
@@ -100,6 +101,10 @@ $padding: $padding-vertical $padding-horizontal;
     font-size: 12px;
     line-height: 1.6666667;
     border-radius: 2px;
+  }
+
+  &.full-width {
+    width: 100%;
   }
 
   // COLORS

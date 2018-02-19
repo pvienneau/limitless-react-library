@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import './paper.scss';
 
-export default ({
+const Paper = ({
   className,
   children,
 })  => (
@@ -12,3 +12,5 @@ export default ({
     {children}
   </div>
 )
+
+export default Paper;

@@ -1,7 +1,46 @@
 .DatePicker {
   .Dropdown {
+    display: block;
+    width: 100%;
+
     .dropdown-body {
-      width: 100%;
+      right: auto;
+      left: 40px;
+
+      .datepicker-container {
+        display: flex;
+        align-items: flex-start;
+        margin: 0 -7px;
+
+        & > * {
+          margin-left: 7px;
+          margin-right: 7px;
+        }
+
+        .Paper {
+          padding: 0;
+        }
+
+        .Controls {
+          width: 175px;
+        }
+
+        .Calendar {
+          width: 280px;
+
+          .calendar-header .Button {
+            visibility: hidden;
+          }
+
+          &.calendar-prev-month .calendar-header .Button.button-previous-month {
+            visibility: visible;
+          }
+
+          &.calendar-next-month .calendar-header .Button.button-next-month {
+            visibility: visible;
+          }
+        }
+      }
     }
   }
 }

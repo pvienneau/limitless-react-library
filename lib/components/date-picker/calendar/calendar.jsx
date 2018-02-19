@@ -6,9 +6,13 @@ import fill from 'lodash.fill';
 import chunk from 'lodash.chunk';
 import slice from 'lodash.slice';
 import now from 'lodash.now';
+import isEmpty from 'lodash.isempty';
+import noop from 'lodash.noop';
+import isEqual from 'lodash.isequal';
 import classNames from 'classnames';
 
 import { Button } from 'components';
+import { initializeDateState } from '../utils';
 import './calendar.scss';
 
 const DAYS_OF_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurdsay', 'Friday', 'Saturday'];
@@ -18,25 +22,7 @@ export default class Calendar extends React.Component {
   constructor(props) {
     super(props);
 
-    const selectedDates = [];
-
-    if (Array.isArray(props.date)) {
-      selectedDates[0] = new Date(props.date.getTime())
-    } else if(props.date instanceof Date) {
-      selectedDates[0] = new Date(props.date[0].getTime());
-      selectedDates[1] = new Date(props.date[1].getTime());
-    }
-
-    const currentDate = new Date(selectedDates[0] ? selectedDates[0].getTime() : now());
-
-    currentDate.setDate(1);
-
-    this.state = {
-      currentDate,
-      selectedDates,
-      isRange: Array.isArray(props.date),
-      nextDateChangeIndex: selectedDates.length%2,
-    };
+    this.state = initializeDateState(props);
 
     this.buildWeeks = this.buildWeeks.bind(this);
     this.onDateClick = this.onDateClick.bind(this);
@@ -47,6 +33,20 @@ export default class Calendar extends React.Component {
     this.isSelectedEndDate = this.isSelectedEndDate.bind(this);
     this.isInSelectedDatesRange = this.isInSelectedDatesRange.bind(this);
     this.setState = this.setState.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { currentDate, date } = this.props;
+    const { currentDate: nextCurrentDate, date: nextDate } = nextProps;
+
+    if (!isEqual(currentDate, nextCurrentDate) || !isEqual(date, nextDate)) {
+      const { currentDate, selectedDates } = initializeDateState(nextProps);
+
+      this.setState({
+        currentDate,
+        selectedDates,
+      })
+    }
   }
 
   setState(nextStateFn) {
@@ -68,18 +68,28 @@ export default class Calendar extends React.Component {
     return super.setState(nextState);
   }
 
-  onNextMonthClickHandler() {
+  onNextMonthClickHandler(e) {
+    e.preventDefault();
+
     this.updateMonth(1);
   }
 
-  onPreviousMonthClickHandler () {
+  onPreviousMonthClickHandler (e) {
+    e.preventDefault();
+
     this.updateMonth(-1);
   }
 
   onDateClick (selectedDate) {
-    return () => {
+    const { onChange } = this.props;
+
+    return (e) => {
+      e.preventDefault();
+
+      let nextSelectedDates;
+
       this.setState(({ selectedDates, nextDateChangeIndex }) => {
-        const nextSelectedDates = Object.assign([], selectedDates);
+        nextSelectedDates = Object.assign([], selectedDates);
 
         if (nextSelectedDates.length === 2) {
           if (this.isLessThan(selectedDate, nextSelectedDates[0])) {
@@ -96,15 +106,26 @@ export default class Calendar extends React.Component {
           nextDateChangeIndex: (nextDateChangeIndex+1)%2,
         }
       })
+
+      onChange(nextSelectedDates);
     }
   }
 
   updateMonth(changeValue) {
-    this.setState(({ currentDate }) => {
-      currentDate.setMonth(currentDate.getMonth() + changeValue);
+    const { onCurrentDateChange } = this.props;
+    let nextCurrentDate;
 
-      return { currentDate };
+    this.setState(({ currentDate }) => {
+      nextCurrentDate = new Date(currentDate.getTime())
+
+      nextCurrentDate.setMonth(nextCurrentDate.getMonth() + changeValue);
+
+      return {
+        currentDate: nextCurrentDate
+      };
     })
+
+    onCurrentDateChange(nextCurrentDate);
   }
 
   buildWeeks() {
@@ -171,13 +192,18 @@ export default class Calendar extends React.Component {
   }
 
   render() {
-    const { currentDate, selectedDate } = this.state;
+    const { className } = this.props;
+    const { currentDate, selectedDates } = this.state;
     const weeks = this.buildWeeks();
 
     return (
-      <div className="Calendar">
+      <div className={classNames('Calendar', className, {
+        'start-date-set': !!selectedDates[0],
+        'end-date-set': !!selectedDates[1],
+      })}>
         <div className="calendar-header">
           <Button
+            className="button-previous-month"
             fill={false}
             icon="caret-left-32"
             onClick={this.onPreviousMonthClickHandler}
@@ -186,6 +212,7 @@ export default class Calendar extends React.Component {
             {slice(MONTHS[currentDate.getMonth()], 0, 3)} {currentDate.getFullYear()}
           </div>
           <Button
+            className="button-next-month"
             fill={false}
             icon="caret-right-32"
             onClick={this.onNextMonthClickHandler}
@@ -193,34 +220,60 @@ export default class Calendar extends React.Component {
         </div>
         <div className="calendar-body">
           {
-            map(weeks, (week, k) => (
-              <div
-                key={`${currentDate.getMonth()}${k}`}
-                className="calendar-week"
-              >
-                {
-                  map(week, (day, kk) => (
-                    <div
-                      key={`${currentDate.getMonth()}${k}${kk}`}
-                      className={classNames('calendar-day', {
-                        'out-of-month': currentDate.getMonth() !== day.getMonth(),
-                        'start-date': this.isSelectedStartDate(day),
-                        'end-date': this.isSelectedEndDate(day),
-                        'in-range': this.isInSelectedDatesRange(day),
-                      })}
+            map(weeks, (week, k) => {
+
+              return map(week, (day, kk) => (
+                <div
+                  key={`${currentDate.getMonth()}${k}${kk}`}
+                  className={classNames('calendar-day', {
+                    'out-of-month': currentDate.getMonth() !== day.getMonth(),
+                    'start-date': this.isSelectedStartDate(day),
+                    'end-date': this.isSelectedEndDate(day),
+                    'in-range': this.isInSelectedDatesRange(day),
+                  })}
+                >
+                  <div className="calendar-day-inner">
+                    <Button
+                      onClick={this.onDateClick(day)}
                     >
-                      <div className="calendar-day-inner">
-                        <Button
-                          onClick={this.onDateClick(day)}
-                        >
-                          {day.getDate()}
-                        </Button>
+                      {day.getDate()}
+                    </Button>
+                  </div>
+                </div>
+              ))
+
+              /*
+              (
+                <div
+                  key={`${currentDate.getMonth()}${k}`}
+                  className="calendar-week"
+                >
+                  {
+                    map(week, (day, kk) => (
+                      <div
+                        key={`${currentDate.getMonth()}${k}${kk}`}
+                        className={classNames('calendar-day', {
+                          'out-of-month': currentDate.getMonth() !== day.getMonth(),
+                          'start-date': this.isSelectedStartDate(day),
+                          'end-date': this.isSelectedEndDate(day),
+                          'in-range': this.isInSelectedDatesRange(day),
+                        })}
+                      >
+                        <div className="calendar-day-inner">
+                          <Button
+                            onClick={this.onDateClick(day)}
+                          >
+                            {day.getDate()}
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                  ))
-                }
-              </div>
-            ))
+                    ))
+                  }
+                </div>
+              )
+              */
+
+            })
           }
         </div>
       </div>
@@ -229,8 +282,17 @@ export default class Calendar extends React.Component {
 }
 
 Calendar.propTypes = {
-  date: PropTypes.oneOf([
+  date: PropTypes.oneOfType([
     PropTypes.instanceOf(Date),
     PropTypes.arrayOf(PropTypes.instanceOf(Date)),
   ]),
+  currentDate: PropTypes.instanceOf(Date),
+  onCurrentDateChange: PropTypes.func,
+  onChange: PropTypes.func,
+}
+
+Calendar.defaultProps = {
+  currentDate: now(),
+  onCurrentDateChange: noop,
+  onChange: noop,
 }

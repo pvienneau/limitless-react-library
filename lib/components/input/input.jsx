@@ -8,7 +8,7 @@ import './input.scss';
 export default class Input extends React.Component {
   render () {
     const { className, disabled, readOnly, ...props } = this.props;
-
+    
     return (
       <div className={classNames('Input', className)}>
         <input
@@ -38,6 +38,10 @@ Input.propTypes = {
   ]),
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ])
 }
 
 Input.defaultProps = {

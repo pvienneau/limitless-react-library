@@ -1,3 +1,17 @@
 .DatePickers {
-  
+  .FormGroup {
+    flex-direction: column;
+
+    .formgroup-label, .DatePicker {
+      width: 100%;
+    }
+  }
+
+  .flex {
+    margin: 0 -10px;
+
+    .flex-grow {
+      margin: 0 10px;
+    }
+  }
 }

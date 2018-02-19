@@ -31,7 +31,8 @@ export default class Button extends React.Component {
         badge: PropTypes.oneOfType([
           PropTypes.string,
           PropTypes.number,
-        ])
+        ]),
+        fullWidth: PropTypes.bool,
     };
 
     static defaultProps = {
@@ -51,6 +52,7 @@ export default class Button extends React.Component {
       small: false,
       mini: false,
       active: false,
+      fullWidth: false,
     };
 
     render() {
@@ -76,6 +78,7 @@ export default class Button extends React.Component {
           mini,
           active,
           badge,
+          fullWidth,
           ...props
         } = this.props
 
@@ -108,6 +111,7 @@ export default class Button extends React.Component {
                 small,
                 mini,
                 active,
+                'full-width': fullWidth,
               })}
             >
                 <div className="inner">

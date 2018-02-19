@@ -12,14 +12,98 @@ export default class DatePickers extends React.Component {
       <Container className="DatePickers">
         <form>
           <fieldset>
-            <legend>
-              Basic
-            </legend>
-            <FormGroup
-              type="date"
-              label="Basic date range picker:"
-              name="default_date"
-            />
+            <div className="flex">
+              <FormGroup
+                type="date"
+                label="Basic date range picker:"
+                name="default_date"
+                className="flex-grow"
+              />
+
+              <FormGroup
+                type="date"
+                label="How calendars on left:"
+                name="default_date"
+                className="flex-grow"
+              />
+            </div>
+
+            <div className="flex">
+              <FormGroup
+                type="date"
+                label="Display week numbers:"
+                name="default_date"
+                className="flex-grow"
+              />
+
+              <FormGroup
+                type="date"
+                label="Display date dropdowns:"
+                name="default_date"
+                className="flex-grow"
+              />
+            </div>
+
+            <div className="flex">
+              <FormGroup
+                type="date"
+                label="Display time picker:"
+                name="default_date"
+                className="flex-grow"
+              />
+
+              <FormGroup
+                type="date"
+                label="Time minute increments:"
+                name="default_date"
+                className="flex-grow"
+              />
+            </div>
+
+            <div className="flex">
+              <FormGroup
+                type="date"
+                label="Basic single date picker:"
+                name="default_date"
+                className="flex-grow"
+              />
+
+              <div className="flex-grow">
+                &nbsp;
+              </div>
+            </div>
+
+            <div className="flex">
+              <FormGroup
+                type="date"
+                label="Simple text field attachment:"
+                name="default_date"
+                className="flex-grow"
+              />
+
+              <FormGroup
+                type="date"
+                label="Pre-defined ranges & callback:"
+                name="default_date"
+                className="flex-grow"
+              />
+            </div>
+
+            <div className="flex">
+              <FormGroup
+                type="date"
+                label="Button class options:"
+                name="default_date"
+                className="flex-grow"
+              />
+
+              <FormGroup
+                type="date"
+                label="Date picker inside button:"
+                name="default_date"
+                className="flex-grow"
+              />
+            </div>
           </fieldset>
         </form>
       </Container>
