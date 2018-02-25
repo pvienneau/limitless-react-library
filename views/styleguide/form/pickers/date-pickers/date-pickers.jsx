@@ -1,13 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
-import { Container, FormGroup } from 'components';
-import './date-pickers.scss';
+import { Container, FormGroup } from 'components'
+import './date-pickers.scss'
 
 export default class DatePickers extends React.Component {
-  render() {
+  render () {
     return (
       <Container className="DatePickers">
         <form>
@@ -18,6 +15,7 @@ export default class DatePickers extends React.Component {
                 label="Basic date range picker:"
                 name="default_date"
                 className="flex-grow"
+                range
               />
 
               <FormGroup
@@ -107,6 +105,6 @@ export default class DatePickers extends React.Component {
           </fieldset>
         </form>
       </Container>
-    );
+    )
   }
 }

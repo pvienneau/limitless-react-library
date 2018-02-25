@@ -3,11 +3,19 @@ import React from 'react';
 import isDate from 'lodash.isdate';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import noop from 'lodash.noop';
 
 import { Button, FormGroup, Icon } from 'components';
 import './controls.scss';
 
 export default class Controls extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    this.onCancelHandler = this.onCancelHandler.bind(this);
+  }
+
   formatDate(date) {
     if (!isDate(date)) return '';
 
@@ -16,6 +24,22 @@ export default class Controls extends React.Component {
     const year = date.getFullYear();
 
     return `${day}/${month}/${year}`;
+  }
+
+  onSubmitHandler(e) {
+    const { onSave } = this.props;
+
+    e.preventDefault();
+
+    onSave();
+  }
+
+  onCancelHandler(e) {
+    const { onCancel } = this.props;
+
+    e.preventDefault();
+
+    onCancel();
   }
 
   render() {
@@ -52,11 +76,15 @@ export default class Controls extends React.Component {
             type="submit"
             primary
             fullWidth
+            onClick={this.onSubmitHandler}
           >
             Submit
           </Button>
 
-          <Button fullWidth>
+          <Button
+            fullWidth
+            onClick={this.onCancelHandler}
+          >
             Cancel
           </Button>
         </fieldset>
@@ -67,4 +95,11 @@ export default class Controls extends React.Component {
 
 Controls.propTypes = {
   date: PropTypes.oneOfType([PropTypes.instanceOf(Date)]),
+  onSave: PropTypes.func,
+  onCancel: PropTypes.func,
+}
+
+Controls.defaultProps = {
+  onSave: noop,
+  onCancel: noop,
 }

@@ -1,92 +1,96 @@
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const jsonImporter = require('node-sass-json-importer');
-const path = require('path');
-const autoprefixer = require('autoprefixer');
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const jsonImporter = require('node-sass-json-importer')
+const path = require('path')
+const autoprefixer = require('autoprefixer')
 
-const glob_entries = require('./lib/utils/node/webpack-glob-entries');
+const globEntries = require('./lib/utils/node/webpack-glob-entries')
 
-const entries = ['babel-polyfill', './index.jsx', './lib/styles/scss/main.scss'].concat(
-  Object.values(glob_entries('./lib/styles/fonts/**/*.*'))
+const entries = [
+  'babel-polyfill',
+  './index.jsx',
+  './lib/styles/scss/main.scss',
+].concat(
+  Object.values(globEntries('./lib/styles/fonts/**/*.*'))
 )
 
 module.exports = {
-    entry: entries,
-    devServer: {
-        port: 7000,
-        host: 'localhost',
-        historyApiFallback: true,
-    },
-    output: {
-        filename: 'public/bundle.js',
-        path: __dirname,
-        publicPath: '/',
-    },
-    module: {
-        loaders: [
+  entry: entries,
+  devServer: {
+    port: 7000,
+    host: 'localhost',
+    historyApiFallback: true,
+  },
+  output: {
+    filename: 'public/bundle.js',
+    path: __dirname,
+    publicPath: '/',
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.(css|scss)$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
             {
-                test: /\.(css|scss)$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                modules: true,
-                                importLoader: 2,
-                                camelCase: true,
-                                localIdentName: '[local]',
-                            },
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                plugins: [autoprefixer()],
-                            },
-                        },
-                        {
-                          loader: 'sass-loader',
-                          options: {
-                            importer: jsonImporter,
-                          }
-                        }
-                    ],
-                }),
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoader: 2,
+                camelCase: true,
+                localIdentName: '[local]',
+              },
             },
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                include: __dirname,
+              loader: 'postcss-loader',
+              options: {
+                plugins: [autoprefixer()],
+              },
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2)$/,
-                loader: 'file-loader',
-                options: {
-                  name: 'public/[name].[ext]'
-                }
+              loader: 'sass-loader',
+              options: {
+                importer: jsonImporter,
+              },
             },
-            {
-                test: /\.json$/,
-                exclude: /node_modules/,
-                loader: 'json-loader',
-            },
-        ],
-    },
-    plugins: [
-      new ExtractTextPlugin('public/bundle.css'),
-    ],
-    resolve: {
-        alias: {
-            components: 'lib/components',
-            theme: 'lib/theme',
-            styles: 'lib/styles',
-            utils: 'lib/utils',
-            app: 'app',
-            views: 'views',
+          ],
+        }),
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        include: __dirname,
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'public/[name].[ext]',
         },
-        extensions: ['.js', '.jsx', '.json'],
-        modules: [path.join(__dirname, './'), 'node_modules'],
+      },
+      {
+        test: /\.json$/,
+        exclude: /node_modules/,
+        loader: 'json-loader',
+      },
+    ],
+  },
+  plugins: [
+    new ExtractTextPlugin('public/bundle.css'),
+  ],
+  resolve: {
+    alias: {
+      components: 'lib/components',
+      theme: 'lib/theme',
+      styles: 'lib/styles',
+      utils: 'lib/utils',
+      app: 'app',
+      views: 'views',
     },
-    devtool: 'source-map',
-};
+    extensions: ['.js', '.jsx', '.json'],
+    modules: [path.join(__dirname, './'), 'node_modules'],
+  },
+  devtool: 'source-map',
+}

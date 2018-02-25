@@ -1,0 +1,21 @@
+{
+  "extends": ["standard", "standard-react"],
+  "plugins": ["cypress"],
+  "env": {
+    "cypress/globals": true
+  },
+  "globals": {
+    "chai": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "react/prop-types": [
+      2,
+      {
+        "ignore": ["className"]
+      }
+    ],
+    "jsx-quotes": ["error", "prefer-double"],
+    "no-unused-expressions": ["off"]
+  }
+}

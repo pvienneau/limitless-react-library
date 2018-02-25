@@ -1,48 +1,104 @@
-import React from 'react';
+import React from 'react'
 
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import clickOutside from 'react-click-outside';
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import clickOutside from 'react-click-outside'
+import assign from 'lodash.assign'
 
-import { InputGroup, Icon, Dropdown, Paper } from 'components';
-import now from 'lodash/now';
-import { Calendar } from './calendar';
-import { Controls } from './controls';
-import { initializeDateState } from './utils';
-import { previousMonth, nextMonth } from 'utils/js/date';
-import './date-picker.scss';
+import { InputGroup, Icon, Dropdown, Paper } from 'components'
+import now from 'lodash/now'
+import { Calendar } from './calendar'
+import { Controls } from './controls'
+import { initializeDateState } from './utils'
+import { previousMonth, nextMonth, isLessThanOrEqualTo } from 'utils/js/date'
+import './date-picker.scss'
 
 class DatePicker extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       isOpen: false,
       ...initializeDateState(props),
     }
 
-    this.onFocusHandler = this.onFocusHandler.bind(this);
-    this.generateCalendar = this.generateCalendar.bind(this);
-    this.onCurrentDateChange = this.onCurrentDateChange.bind(this);
-    this.onSelectedDateChange = this.onSelectedDateChange.bind(this);
+    this.onFocusHandler = this.onFocusHandler.bind(this)
+    this.generateCalendar = this.generateCalendar.bind(this)
+    this.onCurrentDateChange = this.onCurrentDateChange.bind(this)
+    this.onSelectedDateChange = this.onSelectedDateChange.bind(this)
+    this.onSaveHandler = this.onSaveHandler.bind(this)
+    this.onCancelHandler = this.onCancelHandler.bind(this)
   }
 
-  onCurrentDateChange(currentDate) {
+  onCurrentDateChange (currentDate) {
     this.setState({ currentDate })
   }
 
-  onSelectedDateChange(selectedDates) {
-    this.setState({ selectedDates })
+  onSelectedDateChange (newDate) {
+    const { range } = this.props
+    const { selectedDates } = this.state
+
+    this.setState(({ selectedDates: prevSelectedDates }) => {
+      if (!range) return { selectedDates: [newDate] }
+
+      if (selectedDates.length < 2) {
+        const selectedDates = Object.assign([], prevSelectedDates)
+
+        selectedDates.push(newDate)
+
+        return {selectedDates}
+      } else if (isLessThanOrEqualTo(newDate, prevSelectedDates[0])) {
+        const selectedDates = assign([], prevSelectedDates, {
+          0: newDate,
+        })
+
+        return {selectedDates}
+      } else {
+        const selectedDates = assign([], prevSelectedDates, {
+          1: newDate,
+        })
+
+        return {selectedDates}
+      }
+    })
   }
 
-  generateCalendar() {
-    const { range } = this.props;
-    const { currentDate, selectedDates } = this.state;
+  onSaveHandler () {
+    this.setState({
+      isOpen: false,
+    })
+  }
+
+  onCancelHandler () {
+    this.setState({
+      isOpen: false,
+    })
+  }
+
+  handleClickOutside () {
+    this.setState({
+      isOpen: false,
+    })
+  }
+
+  onFocusHandler () {
+    this.setState({
+      isOpen: true,
+    })
+  }
+
+  generateCalendar () {
+    const { range } = this.props
+    const { currentDate, selectedDates } = this.state
 
     return (
       <div className="datepicker-container">
         <Paper className="datepicker-box datepicker-box-controls">
-          <Controls date={selectedDates} />
+          <Controls
+            date={selectedDates}
+            onSave={this.onSaveHandler}
+            onCancel={this.onCancelHandler}
+          />
         </Paper>
 
         <Paper className="datepicker-box datepicker-box-calendar">
@@ -67,39 +123,27 @@ class DatePicker extends React.Component {
           />
         </Paper>
       </div>
-    );
+    )
   }
 
-  handleClickOutside() {
-    this.setState({
-      isOpen: false,
-    });
-  }
-
-  onFocusHandler() {
-    this.setState({
-      isOpen: true,
-    });
-  }
-
-  render() {
-    const { className, range, ...props } = this.props;
-    const { isOpen } = this.state;
+  render () {
+    const { className } = this.props
+    const { isOpen } = this.state
 
     return (
       <div className={classNames('DatePicker', className)}>
-          <Dropdown
-            body={this.generateCalendar()}
-            open={isOpen}
-            position="bottom"
-          >
-            <InputGroup
-              addons={{left: <Icon>calendar22</Icon>}}
-              onFocus={this.onFocusHandler}
-            />
-          </Dropdown>
+        <Dropdown
+          body={this.generateCalendar()}
+          open={isOpen}
+          position="bottom"
+        >
+          <InputGroup
+            addons={{left: <Icon>calendar22</Icon>}}
+            onFocus={this.onFocusHandler}
+          />
+        </Dropdown>
       </div>
-    );
+    )
   }
 }
 
@@ -117,4 +161,4 @@ DatePicker.defaultProps = {
   currentDate: now(),
 }
 
-export default clickOutside(DatePicker);
+export default clickOutside(DatePicker)
