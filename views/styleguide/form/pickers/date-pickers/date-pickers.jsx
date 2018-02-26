@@ -20,7 +20,7 @@ export default class DatePickers extends React.Component {
 
               <FormGroup
                 type="date"
-                label="How calendars on left:"
+                label="Show calendars on left:"
                 name="default_date"
                 className="flex-grow"
                 range
@@ -72,7 +72,6 @@ export default class DatePickers extends React.Component {
                 label="Basic single date picker:"
                 name="default_date"
                 className="flex-grow"
-                range
               />
 
               <div className="flex-grow">

@@ -93,13 +93,17 @@ class DatePicker extends React.Component {
 
     return (
       <div className="datepicker-container">
-        <Paper className="datepicker-box datepicker-box-controls">
-          <Controls
-            date={selectedDates}
-            onSave={this.onSaveHandler}
-            onCancel={this.onCancelHandler}
-          />
-        </Paper>
+        {
+          !!range && (
+            <Paper className="datepicker-box datepicker-box-controls">
+              <Controls
+                date={selectedDates}
+                onSave={this.onSaveHandler}
+                onCancel={this.onCancelHandler}
+              />
+            </Paper>
+          )
+        }
 
         <Paper className="datepicker-box datepicker-box-calendar">
           <Calendar
@@ -112,16 +116,20 @@ class DatePicker extends React.Component {
           />
         </Paper>
 
-        <Paper className="datepicker-box datepicker-box-calendar">
-          <Calendar
-            className="calendar-next-month"
-            currentDate={nextMonth(currentDate)}
-            date={selectedDates}
-            range={range}
-            onCurrentDateChange={currentDate => this.onCurrentDateChange(previousMonth(currentDate))}
-            onChange={this.onSelectedDateChange}
-          />
-        </Paper>
+        {
+          !!range && (
+            <Paper className="datepicker-box datepicker-box-calendar">
+              <Calendar
+                className="calendar-next-month"
+                currentDate={nextMonth(currentDate)}
+                date={selectedDates}
+                range={range}
+                onCurrentDateChange={currentDate => this.onCurrentDateChange(previousMonth(currentDate))}
+                onChange={this.onSelectedDateChange}
+              />
+            </Paper>
+          )
+        }
       </div>
     )
   }

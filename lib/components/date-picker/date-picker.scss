@@ -52,6 +52,10 @@
         margin-left: 0;
         right: 0;
         margin-right: 40px;
+
+        .datepicker-container {
+          flex-direction: row-reverse;
+        }
       }
     }
   }
