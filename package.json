@@ -43,6 +43,7 @@
         "babel-polyfill": "^6.26.0",
         "babel-register": "^6.26.0",
         "classnames": "^2.2.5",
+        "dateformat": "^3.0.3",
         "extract-text-webpack-plugin": "^3.0.2",
         "lodash.capitalize": "^4.2.1",
         "lodash.chunk": "^4.2.0",

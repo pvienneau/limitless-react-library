@@ -1,49 +1,39 @@
-import React from 'react';
+import React from 'react'
 
-import isDate from 'lodash.isdate';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import noop from 'lodash.noop';
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import noop from 'lodash.noop'
+import dateFormat from 'dateformat'
 
-import { Button, FormGroup, Icon } from 'components';
-import './controls.scss';
+import { Button, FormGroup, Icon } from 'components'
+import './controls.scss'
 
 export default class Controls extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.onSubmitHandler = this.onSubmitHandler.bind(this);
-    this.onCancelHandler = this.onCancelHandler.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this)
+    this.onCancelHandler = this.onCancelHandler.bind(this)
   }
 
-  formatDate(date) {
-    if (!isDate(date)) return '';
+  onSubmitHandler (e) {
+    const { onSave } = this.props
 
-    const day = `0${date.getDate()}`.substr(-2, 2);
-    const month = `0${(date.getMonth() + 1)}`.substr(-2, 2);
-    const year = date.getFullYear();
+    e.preventDefault()
 
-    return `${day}/${month}/${year}`;
+    onSave()
   }
 
-  onSubmitHandler(e) {
-    const { onSave } = this.props;
+  onCancelHandler (e) {
+    const { onCancel } = this.props
 
-    e.preventDefault();
+    e.preventDefault()
 
-    onSave();
+    onCancel()
   }
 
-  onCancelHandler(e) {
-    const { onCancel } = this.props;
-
-    e.preventDefault();
-
-    onCancel();
-  }
-
-  render() {
-    const { className, date } = this.props;
+  render () {
+    const { className, date } = this.props
 
     return (
       <div className={classNames('Controls', className)}>
@@ -53,10 +43,10 @@ export default class Controls extends React.Component {
             name="start_date"
             label="Start date:"
             addons={{
-              right: <Icon>calendar</Icon>
+              right: <Icon>calendar</Icon>,
             }}
             readOnly
-            value={this.formatDate(date[0])}
+            value={dateFormat(date[0], 'yyyy/mm/dd')}
           />
 
           <FormGroup
@@ -64,10 +54,10 @@ export default class Controls extends React.Component {
             name="end_date"
             label="End date:"
             addons={{
-              right: <Icon>calendar</Icon>
+              right: <Icon>calendar</Icon>,
             }}
             readOnly
-            value={this.formatDate(date[1])}
+            value={dateFormat(date[1], 'yyyy/mm/dd')}
           />
         </fieldset>
 
@@ -89,7 +79,7 @@ export default class Controls extends React.Component {
           </Button>
         </fieldset>
       </div>
-    );
+    )
   }
 }
 
