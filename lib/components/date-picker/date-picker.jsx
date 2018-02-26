@@ -127,18 +127,22 @@ class DatePicker extends React.Component {
   }
 
   render () {
-    const { className } = this.props
+    const { className, position } = this.props
     const { isOpen } = this.state
 
+    const datePickerClassNames = classNames('DatePicker', className, {
+      [`position-${position}`]: position,
+    })
+
     return (
-      <div className={classNames('DatePicker', className)}>
+      <div className={datePickerClassNames}>
         <Dropdown
           body={this.generateCalendar()}
           open={isOpen}
           position="bottom"
         >
           <InputGroup
-            addons={{left: <Icon>calendar22</Icon>}}
+            addons={{[position]: <Icon>calendar22</Icon>}}
             onFocus={this.onFocusHandler}
           />
         </Dropdown>
@@ -154,11 +158,13 @@ DatePicker.propTypes = {
     PropTypes.instanceOf(Date),
   ]),
   currentDate: PropTypes.instanceOf(Date),
+  position: PropTypes.oneOf(['left', 'right']),
 }
 
 DatePicker.defaultProps = {
   range: false,
   currentDate: now(),
+  position: 'left',
 }
 
 export default clickOutside(DatePicker)

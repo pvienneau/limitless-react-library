@@ -5,7 +5,8 @@
 
     .dropdown-body {
       right: auto;
-      left: 40px;
+      left: 0;
+      margin-left: 40px;
 
       .datepicker-container {
         display: flex;
@@ -40,6 +41,17 @@
             visibility: visible;
           }
         }
+      }
+    }
+  }
+
+  &.position-right {
+    .Dropdown {
+      .dropdown-body {
+        left: auto;
+        margin-left: 0;
+        right: 0;
+        margin-right: 40px;
       }
     }
   }

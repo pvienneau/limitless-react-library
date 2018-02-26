@@ -23,6 +23,8 @@ export default class DatePickers extends React.Component {
                 label="How calendars on left:"
                 name="default_date"
                 className="flex-grow"
+                range
+                position="right"
               />
             </div>
 
@@ -32,6 +34,7 @@ export default class DatePickers extends React.Component {
                 label="Display week numbers:"
                 name="default_date"
                 className="flex-grow"
+                range
               />
 
               <FormGroup
@@ -39,6 +42,8 @@ export default class DatePickers extends React.Component {
                 label="Display date dropdowns:"
                 name="default_date"
                 className="flex-grow"
+                range
+                position="right"
               />
             </div>
 
@@ -48,6 +53,7 @@ export default class DatePickers extends React.Component {
                 label="Display time picker:"
                 name="default_date"
                 className="flex-grow"
+                range
               />
 
               <FormGroup
@@ -55,6 +61,8 @@ export default class DatePickers extends React.Component {
                 label="Time minute increments:"
                 name="default_date"
                 className="flex-grow"
+                range
+                position="right"
               />
             </div>
 
@@ -64,6 +72,7 @@ export default class DatePickers extends React.Component {
                 label="Basic single date picker:"
                 name="default_date"
                 className="flex-grow"
+                range
               />
 
               <div className="flex-grow">
@@ -77,6 +86,7 @@ export default class DatePickers extends React.Component {
                 label="Simple text field attachment:"
                 name="default_date"
                 className="flex-grow"
+                range
               />
 
               <FormGroup
@@ -84,6 +94,8 @@ export default class DatePickers extends React.Component {
                 label="Pre-defined ranges & callback:"
                 name="default_date"
                 className="flex-grow"
+                range
+                position="right"
               />
             </div>
 
@@ -93,6 +105,7 @@ export default class DatePickers extends React.Component {
                 label="Button class options:"
                 name="default_date"
                 className="flex-grow"
+                range
               />
 
               <FormGroup
@@ -100,6 +113,8 @@ export default class DatePickers extends React.Component {
                 label="Date picker inside button:"
                 name="default_date"
                 className="flex-grow"
+                range
+                position="right"
               />
             </div>
           </fieldset>
