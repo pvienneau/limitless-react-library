@@ -88,7 +88,7 @@ class DatePicker extends React.Component {
   }
 
   generateCalendar () {
-    const { range } = this.props
+    const { range, showWeekNumbers } = this.props
     const { currentDate, selectedDates } = this.state
 
     return (
@@ -126,6 +126,7 @@ class DatePicker extends React.Component {
                 range={range}
                 onCurrentDateChange={currentDate => this.onCurrentDateChange(previousMonth(currentDate))}
                 onChange={this.onSelectedDateChange}
+                showWeekNumbers={showWeekNumbers}
               />
             </Paper>
           )
@@ -167,12 +168,14 @@ DatePicker.propTypes = {
   ]),
   currentDate: PropTypes.instanceOf(Date),
   position: PropTypes.oneOf(['left', 'right']),
+  showWeekNumbers: PropTypes.bool,
 }
 
 DatePicker.defaultProps = {
   range: false,
   currentDate: now(),
   position: 'left',
+  showWeekNumbers: false,
 }
 
 export default clickOutside(DatePicker)

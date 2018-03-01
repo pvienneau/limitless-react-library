@@ -49,6 +49,7 @@
         "lodash.chunk": "^4.2.0",
         "lodash.fill": "^3.4.0",
         "lodash.filter": "^4.6.0",
+        "lodash.head": "^4.0.1",
         "lodash.includes": "^4.3.0",
         "lodash.isdate": "^4.0.1",
         "lodash.isempty": "^4.4.0",

@@ -9,7 +9,7 @@
   .calendar-header {
     display: flex;
     align-items: center;
-    padding: 15px 0;
+    padding: 15px 0 0;
 
     .calendar-header-title {
       flex-grow: 1;
@@ -26,13 +26,12 @@
   }
 
   .calendar-body {
-    //.calendar-week {
+    .calendar-week {
       display: flex;
-      flex-wrap: wrap;
 
       .calendar-day {
         flex-grow: 1;
-        flex-basis: calc(100% / 7);
+        flex-basis: 0;
 
         .calendar-day-inner {
           width: 100%;
@@ -40,7 +39,7 @@
           padding-bottom: 100%;
           position: relative;
 
-          .Button {
+          .calendar-day-label {
             position: absolute;
             top: 0;
             right: 0;
@@ -51,39 +50,61 @@
             border: none;
             color: inherit;
             padding: 0;
+          }
 
+          .Button {
             .label {
               text-align: center;
             }
           }
         }
 
-        &.out-of-month {
-          opacity: 0.6;
+        &.calendar-weekday,
+        &.calendar-week-number {
+          text-transform: capitalize;
+          color: #999;
+          font-size: 12px;
+
+          .calendar-day-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
 
-        &.in-range {
-          background-color: #f5f5f5;
+        &.calendar-week-number {
+          font-size: 11px;
+          color: #ccc;
         }
 
-        &:hover,
-        &.start-date ~ .calendar-day {
-          background-color: #f5f5f5;
-        }
+        &:not(.calendar-weekday):not(.calendar-week-number) {
+          &.out-of-month {
+            opacity: 0.6;
+          }
 
-        &.end-date ~ .calendar-day:not(:hover),
-        &:hover ~ .calendar-day:not(.in-range) {
-          background-color: transparent;
-        }
+          &.in-range {
+            background-color: #f5f5f5;
+          }
 
-        &.start-date, &.end-date {
-          background-color: $teal !important;
-          color: $white;
+          &:hover,
+          &.start-date ~ .calendar-day {
+            background-color: #f5f5f5;
+          }
 
-          border-radius: 5%;
-          overflow: hidden;
+          &.end-date ~ .calendar-day:not(:hover),
+          &:hover ~ .calendar-day:not(.in-range) {
+            background-color: transparent;
+          }
+
+          &.start-date, &.end-date {
+            background-color: $teal !important;
+            color: $white;
+
+            border-radius: 5%;
+            overflow: hidden;
+          }
         }
       }
-    //}
+    }
   }
 }

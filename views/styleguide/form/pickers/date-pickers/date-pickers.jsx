@@ -35,6 +35,7 @@ export default class DatePickers extends React.Component {
                 name="default_date"
                 className="flex-grow"
                 range
+                showWeekNumbers
               />
 
               <FormGroup

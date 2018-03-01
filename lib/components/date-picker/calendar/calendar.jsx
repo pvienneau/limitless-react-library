@@ -11,7 +11,7 @@ import classNames from 'classnames'
 
 import { Button } from 'components'
 import { initializeDateState } from '../utils'
-import { isLessThan } from 'utils/js/date'
+import { isLessThan, getWeekNumber } from 'utils/js/date'
 import './calendar.scss'
 
 const DAYS_OF_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurdsay', 'Friday', 'Saturday']
@@ -31,7 +31,6 @@ export default class Calendar extends React.Component {
     this.isSelectedStartDate = this.isSelectedStartDate.bind(this)
     this.isSelectedEndDate = this.isSelectedEndDate.bind(this)
     this.isInSelectedDatesRange = this.isInSelectedDatesRange.bind(this)
-    // this.setState = this.setState.bind(this)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -47,24 +46,6 @@ export default class Calendar extends React.Component {
       })
     }
   }
-
-  // setState (nextStateFn) {
-  //   let nextState = nextStateFn
-  //
-  //   if (typeof nextStateFn === 'function') {
-  //     nextState = nextStateFn(this.state)
-  //   }
-  //
-  //   if (
-  //     nextState.selectedDates &&
-  //     nextState.selectedDates.length === 2 &&
-  //     this.isGreaterThan(...nextState.selectedDates)
-  //   ) {
-  //     nextState.selectedDates.reverse()
-  //   }
-  //
-  //   return super.setState(nextState)
-  // }
 
   onNextMonthClickHandler (e) {
     e.preventDefault()
@@ -144,7 +125,7 @@ export default class Calendar extends React.Component {
   }
 
   render () {
-    const { className } = this.props
+    const { className, showWeekNumbers } = this.props
     const { currentDate, selectedDates } = this.state
     const weeks = this.buildWeeks()
 
@@ -171,59 +152,74 @@ export default class Calendar extends React.Component {
           />
         </div>
         <div className="calendar-body">
-          {
-            map(weeks, (week, k) => {
-              return map(week, (day, kk) => (
-                <div
-                  key={`${currentDate.getMonth()}${k}${kk}`}
-                  className={classNames('calendar-day', {
-                    'out-of-month': currentDate.getMonth() !== day.getMonth(),
-                    'start-date': this.isSelectedStartDate(day),
-                    'end-date': this.isSelectedEndDate(day),
-                    'in-range': this.isInSelectedDatesRange(day),
-                  })}
-                >
-                  <div className="calendar-day-inner">
-                    <Button
-                      onClick={this.onDateClick(day)}
-                    >
-                      {day.getDate()}
-                    </Button>
+          <div className="calendar-week">
+            {
+              showWeekNumbers && (
+                <div className="calendar-day calendar-week-number">
+                  <div
+                    className="calendar-day-inner"
+                  >
+                    <span className="calendar-day-label">
+                      W
+                    </span>
+                  </div>
+                </div>
+              )
+            }
+            {
+              map(DAYS_OF_WEEK, (weekday, key) => (
+                <div key={key} className="calendar-day calendar-weekday">
+                  <div
+                    className="calendar-day-inner"
+                  >
+                    <span className="calendar-day-label">
+                      {weekday.substr(0, 2)}
+                    </span>
                   </div>
                 </div>
               ))
-
-              /*
-              (
-                <div
-                  key={`${currentDate.getMonth()}${k}`}
-                  className="calendar-week"
-                >
-                  {
-                    map(week, (day, kk) => (
+            }
+          </div>
+          {
+            map(weeks, (week, k) => (
+              <div key={k} className="calendar-week">
+                {
+                  showWeekNumbers && (
+                    <div className="calendar-day calendar-week-number">
                       <div
-                        key={`${currentDate.getMonth()}${k}${kk}`}
-                        className={classNames('calendar-day', {
-                          'out-of-month': currentDate.getMonth() !== day.getMonth(),
-                          'start-date': this.isSelectedStartDate(day),
-                          'end-date': this.isSelectedEndDate(day),
-                          'in-range': this.isInSelectedDatesRange(day),
-                        })}
+                        className="calendar-day-inner"
                       >
-                        <div className="calendar-day-inner">
-                          <Button
-                            onClick={this.onDateClick(day)}
-                          >
-                            {day.getDate()}
-                          </Button>
-                        </div>
+                        <span className="calendar-day-label">
+                          {getWeekNumber(week[0])}
+                        </span>
                       </div>
-                    ))
-                  }
-                </div>
-              )
-              */
-            })
+                    </div>
+                  )
+                }
+                {
+                  map(week, (day, kk) => (
+                    <div
+                      key={`${currentDate.getMonth()}${k}${kk}`}
+                      className={classNames('calendar-day', {
+                        'out-of-month': currentDate.getMonth() !== day.getMonth(),
+                        'start-date': this.isSelectedStartDate(day),
+                        'end-date': this.isSelectedEndDate(day),
+                        'in-range': this.isInSelectedDatesRange(day),
+                      })}
+                    >
+                      <div className="calendar-day-inner">
+                        <Button
+                          className="calendar-day-label"
+                          onClick={this.onDateClick(day)}
+                        >
+                          {day.getDate()}
+                        </Button>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            ))
           }
         </div>
       </div>
@@ -236,6 +232,7 @@ Calendar.propTypes = {
     PropTypes.instanceOf(Date),
     PropTypes.arrayOf(PropTypes.instanceOf(Date)),
   ]),
+  showWeekNumbers: PropTypes.bool,
   currentDate: PropTypes.instanceOf(Date),
   onCurrentDateChange: PropTypes.func,
   onChange: PropTypes.func,
@@ -245,4 +242,5 @@ Calendar.defaultProps = {
   currentDate: now(),
   onCurrentDateChange: noop,
   onChange: noop,
+  showWeekNumbers: false,
 }
