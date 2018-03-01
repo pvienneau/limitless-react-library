@@ -1,78 +1,79 @@
-import React from 'react';
+import React from 'react'
 
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import map from 'lodash.map';
-import clickOutside from 'react-click-outside';
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import map from 'lodash.map'
+import clickOutside from 'node/react-click-outside'
 
-import { coCall } from 'utils/js';
-import { Input, Menu } from 'components';
-import './select.scss';
+import { coCall } from 'utils/js'
+import { Input, Menu } from 'components'
+import './select.scss'
 
 class Select extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       isOpen: false,
-    };
+    }
 
-    this.onInputClickHandler = this.onInputClickHandler.bind(this);
-    this.buildOptionsForMenu = this.buildOptionsForMenu.bind(this);
-    this.buildOptionsForSelect = this.buildOptionsForSelect.bind(this);
-    this.handleClickOutside = this.handleClickOutside.bind(this);
-    this.buildElements = this.buildElements.bind(this);
+    this.onInputClickHandler = this.onInputClickHandler.bind(this)
+    this.buildOptionsForMenu = this.buildOptionsForMenu.bind(this)
+    this.buildOptionsForSelect = this.buildOptionsForSelect.bind(this)
+    this.handleClickOutside = this.handleClickOutside.bind(this)
+    this.buildElements = this.buildElements.bind(this)
   }
 
-  handleClickOutside() {
+  handleClickOutside () {
     this.setState({
       isOpen: false,
-    });
+    })
   }
 
-  onInputClickHandler() {
+  onInputClickHandler () {
     this.setState(({ isOpen }) => ({
       isOpen: !isOpen,
-    }));
+    }))
   }
 
-  buildOptionsForSelect() {
-    const { options } = this.props;
+  buildOptionsForSelect () {
+    const { options } = this.props
 
     return map(options, option => {
-      if (typeof option !== 'object')
+      if (typeof option !== 'object') {
         return {
           name: option,
-        };
+        }
+      }
 
       return {
         name: option.name || option.value,
         value: option.value || option.name,
-      };
-    });
+      }
+    })
   }
 
-  buildOptionsForMenu() {
-    const { options } = this.props;
+  buildOptionsForMenu () {
+    const { options } = this.props
 
     return map(options, option => {
-      if (typeof option !== 'object')
+      if (typeof option !== 'object') {
         return {
           label: option,
-        };
+        }
+      }
 
       return {
-        label: option.name || option.value
-      };
-
-    });
+        label: option.name || option.value,
+      }
+    })
   }
 
-  buildElements() {
-    const { multiple, onFocus, onClick } = this.props;
-    const { isOpen, value } = this.state;
+  buildElements () {
+    const { multiple, onClick } = this.props
+    const { isOpen, value } = this.state
 
-    let element;
+    let element
 
     if (multiple) {
       element = (
@@ -91,7 +92,7 @@ class Select extends React.Component {
             ))
           }
         </select>
-      );
+      )
     } else {
       element = (
         <div>
@@ -108,18 +109,18 @@ class Select extends React.Component {
             )
           }
         </div>
-      );
+      )
     }
 
     return (
       <div className="select-inner">
         {element}
       </div>
-    );
+    )
   }
 
-  render() {
-    const { multiple, className } = this.props;
+  render () {
+    const { multiple, className } = this.props
 
     return (
       <div
@@ -129,7 +130,7 @@ class Select extends React.Component {
       >
         {this.buildElements()}
       </div>
-    );
+    )
   }
 }
 
@@ -145,7 +146,9 @@ Select.propTypes = {
       name: PropTypes.string,
       value: PropTypes.string,
     }),
-  ])
+  ]),
+  multiple: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
-export default clickOutside(Select);
+export default clickOutside(Select)

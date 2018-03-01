@@ -88,6 +88,8 @@ module.exports = {
       utils: 'lib/utils',
       app: 'app',
       views: 'views',
+      node: 'lib/utils/node',
+      constants: 'lib/utils/constants',
     },
     extensions: ['.js', '.jsx', '.json'],
     modules: [path.join(__dirname, './'), 'node_modules'],

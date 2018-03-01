@@ -45,6 +45,7 @@
         "classnames": "^2.2.5",
         "dateformat": "^3.0.3",
         "extract-text-webpack-plugin": "^3.0.2",
+        "hoist-non-react-statics": "^2.5.0",
         "lodash.capitalize": "^4.2.1",
         "lodash.chunk": "^4.2.0",
         "lodash.fill": "^3.4.0",

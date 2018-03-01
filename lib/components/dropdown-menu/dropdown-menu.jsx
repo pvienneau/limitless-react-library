@@ -1,55 +1,54 @@
-import React from 'react';
+import React from 'react'
 
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import clickOutside from 'react-click-outside';
+import classNames from 'classnames'
+import clickOutside from 'node/react-click-outside'
 
-import { Dropdown, Button, Icon } from 'components';
-import { Menu } from 'components/menu';
-import './dropdown-menu.scss';
+import { Dropdown, Button } from 'components'
+import { Menu } from 'components/menu'
+import './dropdown-menu.scss'
 
 class DropdownMenu extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       isOpen: false,
-    };
+    }
 
-    this.buildMenu = this.buildMenu.bind(this);
-    this.onClickHandler = this.onClickHandler.bind(this);
+    this.buildMenu = this.buildMenu.bind(this)
+    this.onClickHandler = this.onClickHandler.bind(this)
   }
 
-  handleClickOutside() {
+  handleClickOutside () {
     this.setState({
       isOpen: false,
-    });
+    })
   }
 
-  buildMenu() {
-    const { items } = this.props;
+  buildMenu () {
+    const { items } = this.props
 
-    return <Menu items={items} />;
+    return <Menu items={items} />
   }
 
-  onClickHandler(e, ...args) {
-    const { onClick } = this.props;
+  onClickHandler (e, ...args) {
+    const { onClick } = this.props
 
-    e.preventDefault();
+    e.preventDefault()
 
     this.setState(
       state => ({
-          isOpen: !state.isOpen,
+        isOpen: !state.isOpen,
       }),
       () => {
-        onClick && onClick(e, ...args);
+        onClick && onClick(e, ...args)
       }
-    );
+    )
   }
 
-  render() {
-    const { items, className, children, position, ...props } = this.props;
-    const { isOpen } = this.state;
+  render () {
+    const { items, className, children, position, ...props } = this.props
+    const { isOpen } = this.state
 
     return (
       <Dropdown
@@ -60,13 +59,13 @@ class DropdownMenu extends React.Component {
         position={position}
       >
         <Button
-        {...props}
-        onClick={this.onClickHandler}
-        className={classNames('dropdown-button', `dropdown-button-position-${position}`)}
+          {...props}
+          onClick={this.onClickHandler}
+          className={classNames('dropdown-button', `dropdown-button-position-${position}`)}
         >
-            <span className="dropdown-button-content">
-              {children}
-            </span>
+          <span className="dropdown-button-content">
+            {children}
+          </span>
         </Button>
       </Dropdown>
     )
@@ -76,10 +75,10 @@ class DropdownMenu extends React.Component {
 DropdownMenu.propTypes = {
   ...Dropdown.propTypes,
   items: Menu.propTypes.items,
-};
+}
 
 DropdownMenu.defaultProps = {
   position: false,
-};
+}
 
-export default clickOutside(DropdownMenu);
+export default clickOutside(DropdownMenu)

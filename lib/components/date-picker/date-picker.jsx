@@ -2,11 +2,11 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import clickOutside from 'react-click-outside'
+import clickOutside from 'node/react-click-outside'
 import assign from 'lodash.assign'
+import now from 'lodash/now'
 
 import { InputGroup, Icon, Dropdown, Paper } from 'components'
-import now from 'lodash/now'
 import { Calendar } from './calendar'
 import { Controls } from './controls'
 import { initializeDateState } from './utils'
