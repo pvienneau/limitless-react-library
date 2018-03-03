@@ -1,8 +1,29 @@
 @import '../icon/icons.json';
+@import '~styles/const/_palette.scss';
 @import '~styles/scss/extensions/_iconize.scss';
 @import '~styles/scss/extensions/_form-control.scss';
 
 .Select {
+  @extend %form-control-sizes;
+
+  cursor: pointer;
+
+  .dropdown-body {
+    width: 100%;
+
+    .Menu {
+      max-height: 350px;
+      overflow-y: auto;
+
+      .MenuItem {
+        &.active {
+          background-color: $primary-500;
+          color: $white;
+        }
+      }
+    }
+  }
+
   .select-inner {
     position: relative;
 
@@ -19,51 +40,12 @@
       content: map-get($icons, 'caret-down-22');
     }
 
-    .Menu {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      transform: translateY(100%);
+    .Input input {
+      cursor: inherit;
     }
 
     select {
       @extend %form-control;
-
-      &[multiple] {
-        height: 200px;
-        padding: 7px 0;
-        box-shadow: none;
-
-        option {
-          padding: 7px 12px;
-          color: inherit;
-
-          &:checked, &:selected {
-            background-color: red !important;
-            color: green !important;
-          }
-        }
-      }
-    }
-  }
-
-  &.multiple {
-    .select-inner {
-      &::after {
-        display: none;
-      }
-
-      .select-input {
-        display: none;
-      }
-
-      .Menu {
-        position: static;
-        transform: none;
-        z-index: 1;
-      }
     }
   }
 }

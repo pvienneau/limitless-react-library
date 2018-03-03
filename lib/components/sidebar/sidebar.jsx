@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import classNames from 'classnames';
+import classNames from 'classnames'
 
-import { Menu, Button, Avatar } from 'components';
-import { menusFixture } from 'utils/spec/fixtures/menu';
-import './sidebar.scss';
+import { Menu, Button, Avatar } from 'components'
+import { menusFixture } from 'utils/spec/fixtures/menu'
+import './sidebar.scss'
 
 export default class Sidebar extends React.Component {
-  render() {
-    const { className } = this.props;
+  render () {
+    const { className } = this.props
 
     return (
       <div className={classNames('Sidebar', className)}>
@@ -34,6 +34,6 @@ export default class Sidebar extends React.Component {
           items={menusFixture.items}
         />
       </div>
-    );
+    )
   }
 }

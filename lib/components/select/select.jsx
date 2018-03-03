@@ -3,10 +3,12 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import map from 'lodash.map'
-import clickOutside from 'node/react-click-outside'
+import isObject from 'lodash.isobject'
+import find from 'lodash.find'
+import get from 'lodash.get'
 
-import { coCall } from 'utils/js'
-import { Input, Menu } from 'components'
+import clickOutside from 'node/react-click-outside'
+import { DropdownMenu } from 'components'
 import './select.scss'
 
 class Select extends React.Component {
@@ -15,13 +17,15 @@ class Select extends React.Component {
 
     this.state = {
       isOpen: false,
+      value: null,
     }
 
     this.onInputClickHandler = this.onInputClickHandler.bind(this)
     this.buildOptionsForMenu = this.buildOptionsForMenu.bind(this)
     this.buildOptionsForSelect = this.buildOptionsForSelect.bind(this)
     this.handleClickOutside = this.handleClickOutside.bind(this)
-    this.buildElements = this.buildElements.bind(this)
+    this.onInputFocusHandler = this.onInputFocusHandler.bind(this)
+    this.onOptionSelect = this.onOptionSelect.bind(this)
   }
 
   handleClickOutside () {
@@ -34,6 +38,21 @@ class Select extends React.Component {
     this.setState(({ isOpen }) => ({
       isOpen: !isOpen,
     }))
+  }
+
+  onInputFocusHandler (e) {
+    e.preventDefault()
+
+    this._Input._input.blur()
+  }
+
+  onOptionSelect (e, item) {
+    const { value } = item
+
+    this.setState({
+      value,
+      isOpen: false,
+    })
   }
 
   buildOptionsForSelect () {
@@ -55,83 +74,87 @@ class Select extends React.Component {
 
   buildOptionsForMenu () {
     const { options } = this.props
+    const { value } = this.state
 
     return map(options, option => {
-      if (typeof option !== 'object') {
+      if (!isObject(option)) {
         return {
           label: option,
+          value: option,
+          active: option === value,
         }
       }
 
       return {
         label: option.name || option.value,
+        value: option.value || option.label,
+        active: option.value === value,
       }
     })
   }
 
-  buildElements () {
-    const { multiple, onClick } = this.props
-    const { isOpen, value } = this.state
-
-    let element
-
-    if (multiple) {
-      element = (
-        <select multiple>
-          {
-            map(this.buildOptionsForSelect(), ({
-              name,
-              value,
-            }) => (
-              <option
-                key={value || name}
-                value={value}
-              >
-                {name || value}
-              </option>
-            ))
-          }
-        </select>
-      )
-    } else {
-      element = (
-        <div>
-          <Input
-            className="select-input"
-            readOnly
-            value={value}
-            onClick={coCall(onClick, this.onInputClickHandler)}
-          />
-          {
-            isOpen &&
-            (
-              <Menu className="select-menu" items={this.buildOptionsForMenu()} />
-            )
-          }
-        </div>
-      )
-    }
-
-    return (
-      <div className="select-inner">
-        {element}
-      </div>
-    )
-  }
-
   render () {
-    const { multiple, className } = this.props
+    const { small, medium, className } = this.props
+    const { value } = this.state
+
+    const items = this.buildOptionsForMenu()
+    const selectedItem = find(items, ['value', value])
+    const label = get(selectedItem, 'label')
 
     return (
-      <div
+      <DropdownMenu
+        items={items}
         className={classNames('Select', className, {
-          multiple,
+          small,
+          medium,
         })}
+        onSelect={this.onOptionSelect}
       >
-        {this.buildElements()}
-      </div>
+        <label>
+          {label}
+        </label>
+      </DropdownMenu>
     )
   }
+
+  // render () {
+  //   const { small, medium, className, onClick } = this.props
+  //   const { isOpen, value } = this.state
+  //
+  //   const items = this.buildOptionsForMenu()
+  //   const selectedItem = find(items, ['value', value])
+  //   const label = get(selectedItem, 'label')
+  //
+  //   return (
+  //     <div
+  //       className={classNames('Select', className, {
+  //         small,
+  //         medium,
+  //       })}
+  //       onClick={coCall(onClick, this.onInputClickHandler)}
+  //     >
+  //       <div className="select-inner">
+  //         <Input
+  //           ref={ref => { this._Input = ref }}
+  //           className="select-input"
+  //           readOnly
+  //           value={label}
+  //           onFocus={this.onInputFocusHandler}
+  //         />
+  //         {
+  //           isOpen &&
+  //           (
+  //             <Menu
+  //               className="select-menu"
+  //               items={items}
+  //               onClick={this.onOptionSelect}
+  //             />
+  //           )
+  //         }
+  //       </div>
+  //     </div>
+  //   )
+  // }
 }
 
 Select.propTypes = {
@@ -147,8 +170,9 @@ Select.propTypes = {
       value: PropTypes.string,
     }),
   ]),
-  multiple: PropTypes.bool,
   onClick: PropTypes.func,
+  small: PropTypes.bool,
+  medium: PropTypes.bool,
 }
 
 export default clickOutside(Select)

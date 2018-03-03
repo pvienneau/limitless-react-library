@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import range from 'lodash.range';
+import range from 'lodash.range'
 
-import { Container, Input, FormGroup } from 'components';
-import './inputs.scss';
+import { Container, Input, FormGroup } from 'components'
+import './inputs.scss'
 
 export default class Inputs extends React.Component {
-  render() {
+  render () {
     return (
       <Container className="Inputs">
         <form>
@@ -66,7 +66,7 @@ export default class Inputs extends React.Component {
               type="select"
               options={[
                 'Default select height',
-                ...range(1, 8).map(num => `Option ${num}`)
+                ...range(1, 8).map(num => `Option ${num}`),
               ]}
             />
             <FormGroup
@@ -116,6 +116,6 @@ export default class Inputs extends React.Component {
           </fieldset>
         </form>
       </Container>
-    );
+    )
   }
 }

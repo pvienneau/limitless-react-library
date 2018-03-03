@@ -1,18 +1,19 @@
-import React from 'react';
+import React from 'react'
 
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-import './input.scss';
+import './input.scss'
 
 export default class Input extends React.Component {
   render () {
-    const { className, disabled, readOnly, ...props } = this.props;
-    
+    const { className, disabled, readOnly, ...props } = this.props
+
     return (
       <div className={classNames('Input', className)}>
         <input
           {...props}
+          ref={ref => { this._input = ref }}
           disabled={disabled}
           className={classNames({
             disabled,
@@ -20,7 +21,7 @@ export default class Input extends React.Component {
           })}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -41,7 +42,7 @@ Input.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-  ])
+  ]),
 }
 
 Input.defaultProps = {

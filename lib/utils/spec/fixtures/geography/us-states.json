@@ -1,0 +1,257 @@
+{
+  "AL": {
+    "name": "Alabama",
+    "abbreviation": "AL",
+    "timezones": ["CST"]
+  },
+  "AK": {
+    "name": "Alaska",
+    "abbreviation": "AK",
+    "timezones": ["AKST", "HST"]
+  },
+  "AZ": {
+    "name": "Arizona",
+    "abbreviation": "AZ",
+    "timezones": ["MST"]
+  },
+  "AR": {
+    "name": "Arkansas",
+    "abbreviation": "AR",
+    "timezones": ["CST"]
+  },
+  "CA": {
+    "name": "California",
+    "abbreviation": "CA",
+    "timezones": ["PST"]
+  },
+  "CO": {
+    "name": "Colorado",
+    "abbreviation": "CO",
+    "timezones": ["MST"]
+  },
+  "CT": {
+    "name": "Connecticut",
+    "abbreviation": "CT",
+    "timezones": ["EST"]
+  },
+  "DE": {
+    "name": "Delaware",
+    "abbreviation": "DE",
+    "timezones": ["EST"]
+  },
+  "FL": {
+    "name": "Florida",
+    "abbreviation": "FL",
+    "timezones": ["EST", "CST"]
+  },
+  "GA": {
+    "name": "Georgia",
+    "abbreviation": "GA",
+    "timezones": ["EST"]
+  },
+  "HI": {
+    "name": "Hawaii",
+    "abbreviation": "HI",
+    "timezones": ["HST", "DST"]
+  },
+  "ID": {
+    "name": "Idaho",
+    "abbreviation": "ID",
+    "timezones": ["MST", "PST"]
+  },
+  "IL": {
+    "name": "Illinois",
+    "abbreviation": "IL",
+    "timezones": ["CST"]
+  },
+  "IN": {
+    "name": "Indiana",
+    "abbreviation": "IN",
+    "timezones": ["EST", "CST"]
+  },
+  "IA": {
+    "name": "Iowa",
+    "abbreviation": "IA",
+    "timezones": ["CST"]
+  },
+  "KS": {
+    "name": "Kansas",
+    "abbreviation": "KS",
+    "timezones": ["CST", "MST"]
+  },
+  "KY": {
+    "name": "Kentucky",
+    "abbreviation": "KY",
+    "timezones": ["CST", "EST"]
+  },
+  "LA": {
+    "name": "Louisiana",
+    "abbreviation": "LA",
+    "timezones": ["CST"]
+  },
+  "ME": {
+    "name": "Maine",
+    "abbreviation": "ME",
+    "timezones": ["EST"]
+  },
+  "MD": {
+    "name": "Maryland",
+    "abbreviation": "MD",
+    "timezones": ["EST"]
+  },
+  "MA": {
+    "name": "Massachusetts",
+    "abbreviation": "MA",
+    "timezones": ["EST"]
+  },
+  "MI": {
+    "name": "Michigan",
+    "abbreviation": "MI",
+    "timezones": ["EST", "CST"]
+  },
+  "MN": {
+    "name": "Minnesota",
+    "abbreviation": "MN",
+    "timezones": ["CST"]
+  },
+  "MS": {
+    "name": "Mississippi",
+    "abbreviation": "MS",
+    "timezones": ["CST"]
+  },
+  "MO": {
+    "name": "Missouri",
+    "abbreviation": "MO",
+    "timezones": ["CST"]
+  },
+  "MT": {
+    "name": "Montana",
+    "abbreviation": "MT",
+    "timezones": ["MST"]
+  },
+  "NE": {
+    "name": "Nebraska",
+    "abbreviation": "NE",
+    "timezones": ["CST", "MST"]
+  },
+  "NV": {
+    "name": "Nevada",
+    "abbreviation": "NV",
+    "timezones": ["PST", "MST"]
+  },
+  "NH": {
+    "name": "New Hampshire",
+    "abbreviation": "NH",
+    "timezones": ["EST"]
+  },
+  "NJ": {
+    "name": "New Jersey",
+    "abbreviation": "NJ",
+    "timezones": ["EST"]
+  },
+  "NM": {
+    "name": "New Mexico",
+    "abbreviation": "NM",
+    "timezones": ["MST"]
+  },
+  "NY": {
+    "name": "New York",
+    "abbreviation": "NY",
+    "timezones": ["EST"]
+  },
+  "NC": {
+    "name": "North Carolina",
+    "abbreviation": "NC",
+    "timezones": ["EST"]
+  },
+  "ND": {
+    "name": "North Dakota",
+    "abbreviation": "ND",
+    "timezones": ["CST", "MST"]
+  },
+  "OH": {
+    "name": "Ohio",
+    "abbreviation": "OH",
+    "timezones": ["EST"]
+  },
+  "OK": {
+    "name": "Oklahoma",
+    "abbreviation": "OK",
+    "timezones": ["CST"]
+  },
+  "OR": {
+    "name": "Oregon",
+    "abbreviation": "OR",
+    "timezones": ["PST", "MST"]
+  },
+  "PA": {
+    "name": "Pennsylvania",
+    "abbreviation": "PA",
+    "timezones": ["EST"]
+  },
+  "RI": {
+    "name": "Rhode Island",
+    "abbreviation": "RI",
+    "timezones": ["EST"]
+  },
+  "SC": {
+    "name": "South Carolina",
+    "abbreviation": "SC",
+    "timezones": ["EST"]
+  },
+  "SD": {
+    "name": "South Dakota",
+    "abbreviation": "SD",
+    "timezones": ["CST", "MST"]
+  },
+  "TN": {
+    "name": "Tennessee",
+    "abbreviation": "TN",
+    "timezones": ["CST", "EST"]
+  },
+  "TX": {
+    "name": "Texas",
+    "abbreviation": "TX",
+    "timezones": ["CST", "MST"]
+  },
+  "UT": {
+    "name": "Utah",
+    "abbreviation": "UT",
+    "timezones": ["MST"]
+  },
+  "VT": {
+    "name": "Vermont",
+    "abbreviation": "VT",
+    "timezones": ["EST"]
+  },
+  "VA": {
+    "name": "Virginia",
+    "abbreviation": "VA",
+    "timezones": ["EST"]
+  },
+  "WA": {
+    "name": "Washington",
+    "abbreviation": "WA",
+    "timezones": ["PST"]
+  },
+  "WV": {
+    "name": "West Virginia",
+    "abbreviation": "WV",
+    "timezones": ["EST"]
+  },
+  "WI": {
+    "name": "Wisconsin",
+    "abbreviation": "WI",
+    "timezones": ["CST"]
+  },
+  "WY": {
+    "name": "Wyoming",
+    "abbreviation": "WY",
+    "timezones": ["MST"]
+  },
+  "DC": {
+    "name": "Washington D.C.",
+    "abbreviation": "DC",
+    "timezones": ["EST"]
+  }
+}

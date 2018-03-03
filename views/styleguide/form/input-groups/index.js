@@ -1,1 +1,1 @@
-export { default as InputGroups } from './input-groups';
+export { default as InputGroups } from './input-groups'

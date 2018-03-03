@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { Button, ButtonGroup, Badge, DropdownMenu, Avatar } from 'components';
-import { Tag } from 'components/tag';
-import './Navbar.scss';
+import { Button, ButtonGroup, Badge, DropdownMenu, Avatar } from 'components'
+import { Tag } from 'components/tag'
+import './Navbar.scss'
 
 export default class Navbar extends React.Component {
-  render() {
+  render () {
     return (
       <div className="Navbar">
         <div className="navbar-sidebar">
@@ -49,7 +49,7 @@ export default class Navbar extends React.Component {
                 'My balanced',
                 {
                   label: 'Messages',
-                  children: <Badge info>58</Badge>
+                  children: <Badge info>58</Badge>,
                 },
                 {
                   divider: true,
@@ -67,6 +67,6 @@ export default class Navbar extends React.Component {
           </ButtonGroup>
         </div>
       </div>
-    );
+    )
   }
 }

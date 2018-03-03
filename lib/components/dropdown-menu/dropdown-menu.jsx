@@ -17,6 +17,7 @@ class DropdownMenu extends React.Component {
 
     this.buildMenu = this.buildMenu.bind(this)
     this.onClickHandler = this.onClickHandler.bind(this)
+    this.onMenuClickHandler = this.onMenuClickHandler.bind(this)
   }
 
   handleClickOutside () {
@@ -25,10 +26,22 @@ class DropdownMenu extends React.Component {
     })
   }
 
+  onMenuClickHandler (e, item) {
+    const { onSelect } = this.props
+
+    onSelect(e, item)
+    this.setState({
+      isOpen: false,
+    })
+  }
+
   buildMenu () {
     const { items } = this.props
 
-    return <Menu items={items} />
+    return <Menu
+      items={items}
+      onClick={this.onMenuClickHandler}
+    />
   }
 
   onClickHandler (e, ...args) {
@@ -62,6 +75,7 @@ class DropdownMenu extends React.Component {
           {...props}
           onClick={this.onClickHandler}
           className={classNames('dropdown-button', `dropdown-button-position-${position}`)}
+          fullWidth
         >
           <span className="dropdown-button-content">
             {children}

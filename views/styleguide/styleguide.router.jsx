@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { Switch, Redirect } from 'react-router';
+import { Switch, Redirect } from 'react-router'
 
-import { Route } from 'utils/react-router';
-import { Buttons, Dropdowns, Palette, Icons, Inputs, Panels, Checkboxes, Menus, DatePickers, InputGroups } from './';
+import { Route } from 'utils/react-router'
+import { Buttons, Dropdowns, Palette, Icons, Inputs, Panels, Checkboxes, Menus, DatePickers, InputGroups, Selects } from './'
 
 export default class StyleguideRouter extends React.Component {
-  render() {
+  render () {
     return (
       <Route path="styleguide">
         <div>
@@ -19,9 +19,10 @@ export default class StyleguideRouter extends React.Component {
           <Route path="form/inputs" component={Inputs} />
           <Route path="form/checkboxes" component={Checkboxes} />
           <Route path="form/input-groups" component={InputGroups} />
+          <Route path="form/selects" component={Selects} />
           <Route path="form/pickers/date-pickers" component={DatePickers} />
         </div>
       </Route>
-    );
+    )
   }
 }

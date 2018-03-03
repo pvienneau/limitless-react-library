@@ -28,6 +28,10 @@
         {
           "label": "Icons",
           "to": "styleguide/icons"
+        },
+        {
+          "label": "Dropdowns",
+          "to": "styleguide/dropdowns"
         }
       ]
     },
@@ -41,6 +45,10 @@
         {
           "label": "Checkboxes & radios",
           "to": "/styleguide/form/checkboxes"
+        },
+        {
+          "label": "Selects",
+          "to": "/styleguide/form/selects"
         },
         {
           "label": "Pickers",

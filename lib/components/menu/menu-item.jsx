@@ -1,38 +1,33 @@
-import React from 'react';
+import React from 'react'
 
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import isEmpty from 'lodash.isempty';
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import isEmpty from 'lodash.isempty'
 
-import { Menu } from 'components/menu';
-import { Button, DropdownMenu } from 'components';
-import './menu-item.scss';
+import { Button, DropdownMenu } from 'components'
+import './menu-item.scss'
 
 export default class MenuItem extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.hasItems = this.hasItems.bind(this);
+    this.hasItems = this.hasItems.bind(this)
   }
 
-  static propTypes = {
-    label: PropTypes.string,
-  };
-
-  hasItems() {
-    return !isEmpty(this.props.items);
+  hasItems () {
+    return !isEmpty(this.props.items)
   }
 
-  render() {
-    const { label, className, items, divider, active, header, highlight, children, ...props } = this.props;
+  render () {
+    const { label, className, items, divider, active, header, highlight, children, ...props } = this.props
 
-    const computedProps = {};
-    let ButtonElement = Button;
+    const computedProps = {}
+    let ButtonElement = Button
 
     if (this.hasItems()) {
-      ButtonElement = DropdownMenu;
-      computedProps.items = items;
-      computedProps.position = 'right';
+      ButtonElement = DropdownMenu
+      computedProps.items = items
+      computedProps.position = 'right'
     }
 
     return (
@@ -40,6 +35,7 @@ export default class MenuItem extends React.Component {
         divider,
         header,
         highlight,
+        active,
       })}>
         {
           label && !header ? (
@@ -65,6 +61,10 @@ export default class MenuItem extends React.Component {
           )
         }
       </div>
-    );
+    )
   }
+}
+
+MenuItem.propTypes = {
+  label: PropTypes.string,
 }

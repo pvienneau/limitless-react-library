@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import { Container, Icon, Spinner, FormGroup } from 'components';
-import './input-groups.scss';
+import { Container, Icon, Spinner, FormGroup } from 'components'
+import './input-groups.scss'
 
 export default class InputGroups extends React.Component {
-  render() {
+  render () {
     return (
       <Container className="InputGroups">
         <form>
@@ -109,6 +109,6 @@ export default class InputGroups extends React.Component {
           </fieldset>
         </form>
       </Container>
-    );
+    )
   }
 }
