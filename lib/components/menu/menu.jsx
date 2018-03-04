@@ -48,12 +48,15 @@ export default class Menu extends React.Component {
   }
 
   render () {
-    const { items, title, className } = this.props
+    const { items, title, className, onMouseOver } = this.props
 
     if (isEmpty(items)) return null
 
     return (
-      <Paper className={classNames('Menu', className)}>
+      <Paper
+        className={classNames('Menu', className)}
+        onMouseOver={onMouseOver}
+      >
         {title && <div className="menu-title">{title}</div>}
         <ul>
           {items.map(this.itemFactory)}
@@ -75,6 +78,7 @@ Menu.propTypes = {
   small: PropTypes.bool,
   mini: PropTypes.bool,
   onClick: PropTypes.func,
+  onMouseOver: PropTypes.func,
 }
 
 Menu.defaultProps = {
@@ -84,4 +88,5 @@ Menu.defaultProps = {
   small: false,
   mini: false,
   onClick: noop,
+  onMouseOver: noop,
 }

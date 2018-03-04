@@ -27,6 +27,7 @@ class DropdownMenu extends React.Component {
     this.onItemSelectHandler = this.onItemSelectHandler.bind(this)
     this.onToggleHandler = this.onToggleHandler.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.onMenuMouseOverHandler = this.onMenuMouseOverHandler.bind(this)
     this.setState = this.setState.bind(this)
   }
 
@@ -60,6 +61,12 @@ class DropdownMenu extends React.Component {
           highlightIndex: mod(highlightIndex + 1, items.length)
         }))
     }
+  }
+
+  onMenuMouseOverHandler () {
+    this.setState({
+      highlightIndex: null,
+    })
   }
 
   setState (state, callback) {
@@ -113,6 +120,7 @@ class DropdownMenu extends React.Component {
       ref={ref => this._Menu = ref}
       items={computedItems}
       onClick={this.onItemSelectHandler}
+      onMouseOver={this.onMenuMouseOverHandler}
     />
   }
 
