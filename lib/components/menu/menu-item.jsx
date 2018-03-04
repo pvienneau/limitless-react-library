@@ -67,4 +67,5 @@ export default class MenuItem extends React.Component {
 
 MenuItem.propTypes = {
   label: PropTypes.string,
+  className: PropTypes.string,
 }

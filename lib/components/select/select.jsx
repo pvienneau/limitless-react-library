@@ -16,28 +16,13 @@ class Select extends React.Component {
     super(props)
 
     this.state = {
-      isOpen: false,
       value: null,
     }
 
-    this.onInputClickHandler = this.onInputClickHandler.bind(this)
     this.buildOptionsForMenu = this.buildOptionsForMenu.bind(this)
     this.buildOptionsForSelect = this.buildOptionsForSelect.bind(this)
-    this.handleClickOutside = this.handleClickOutside.bind(this)
     this.onInputFocusHandler = this.onInputFocusHandler.bind(this)
     this.onOptionSelect = this.onOptionSelect.bind(this)
-  }
-
-  handleClickOutside () {
-    this.setState({
-      isOpen: false,
-    })
-  }
-
-  onInputClickHandler () {
-    this.setState(({ isOpen }) => ({
-      isOpen: !isOpen,
-    }))
   }
 
   onInputFocusHandler (e) {
@@ -51,7 +36,6 @@ class Select extends React.Component {
 
     this.setState({
       value,
-      isOpen: false,
     })
   }
 
@@ -116,45 +100,6 @@ class Select extends React.Component {
       </DropdownMenu>
     )
   }
-
-  // render () {
-  //   const { small, medium, className, onClick } = this.props
-  //   const { isOpen, value } = this.state
-  //
-  //   const items = this.buildOptionsForMenu()
-  //   const selectedItem = find(items, ['value', value])
-  //   const label = get(selectedItem, 'label')
-  //
-  //   return (
-  //     <div
-  //       className={classNames('Select', className, {
-  //         small,
-  //         medium,
-  //       })}
-  //       onClick={coCall(onClick, this.onInputClickHandler)}
-  //     >
-  //       <div className="select-inner">
-  //         <Input
-  //           ref={ref => { this._Input = ref }}
-  //           className="select-input"
-  //           readOnly
-  //           value={label}
-  //           onFocus={this.onInputFocusHandler}
-  //         />
-  //         {
-  //           isOpen &&
-  //           (
-  //             <Menu
-  //               className="select-menu"
-  //               items={items}
-  //               onClick={this.onOptionSelect}
-  //             />
-  //           )
-  //         }
-  //       </div>
-  //     </div>
-  //   )
-  // }
 }
 
 Select.propTypes = {
@@ -175,4 +120,4 @@ Select.propTypes = {
   medium: PropTypes.bool,
 }
 
-export default clickOutside(Select)
+export default Select

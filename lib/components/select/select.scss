@@ -17,8 +17,16 @@
 
       .MenuItem {
         &.active {
-          background-color: $primary-500;
-          color: $white;
+          .Button {
+            background-color: $primary-500;
+            color: $white;
+          }
+
+          &.highlight {
+            .Button {
+              background-color: darken($primary-500, 10%);
+            }
+          }
         }
       }
     }

@@ -24,7 +24,7 @@ export default class Selects extends React.Component {
               type="select"
               label="Basic select"
               name="basic_select"
-              options={US_STATES_OPTIONS}
+              options={US_STATES_OPTIONS.slice(0, 3)}
             />
             <FormGroup
               type="select"
