@@ -11,7 +11,7 @@ import classNames from 'classnames'
 
 import { Button } from 'components'
 import { initializeDateState } from '../utils'
-import { isLessThan, getWeekNumber } from 'utils/js/date'
+import { isLessThan, getWeekNumber, getDate } from 'utils/js/date'
 import './calendar.scss'
 
 const DAYS_OF_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurdsay', 'Friday', 'Saturday']
@@ -92,7 +92,7 @@ export default class Calendar extends React.Component {
     const days = []
 
     for (let ii = 0; ii < 6 * 7; ii++) {
-      const day = new Date(firstDayOfCalendar.getTime())
+      const day = getDate(firstDayOfCalendar)
       day.setDate(firstDayOfCalendar.getDate() + ii)
 
       days.push(day)

@@ -1,7 +1,7 @@
 @import '../icon/icons.json';
 @import '~styles/scss/extensions/_iconize.scss';
 
-$DROPDOWN_POSITIONS: 'top' 'up', 'right' 'right', 'bottom' 'down', 'left' 'left';
+// $DROPDOWN_POSITIONS: 'top' 'up', 'right' 'right', 'bottom' 'down', 'left' 'left';
 
 .DropdownMenu {
   .dropdown-button {
@@ -16,13 +16,13 @@ $DROPDOWN_POSITIONS: 'top' 'up', 'right' 'right', 'bottom' 'down', 'left' 'left'
     }
   }
 
-  @each $position, $icon-name in $DROPDOWN_POSITIONS {
-    .dropdown-button.dropdown-button-position-#{$position} {
-      .label::after {
-        content: map-get($icons, 'caret-' + $icon-name + '-22')
-      }
-    }
-  }
+  // @each $position, $icon-name in $DROPDOWN_POSITIONS {
+  //   .dropdown-button.dropdown-button-position-#{$position} {
+  //     .label::after {
+  //       content: map-get($icons, 'caret-' + $icon-name + '-22')
+  //     }
+  //   }
+  // }
 
   .Menu {
     .MenuItem {

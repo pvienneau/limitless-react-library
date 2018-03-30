@@ -1,9 +1,9 @@
 .DatePicker {
-  .Dropdown {
+  .datepicker-dropdown {
     display: block;
     width: 100%;
 
-    .dropdown-body {
+    & > .dropdown-body {
       right: auto;
       left: 0;
       margin-left: 40px;
@@ -42,14 +42,8 @@
           }
         }
 
-        .datepicker-time-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          .Select {
-            margin: 0 2px;
-          }
+        .Clock {
+          margin-top: 5px;
         }
       }
     }

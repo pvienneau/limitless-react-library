@@ -29,16 +29,20 @@ $padding: $padding-vertical $padding-horizontal;
   border: 1px solid #DDD;
   outline: none;
   font: inherit;
-  padding: $padding;
+  padding: 0 $padding-horizontal;
   cursor: pointer;
   overflow: hidden;
   text-align: left;
+  line-height: 37px;
+  height: 37px;
 
   & > .inner {
     display: flex;
     justify-content: center;
     flex-direction: row;
     margin: 0 -3px;
+    line-height: inherit;
+    height: inherit;
 
     & > .Icon, & > .label {
       margin: 0 3px;

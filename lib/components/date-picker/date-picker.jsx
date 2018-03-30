@@ -1,26 +1,18 @@
 import React from 'react'
-
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import clickOutside from 'node/react-click-outside'
-import assign from 'lodash.assign'
-import now from 'lodash.now'
-import range from 'lodash.range'
+import dateFormat from 'dateformat'
+import { assign, curry, merge, now , map, some } from 'lodash'
 
-import { InputGroup, Icon, Dropdown, Paper, Select } from 'components'
+import { InputGroup, Icon, Dropdown, Paper } from 'components'
 import { Calendar } from './calendar'
 import { Controls } from './controls'
+import { Clock } from './clock'
 import { initializeDateState } from './utils'
-import { previousMonth, nextMonth, isLessThanOrEqualTo } from 'utils/js/date'
-import { doubleDigit } from 'utils/js/number'
+import { previousMonth, nextMonth, isLessThanOrEqualTo, isAM, isPM, isEqualTo, isEpochTime, getDate } from 'utils/js/date'
+import { EPOCH_TIME } from 'constants/date'
 import './date-picker.scss'
-
-const HOURS_12 = range(1, 13)
-const MINUTES_60 = range(0, 61).map(number => ({
-  name: doubleDigit(number),
-  value: number,
-}))
-const PERIODS = ['AM', 'PM']
 
 class DatePicker extends React.Component {
   constructor (props) {
@@ -37,15 +29,21 @@ class DatePicker extends React.Component {
     this.onSelectedDateChange = this.onSelectedDateChange.bind(this)
     this.onSaveHandler = this.onSaveHandler.bind(this)
     this.onCancelHandler = this.onCancelHandler.bind(this)
+    this.onStartDateHourChange = this.onStartDateHourChange.bind(this)
+    this.onStartDateMinuteChange = this.onStartDateMinuteChange.bind(this)
+    this.onStartDatePeriodChange = this.onStartDatePeriodChange.bind(this)
+    this.onTimeChange = this.onTimeChange.bind(this)
   }
 
   onCurrentDateChange (currentDate) {
     this.setState({ currentDate })
   }
 
-  onSelectedDateChange (newDate) {
+  onSelectedDateChange (date) {
     const { range } = this.props
     const { selectedDates } = this.state
+
+    const newDate = getDate(date)
 
     this.setState(({ selectedDates: prevSelectedDates }) => {
       if (!range) return { selectedDates: [newDate] }
@@ -56,13 +54,19 @@ class DatePicker extends React.Component {
         selectedDates.push(newDate)
 
         return {selectedDates}
-      } else if (isLessThanOrEqualTo(newDate, prevSelectedDates[0])) {
+      } else if (isEpochTime(prevSelectedDates[0]) || isLessThanOrEqualTo(newDate, prevSelectedDates[0])) {
+        newDate.setHours(prevSelectedDates[0].getHours())
+        newDate.setMinutes(prevSelectedDates[0].getMinutes())
+
         const selectedDates = assign([], prevSelectedDates, {
           0: newDate,
         })
 
         return {selectedDates}
       } else {
+        newDate.setHours(prevSelectedDates[1].getHours())
+        newDate.setMinutes(prevSelectedDates[1].getMinutes())
+
         const selectedDates = assign([], prevSelectedDates, {
           1: newDate,
         })
@@ -96,9 +100,67 @@ class DatePicker extends React.Component {
     })
   }
 
+  onStartDateHourChange (hours) {
+    this.setState(({ selectedDates }) => {
+      const nextSelectedDates = merge({}, selectedDates)
+
+      nextSelectedDates[0].setHours(hours)
+
+      return {
+        selectedDates: nextSelectedDates,
+      }
+    })
+  }
+
+  onStartDateMinuteChange (minutes) {
+    this.setState(({ selectedDates }) => {
+      const nextSelectedDates = merge({}, selectedDates)
+
+      nextSelectedDates[0].setMinutes(minutes)
+
+      return {
+        selectedDates: nextSelectedDates,
+      }
+    })
+  }
+
+  onStartDatePeriodChange (period) {
+    this.setState(({ selectedDates }) => {
+      const nextSelectedDates = merge({}, selectedDates)
+
+      if (period === 'am' && isPM(nextSelectedDates[0])) {
+        nextSelectedDates[0].setHours(nextSelectedDates[0].getHours() % 12)
+      } else if (period === 'pm' && isAM(nextSelectedDates[0])) {
+        nextSelectedDates[0].setHours(nextSelectedDates[0].getHours() + 12)
+      }
+
+      return {
+        selectedDates: nextSelectedDates,
+      }
+    })
+  }
+
+  onTimeChange = curry((index, time) => {
+    this.setState(({ selectedDates }) => {
+      const nextSelectedDates = merge({}, selectedDates)
+      const nextDate = new Date(selectedDates[index].getTime())
+
+      nextDate.setHours(time.getHours())
+      nextDate.setMinutes(time.getMinutes())
+
+      nextSelectedDates[index] = nextDate
+
+      return {
+        selectedDates: nextSelectedDates
+      }
+    })
+  })
+
   generateCalendar () {
-    const { range, showWeekNumbers } = this.props
+    const { range, showWeekNumbers, time } = this.props
     const { currentDate, selectedDates } = this.state
+
+    const sanitizedSelectedDates = map(selectedDates, date => !isEpochTime(date) ? date : undefined)
 
     return (
       <div className="datepicker-container">
@@ -106,7 +168,7 @@ class DatePicker extends React.Component {
           !!range && (
             <Paper className="datepicker-box datepicker-box-controls">
               <Controls
-                date={selectedDates}
+                date={sanitizedSelectedDates}
                 onSave={this.onSaveHandler}
                 onCancel={this.onCancelHandler}
               />
@@ -118,29 +180,17 @@ class DatePicker extends React.Component {
           <Calendar
             className="calendar-prev-month"
             currentDate={currentDate}
-            date={selectedDates}
+            date={sanitizedSelectedDates}
             range={range}
             onCurrentDateChange={this.onCurrentDateChange}
             onChange={this.onSelectedDateChange}
           />
-          <div className="datepicker-time-container">
-            <Select
-              name="start_date[time][hour]"
-              options={HOURS_12}
-              small
+          {time && (
+            <Clock
+              onChange={this.onTimeChange(0)}
+              time={selectedDates[0]}
             />
-            :
-            <Select
-              name="start_date[time][hour]"
-              options={MINUTES_60}
-              small
-            />
-            <Select
-              name="start_date[time][hour]"
-              options={PERIODS}
-              small
-            />
-          </div>
+          )}
         </Paper>
 
         {
@@ -149,12 +199,18 @@ class DatePicker extends React.Component {
               <Calendar
                 className="calendar-next-month"
                 currentDate={nextMonth(currentDate)}
-                date={selectedDates}
+                date={sanitizedSelectedDates}
                 range={range}
                 onCurrentDateChange={currentDate => this.onCurrentDateChange(previousMonth(currentDate))}
                 onChange={this.onSelectedDateChange}
                 showWeekNumbers={showWeekNumbers}
               />
+              {time && (
+                <Clock
+                  onChange={this.onTimeChange(1)}
+                  time={selectedDates[1]}
+                />
+              )}
             </Paper>
           )
         }
@@ -173,6 +229,7 @@ class DatePicker extends React.Component {
     return (
       <div className={datePickerClassNames}>
         <Dropdown
+          className="datepicker-dropdown"
           body={this.generateCalendar()}
           open={isOpen}
           position="bottom"
@@ -204,7 +261,7 @@ DatePicker.defaultProps = {
   currentDate: now(),
   position: 'left',
   showWeekNumbers: false,
-  time: false,
+  time: true,
 }
 
 export default clickOutside(DatePicker)

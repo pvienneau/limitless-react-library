@@ -9,7 +9,7 @@ import noop from 'lodash.noop'
 
 import { Dropdown, Button } from 'components'
 import { Menu } from 'components/menu'
-import { KEY_ENTER, KEY_UP, KEY_DOWN } from 'utils/constants'
+import { KEY_ENTER, KEY_UP, KEY_DOWN } from 'constants/key-codes'
 import { mod } from 'utils/js/math'
 import './dropdown-menu.scss'
 
@@ -41,7 +41,7 @@ class DropdownMenu extends React.Component {
 
   handleKeyDown (e) {
     const { highlightIndex } = this.state
-    const { items, onSelect } = this.props
+    const { items } = this.props
 
     if (e.keyCode === KEY_ENTER && items[highlightIndex]) this.onItemSelectHandler(e, items[highlightIndex])
 
@@ -51,14 +51,14 @@ class DropdownMenu extends React.Component {
       })
     }
 
-    switch(e.keyCode) {
+    switch (e.keyCode) {
       case KEY_UP:
         return this.setState(({highlightIndex}) => ({
-          highlightIndex: mod(highlightIndex - 1, items.length)
+          highlightIndex: mod(highlightIndex - 1, items.length),
         }))
       case KEY_DOWN:
         return this.setState(({highlightIndex}) => ({
-          highlightIndex: mod(highlightIndex + 1, items.length)
+          highlightIndex: mod(highlightIndex + 1, items.length),
         }))
     }
   }
@@ -70,7 +70,6 @@ class DropdownMenu extends React.Component {
   }
 
   setState (state, callback) {
-    const { onToggle } = this.props
     const prevState = this.state
 
     super.setState(state, () => {
@@ -117,7 +116,7 @@ class DropdownMenu extends React.Component {
     if (computedItems[highlightIndex]) computedItems[highlightIndex].className = classNames(computedItems[highlightIndex].className, 'highlight')
 
     return <Menu
-      ref={ref => this._Menu = ref}
+      ref={ref => { this._Menu = ref }}
       items={computedItems}
       onClick={this.onItemSelectHandler}
       onMouseOver={this.onMenuMouseOverHandler}
@@ -144,7 +143,7 @@ class DropdownMenu extends React.Component {
     return (
       <Dropdown
         {...props}
-        ref={ref => this._Dropdown = ref}
+        ref={ref => { this._Dropdown = ref }}
         className={classNames('DropdownMenu', className)}
         body={this.buildMenu()}
         open={isOpen}

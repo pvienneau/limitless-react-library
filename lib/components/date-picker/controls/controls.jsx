@@ -46,7 +46,7 @@ export default class Controls extends React.Component {
               right: <Icon>calendar</Icon>,
             }}
             readOnly
-            value={dateFormat(date[0], 'yyyy/mm/dd')}
+            value={date[0] && dateFormat(date[0], 'yyyy/mm/dd h:MM TT')}
           />
 
           <FormGroup
@@ -57,7 +57,7 @@ export default class Controls extends React.Component {
               right: <Icon>calendar</Icon>,
             }}
             readOnly
-            value={dateFormat(date[1], 'yyyy/mm/dd')}
+            value={date[1] && dateFormat(date[1], 'yyyy/mm/dd h:MM TT')}
           />
         </fieldset>
 

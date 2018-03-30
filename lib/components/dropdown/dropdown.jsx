@@ -1,38 +1,27 @@
-import React from 'react';
+import React from 'react'
 
-import PropTypes from 'prop-types';
-import isEmpty from 'lodash.isempty';
-import classNames from 'classnames';
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-import './dropdown.scss';
+import './dropdown.scss'
 
 class Dropdown extends React.Component {
-    static propTypes = {
-      onClick: PropTypes.func,
-    };
+  render () {
+    const { children, body, className, open, position, ...props } = this.props
 
-    constructor(props) {
-      super(props);
-
-      // this.handleClickOutside = this.handleClickOutside.bind(this);
-    }
-
-    render() {
-      const { children, onClick, body, className, open, position, ...props } = this.props;
-
-      return (
-        <div className={classNames('Dropdown', className, `dropdown-position-${position}`, {
-          'dropdown-open': open,
-        })}>
-          { children }
-          { open && (
-            <div className="dropdown-body">
-              {body}
-            </div>
-          )}
-        </div>
-      );
-    }
+    return (
+      <div className={classNames('Dropdown', className, `dropdown-position-${position}`, {
+        'dropdown-open': open,
+      })}>
+        { children }
+        { open && (
+          <div className="dropdown-body">
+            {body}
+          </div>
+        )}
+      </div>
+    )
+  }
 }
 
 Dropdown.propTypes = {
@@ -50,4 +39,4 @@ Dropdown.defaultProps = {
   position: 'bottom',
 }
 
-export default Dropdown;
+export default Dropdown

@@ -2,12 +2,8 @@ import React from 'react'
 
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import map from 'lodash.map'
-import isObject from 'lodash.isobject'
-import find from 'lodash.find'
-import get from 'lodash.get'
+import { find, get, isObject, map } from 'lodash'
 
-import clickOutside from 'node/react-click-outside'
 import { DropdownMenu } from 'components'
 import './select.scss'
 
@@ -32,10 +28,13 @@ class Select extends React.Component {
   }
 
   onOptionSelect (e, item) {
+    const { onChange } = this.props
     const { value } = item
 
     this.setState({
       value,
+    }, () => {
+      onChange(value)
     })
   }
 
@@ -78,7 +77,7 @@ class Select extends React.Component {
   }
 
   render () {
-    const { small, medium, className } = this.props
+    const { small, medium, className, position } = this.props
     const { value } = this.state
 
     const items = this.buildOptionsForMenu()
@@ -93,6 +92,7 @@ class Select extends React.Component {
           medium,
         })}
         onSelect={this.onOptionSelect}
+        position={position}
       >
         <label>
           {label}
@@ -116,8 +116,15 @@ Select.propTypes = {
     }),
   ]),
   onClick: PropTypes.func,
+  onChange: PropTypes.func,
   small: PropTypes.bool,
   medium: PropTypes.bool,
+  position: PropTypes.oneOf([
+    'top',
+    'right',
+    'bottom',
+    'left',
+  ]),
 }
 
 export default Select

@@ -8,6 +8,13 @@
 
   cursor: pointer;
 
+  .dropdown-button {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 31px;
+    height: 31px;
+  }
+
   .dropdown-body {
     width: 100%;
 
@@ -54,6 +61,14 @@
 
     select {
       @extend %form-control;
+    }
+  }
+
+  &.small {
+    .dropdown-body {
+      .Menu {
+        max-height: 150px;
+      }
     }
   }
 }
