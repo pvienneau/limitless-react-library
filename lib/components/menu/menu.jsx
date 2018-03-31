@@ -53,7 +53,7 @@ export default class Menu extends React.Component {
     if (isEmpty(items)) return null
 
     return (
-      <Paper
+      <div
         className={classNames('Menu', className)}
         onMouseOver={onMouseOver}
       >
@@ -61,7 +61,7 @@ export default class Menu extends React.Component {
         <ul>
           {items.map(this.itemFactory)}
         </ul>
-      </Paper>
+      </div>
     )
   }
 }

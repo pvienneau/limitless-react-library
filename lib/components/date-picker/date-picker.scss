@@ -16,10 +16,34 @@
         .datepicker-box {
           margin-left: 7px;
           margin-right: 7px;
-        }
 
-        .Paper {
-          padding: 0;
+          &.datepicker-box-calendar {
+            &.Paper {
+              padding: 14px;
+            }
+
+            .Calendar .calendar-header .Button {
+              visibility: hidden;
+            }
+
+            &.datepicker-box-calendar-prev {
+              .Calendar .calendar-header .Button.button-previous-month {
+                visibility: visible;
+              }
+
+              &:last-child {
+                .Calendar .calendar-header .Button.button-next-month{
+                  visibility: visible;
+                }
+              }
+            }
+
+            &.datepicker-box-calendar-next {
+              .Calendar .calendar-header .Button.button-next-month {
+                visibility: visible;
+              }
+            }
+          }
         }
 
         .Controls {
@@ -28,22 +52,10 @@
 
         .Calendar {
           width: 280px;
-
-          .calendar-header .Button {
-            visibility: hidden;
-          }
-
-          &.calendar-prev-month .calendar-header .Button.button-previous-month {
-            visibility: visible;
-          }
-
-          &.calendar-next-month .calendar-header .Button.button-next-month {
-            visibility: visible;
-          }
         }
 
         .Clock {
-          margin-top: 5px;
+          margin: 12px 0;
         }
       }
     }
@@ -57,8 +69,8 @@
         right: 0;
         margin-right: 40px;
 
-        .datepicker-container {
-          flex-direction: row-reverse;
+        .datepicker-box-controls {
+          order: 3;
         }
       }
     }

@@ -15,10 +15,6 @@ const HOURS_12 = range(1, 13).map(number => ({
   name: doubleDigit(number),
   value: number,
 }))
-const MINUTES_60 = range(0, 61, 5).map(number => ({
-  name: doubleDigit(number),
-  value: number,
-}))
 
 export default class Clock extends Component {
   constructor (props) {
@@ -67,7 +63,12 @@ export default class Clock extends Component {
   }
 
   render () {
-    const { className, time } = this.props
+    const { className, time, timeIncrement } = this.props
+
+    const minuteOptions = range(0, 61, timeIncrement).map(number => ({
+      name: doubleDigit(number),
+      value: number,
+    }))
 
     return (
       <div className={classNames('Clock', className)}>
@@ -80,7 +81,7 @@ export default class Clock extends Component {
         />
         :
         <Select
-          options={MINUTES_60}
+          options={minuteOptions}
           onChange={this.onMinuteChangeHandler}
           value={time && time.getMinutes()}
           position="top"
@@ -101,4 +102,9 @@ export default class Clock extends Component {
 Clock.propTypes = {
   time: PropTypes.instanceOf(Date),
   onChange: PropTypes.func,
+  timeIncrement: PropTypes.number,
+}
+
+Clock.defaultProps = {
+  timeIncrement: 5,
 }

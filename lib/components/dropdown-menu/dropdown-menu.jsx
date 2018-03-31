@@ -7,7 +7,7 @@ import merge from 'lodash.merge'
 import isNumber from 'lodash.isnumber'
 import noop from 'lodash.noop'
 
-import { Dropdown, Button } from 'components'
+import { Dropdown, Button, Paper } from 'components'
 import { Menu } from 'components/menu'
 import { KEY_ENTER, KEY_UP, KEY_DOWN } from 'constants/key-codes'
 import { mod } from 'utils/js/math'
@@ -115,12 +115,16 @@ class DropdownMenu extends React.Component {
 
     if (computedItems[highlightIndex]) computedItems[highlightIndex].className = classNames(computedItems[highlightIndex].className, 'highlight')
 
-    return <Menu
-      ref={ref => { this._Menu = ref }}
-      items={computedItems}
-      onClick={this.onItemSelectHandler}
-      onMouseOver={this.onMenuMouseOverHandler}
-    />
+    return (
+      <Paper>
+        <Menu
+          ref={ref => { this._Menu = ref }}
+          items={computedItems}
+          onClick={this.onItemSelectHandler}
+          onMouseOver={this.onMenuMouseOverHandler}
+        />
+      </Paper>
+    )
   }
 
   onClickHandler (e, ...args) {

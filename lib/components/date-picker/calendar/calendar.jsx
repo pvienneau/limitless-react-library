@@ -1,17 +1,12 @@
 import React from 'react'
 
 import PropTypes from 'prop-types'
-import map from 'lodash.map'
-import chunk from 'lodash.chunk'
-import slice from 'lodash.slice'
-import now from 'lodash.now'
-import noop from 'lodash.noop'
-import isEqual from 'lodash.isequal'
+import { chunk, isDate, isEqual, map, noop, slice } from 'lodash'
 import classNames from 'classnames'
 
 import { Button } from 'components'
 import { initializeDateState } from '../utils'
-import { isLessThan, getWeekNumber, getDate } from 'utils/js/date'
+import { isLessThan, getWeekNumber, getDate, isEqualTo, getFirstDayOfWeek } from 'utils/js/date'
 import './calendar.scss'
 
 const DAYS_OF_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurdsay', 'Friday', 'Saturday']
@@ -30,6 +25,8 @@ export default class Calendar extends React.Component {
     this.updateMonth = this.updateMonth.bind(this)
     this.isSelectedStartDate = this.isSelectedStartDate.bind(this)
     this.isSelectedEndDate = this.isSelectedEndDate.bind(this)
+    this.isSelectedStartWeek = this.isSelectedStartWeek.bind(this)
+    this.isSelectedEndWeek = this.isSelectedEndWeek.bind(this)
     this.isInSelectedDatesRange = this.isInSelectedDatesRange.bind(this)
   }
 
@@ -115,11 +112,25 @@ export default class Calendar extends React.Component {
     return selectedEndDate && selectedEndDate.getMonth() === date.getMonth() && selectedEndDate.getDate() === date.getDate()
   }
 
+  isSelectedStartWeek (date) {
+    const { selectedDates } = this.state
+    const selectedStartDate = selectedDates[0]
+
+    return selectedStartDate && isEqualTo(getFirstDayOfWeek(selectedStartDate), getFirstDayOfWeek(date))
+  }
+
+  isSelectedEndWeek (date) {
+    const { selectedDates } = this.state
+    const selectedEndDate = selectedDates[1]
+
+    return selectedEndDate && isEqualTo(getFirstDayOfWeek(selectedEndDate), getFirstDayOfWeek(date))
+  }
+
   isInSelectedDatesRange (date) {
     const { selectedDates } = this.state
     const [ selectedStartDate, selectedEndDate ] = selectedDates
 
-    if (!(selectedStartDate instanceof Date && selectedEndDate instanceof Date)) return false
+    if (!isDate(selectedStartDate) || !isDate(selectedEndDate)) return false
 
     return isLessThan(selectedStartDate, date) && isLessThan(date, selectedEndDate)
   }
@@ -182,7 +193,10 @@ export default class Calendar extends React.Component {
           </div>
           {
             map(weeks, (week, k) => (
-              <div key={k} className="calendar-week">
+              <div key={k} className={classNames('calendar-week', {
+                'start-week': this.isSelectedStartWeek(week[0]),
+                'end-week': this.isSelectedEndWeek(week[0]),
+              })}>
                 {
                   showWeekNumbers && (
                     <div className="calendar-day calendar-week-number">
@@ -197,26 +211,31 @@ export default class Calendar extends React.Component {
                   )
                 }
                 {
-                  map(week, (day, kk) => (
-                    <div
-                      key={`${currentDate.getMonth()}${k}${kk}`}
-                      className={classNames('calendar-day', {
-                        'out-of-month': currentDate.getMonth() !== day.getMonth(),
-                        'start-date': this.isSelectedStartDate(day),
-                        'end-date': this.isSelectedEndDate(day),
-                        'in-range': this.isInSelectedDatesRange(day),
-                      })}
-                    >
-                      <div className="calendar-day-inner">
-                        <Button
-                          className="calendar-day-label"
-                          onClick={this.onDateClick(day)}
+                  map(week, (day, kk) => {
+                    return (
+                      (
+                        <div
+                          key={`${currentDate.getMonth()}${k}${kk}`}
+                          className={classNames('calendar-day', {
+                            'out-of-month': currentDate.getMonth() !== day.getMonth(),
+                            'start-date': this.isSelectedStartDate(day),
+                            'end-date': this.isSelectedEndDate(day),
+                            'in-range': this.isInSelectedDatesRange(day),
+                            'current-date': isEqualTo(new Date(), day),
+                          })}
                         >
-                          {day.getDate()}
-                        </Button>
-                      </div>
-                    </div>
-                  ))
+                          <div className="calendar-day-inner">
+                            <Button
+                              className="calendar-day-label"
+                              onClick={this.onDateClick(day)}
+                            >
+                              {day.getDate()}
+                            </Button>
+                          </div>
+                        </div>
+                      )
+                    )
+                  })
                 }
               </div>
             ))
@@ -239,7 +258,7 @@ Calendar.propTypes = {
 }
 
 Calendar.defaultProps = {
-  currentDate: now(),
+  currentDate: new Date(),
   onCurrentDateChange: noop,
   onChange: noop,
   showWeekNumbers: false,

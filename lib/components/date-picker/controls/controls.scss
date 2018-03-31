@@ -1,28 +1,33 @@
 @import '~styles/const/_palette.scss';
 
 .Controls {
-  .Button {
-    text-align: center;
-    margin-bottom: 10px;
-
-    &.primary {
-      background-color: $slate-600;
-      border-color: darken($slate-600, 10%);
-    }
-  }
-
   fieldset {
     display: block;
     border-top: 1px solid $grey-100;
     padding: 10px;
+    margin-bottom: 0;
 
     &:first-child {
       border-top: none;
     }
 
-    &.actions {
+    &.fieldset-presets {
+      padding: 0;
+    }
+
+    &.fieldset-actions {
       display: flex;
       flex-direction: column;
+
+      .Button {
+        text-align: center;
+        margin-bottom: 10px;
+
+        &.primary {
+          background-color: $slate-600;
+          border-color: darken($slate-600, 10%);
+        }
+      }
 
       & > * {
         margin: 5px 0;

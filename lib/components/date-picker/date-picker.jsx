@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import clickOutside from 'node/react-click-outside'
 import dateFormat from 'dateformat'
-import { assign, curry, merge, now , map, some } from 'lodash'
+import { assign, curry, merge, now , map, some, isArray, isFunction } from 'lodash'
 
 import { InputGroup, Icon, Dropdown, Paper } from 'components'
 import { Calendar } from './calendar'
 import { Controls } from './controls'
 import { Clock } from './clock'
 import { initializeDateState } from './utils'
-import { previousMonth, nextMonth, isLessThanOrEqualTo, isAM, isPM, isEqualTo, isEpochTime, getDate } from 'utils/js/date'
+import { previousMonth, nextMonth, isLessThanOrEqualTo, isAM, isPM, isEqualTo, isEpochTime, getDate, getTimestamp } from 'utils/js/date'
 import { EPOCH_TIME } from 'constants/date'
 import './date-picker.scss'
 
@@ -27,12 +27,24 @@ class DatePicker extends React.Component {
     this.generateCalendar = this.generateCalendar.bind(this)
     this.onCurrentDateChange = this.onCurrentDateChange.bind(this)
     this.onSelectedDateChange = this.onSelectedDateChange.bind(this)
+    this.onSelectedRangeChange = this.onSelectedRangeChange.bind(this)
     this.onSaveHandler = this.onSaveHandler.bind(this)
     this.onCancelHandler = this.onCancelHandler.bind(this)
     this.onStartDateHourChange = this.onStartDateHourChange.bind(this)
     this.onStartDateMinuteChange = this.onStartDateMinuteChange.bind(this)
     this.onStartDatePeriodChange = this.onStartDatePeriodChange.bind(this)
     this.onTimeChange = this.onTimeChange.bind(this)
+    this.setState = this.setState.bind(this)
+  }
+
+  setState (state, callback) {
+    super.setState((prevState) => {
+      const nextState = isFunction(state) ? state(prevState) : state
+
+      if (nextState.selectedDates && isArray(nextState.selectedDates)) nextState.selectedDates.sort((a, b) => getTimestamp(a) - getTimestamp(b))
+
+      return nextState
+    }, callback)
   }
 
   onCurrentDateChange (currentDate) {
@@ -46,7 +58,7 @@ class DatePicker extends React.Component {
     const newDate = getDate(date)
 
     this.setState(({ selectedDates: prevSelectedDates }) => {
-      if (!range) return { selectedDates: [newDate] }
+      if (!range) return { selectedDates: [newDate], isOpen: false }
 
       if (selectedDates.length < 2) {
         const selectedDates = Object.assign([], prevSelectedDates)
@@ -73,6 +85,12 @@ class DatePicker extends React.Component {
 
         return {selectedDates}
       }
+    })
+  }
+
+  onSelectedRangeChange(dates) {
+    this.setState({
+      selectedDates: dates,
     })
   }
 
@@ -157,10 +175,11 @@ class DatePicker extends React.Component {
   })
 
   generateCalendar () {
-    const { range, showWeekNumbers, time } = this.props
+    const { range, showWeekNumbers, showTime, timeIncrement, presets } = this.props
     const { currentDate, selectedDates } = this.state
 
     const sanitizedSelectedDates = map(selectedDates, date => !isEpochTime(date) ? date : undefined)
+    const computedCurrentDate = !isEpochTime(selectedDates[0]) ? selectedDates[0] : currentDate
 
     return (
       <div className="datepicker-container">
@@ -168,47 +187,52 @@ class DatePicker extends React.Component {
           !!range && (
             <Paper className="datepicker-box datepicker-box-controls">
               <Controls
-                date={sanitizedSelectedDates}
+                dates={sanitizedSelectedDates}
                 onSave={this.onSaveHandler}
                 onCancel={this.onCancelHandler}
+                onChange={this.onSelectedRangeChange}
+                presets={presets}
               />
             </Paper>
           )
         }
 
-        <Paper className="datepicker-box datepicker-box-calendar">
+        <Paper className="datepicker-box datepicker-box-calendar datepicker-box-calendar-prev">
           <Calendar
             className="calendar-prev-month"
-            currentDate={currentDate}
+            currentDate={computedCurrentDate}
             date={sanitizedSelectedDates}
             range={range}
             onCurrentDateChange={this.onCurrentDateChange}
             onChange={this.onSelectedDateChange}
+            showWeekNumbers={showWeekNumbers}
           />
-          {time && (
+          {showTime && (
             <Clock
               onChange={this.onTimeChange(0)}
               time={selectedDates[0]}
+              timeIncrement={timeIncrement}
             />
           )}
         </Paper>
 
         {
           !!range && (
-            <Paper className="datepicker-box datepicker-box-calendar">
+            <Paper className="datepicker-box datepicker-box-calendar datepicker-box-calendar-next">
               <Calendar
                 className="calendar-next-month"
-                currentDate={nextMonth(currentDate)}
+                currentDate={nextMonth(computedCurrentDate)}
                 date={sanitizedSelectedDates}
                 range={range}
                 onCurrentDateChange={currentDate => this.onCurrentDateChange(previousMonth(currentDate))}
                 onChange={this.onSelectedDateChange}
                 showWeekNumbers={showWeekNumbers}
               />
-              {time && (
+              {showTime && (
                 <Clock
                   onChange={this.onTimeChange(1)}
                   time={selectedDates[1]}
+                  timeIncrement={timeIncrement}
                 />
               )}
             </Paper>
@@ -253,7 +277,9 @@ DatePicker.propTypes = {
   currentDate: PropTypes.instanceOf(Date),
   position: PropTypes.oneOf(['left', 'right']),
   showWeekNumbers: PropTypes.bool,
-  time: PropTypes.bool,
+  showTime: PropTypes.bool,
+  timeIncrement: PropTypes.number,
+  presets: PropTypes.bool,
 }
 
 DatePicker.defaultProps = {
@@ -261,7 +287,7 @@ DatePicker.defaultProps = {
   currentDate: now(),
   position: 'left',
   showWeekNumbers: false,
-  time: true,
+  showTime: false,
 }
 
 export default clickOutside(DatePicker)

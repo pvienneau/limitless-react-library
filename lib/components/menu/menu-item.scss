@@ -1,5 +1,12 @@
 @import '~styles/const/_palette.scss';
 
+%selected-button {
+  &, &:hover {
+    background-color: $primary;
+    color: $white;
+  }
+}
+
 .MenuItem {
   display: block;
   width: 100%;
@@ -12,8 +19,18 @@
     width: 100%;
   }
 
-  .Button:hover:not(.disabled) {
-    background-color: #f5f5f5;
+  .Button {
+    &:hover:not(.disabled) {
+      background-color: #f5f5f5;
+
+      &.primary {
+        @extend %selected-button;
+      }
+    }
+
+    &.primary {
+      @extend %selected-button;
+    }
   }
 
   .menu-item-content {
@@ -44,9 +61,6 @@
   }
 
   & > .Dropdown.dropdown-open > .dropdown-button {
-    &, &:hover {
-      background-color: $primary;
-      color: $white;
-    }
+    @extend %selected-button;
   }
 }

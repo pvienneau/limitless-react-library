@@ -23,8 +23,8 @@ export default class DatePickers extends React.Component {
                 label="Show calendars on left:"
                 name="default_date"
                 className="flex-grow"
-                range
                 position="right"
+                range
               />
             </div>
 
@@ -43,8 +43,8 @@ export default class DatePickers extends React.Component {
                 label="Display date dropdowns:"
                 name="default_date"
                 className="flex-grow"
-                range
                 position="right"
+                range
               />
             </div>
 
@@ -55,15 +55,18 @@ export default class DatePickers extends React.Component {
                 name="default_date"
                 className="flex-grow"
                 range
+                showTime
               />
 
               <FormGroup
                 type="date"
-                label="Time minute increments:"
+                label="Ten minute increments:"
                 name="default_date"
                 className="flex-grow"
-                range
                 position="right"
+                timeIncrement={10}
+                showTime
+                range
               />
             </div>
 
@@ -94,8 +97,9 @@ export default class DatePickers extends React.Component {
                 label="Pre-defined ranges & callback:"
                 name="default_date"
                 className="flex-grow"
-                range
                 position="right"
+                range
+                presets
               />
             </div>
 

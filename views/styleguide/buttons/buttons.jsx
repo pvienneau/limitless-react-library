@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { Button, Panel, Container, DropdownMenu } from 'components';
-import './buttons.scss';
+import { Button, Panel, Container, DropdownMenu } from 'components'
+import './buttons.scss'
 
 const ITEMS = [
   {
@@ -16,7 +16,7 @@ const ITEMS = [
 ]
 
 export default class Buttons extends React.Component {
-  render() {
+  render () {
     return (
       <Container className="Buttons">
         <h1>Buttons Styleguide</h1>
@@ -221,7 +221,7 @@ export default class Buttons extends React.Component {
               danger
               flat
             >
-              Flat button
+              Transparent button
             </Button>
           </Panel>
 
@@ -507,6 +507,6 @@ export default class Buttons extends React.Component {
           </div>
         </section>
       </Container>
-    );
+    )
   }
 }

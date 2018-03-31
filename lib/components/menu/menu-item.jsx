@@ -28,6 +28,8 @@ export default class MenuItem extends React.Component {
       ButtonElement = DropdownMenu
       computedProps.items = items
       computedProps.position = 'right'
+    } else {
+      computedProps.primary = active
     }
 
     return (
@@ -42,8 +44,8 @@ export default class MenuItem extends React.Component {
             <ButtonElement
               {...props}
               {...computedProps}
-              fill={false}
               items={items}
+              fill={false}
             >
               <span className="menu-item-content">
                 <span className="menu-item-label">
@@ -68,4 +70,9 @@ export default class MenuItem extends React.Component {
 MenuItem.propTypes = {
   label: PropTypes.string,
   className: PropTypes.string,
+  active: PropTypes.bool,
+}
+
+MenuItem.defaultProps = {
+  active: false,
 }
