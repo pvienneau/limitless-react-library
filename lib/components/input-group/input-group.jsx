@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
-import { Input } from 'components';
-import './input-group.scss';
+import { Input } from 'components'
+import './input-group.scss'
 
 export default class InputGroup extends React.Component {
-  render() {
-    const { className, addons: { left: addonLeft, right: addonRight }, ...props } = this.props;
+  render () {
+    const { className, addons: { left: addonLeft, right: addonRight }, ...props } = this.props
 
     return (
       <div className={classNames('InputGroup', className)}>
@@ -33,7 +33,7 @@ export default class InputGroup extends React.Component {
           }
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -49,9 +49,9 @@ InputGroup.propTypes = {
       PropTypes.string,
       PropTypes.number,
     ]),
-  })
+  }),
 }
 
 InputGroup.defaultProps = {
-  addons: {}
+  addons: {},
 }

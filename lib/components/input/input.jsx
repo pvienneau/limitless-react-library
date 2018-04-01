@@ -19,6 +19,7 @@ export default class Input extends React.Component {
             disabled,
             readOnly,
           })}
+          readOnly={readOnly}
         />
       </div>
     )

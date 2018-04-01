@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import clickOutside from 'node/react-click-outside'
 import dateFormat from 'dateformat'
-import { assign, curry, merge, now , map, some, isArray, isFunction } from 'lodash'
+import { assign, curry, merge, now , map, some, isArray, isFunction, chain, reject } from 'lodash'
 
 import { InputGroup, Icon, Dropdown, Paper } from 'components'
 import { Calendar } from './calendar'
@@ -18,9 +18,12 @@ class DatePicker extends React.Component {
   constructor (props) {
     super(props)
 
+    const dateState = initializeDateState(props)
+
     this.state = {
+      ...dateState,
       isOpen: false,
-      ...initializeDateState(props),
+      savedDates: dateState.selectedDates,
     }
 
     this.onFocusHandler = this.onFocusHandler.bind(this)
@@ -34,6 +37,7 @@ class DatePicker extends React.Component {
     this.onStartDateMinuteChange = this.onStartDateMinuteChange.bind(this)
     this.onStartDatePeriodChange = this.onStartDatePeriodChange.bind(this)
     this.onTimeChange = this.onTimeChange.bind(this)
+    this.getValue = this.getValue.bind(this)
     this.setState = this.setState.bind(this)
   }
 
@@ -95,15 +99,17 @@ class DatePicker extends React.Component {
   }
 
   onSaveHandler () {
-    this.setState({
+    this.setState(({ selectedDates }) => ({
       isOpen: false,
-    })
+      savedDates: selectedDates,
+    }))
   }
 
   onCancelHandler () {
-    this.setState({
+    this.setState(({ savedDates }) => ({
       isOpen: false,
-    })
+      selectedDates: savedDates,
+    }))
   }
 
   handleClickOutside () {
@@ -192,6 +198,7 @@ class DatePicker extends React.Component {
                 onCancel={this.onCancelHandler}
                 onChange={this.onSelectedRangeChange}
                 presets={presets}
+                showTime={showTime}
               />
             </Paper>
           )
@@ -242,6 +249,18 @@ class DatePicker extends React.Component {
     )
   }
 
+  getValue () {
+    const { savedDates } = this.state
+
+    const dates = reject(savedDates, isEpochTime)
+
+    if (dates.length < 2) return ''
+
+    return chain(dates)
+      .map(date => dateFormat(date, 'mmmm dS, yyyy'))
+      .join(' - ')
+  }
+
   render () {
     const { className, position } = this.props
     const { isOpen } = this.state
@@ -261,6 +280,8 @@ class DatePicker extends React.Component {
           <InputGroup
             addons={{[position]: <Icon>calendar22</Icon>}}
             onFocus={this.onFocusHandler}
+            value={this.getValue()}
+            readOnly
           />
         </Dropdown>
       </div>

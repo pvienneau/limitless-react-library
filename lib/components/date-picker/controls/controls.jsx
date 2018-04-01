@@ -103,8 +103,9 @@ export default class Controls extends React.Component {
   }
 
   render () {
-    const { className, dates, presets, onChange, onSave } = this.props
+    const { className, dates, presets, onChange, onSave, showTime } = this.props
 
+    const selectedDateFormat = `yyyy/mm/dd ${showTime ? 'h:MM TT' : ''}`
     const computedPresets = PRESETS.map(preset => {
       const selectedDatesTimestamps = chain(dates).map(getDate).map(getTimestamp).value()
       const presetDatesTimestamps = chain(preset.callback()).map(getDate).map(getTimestamp).value()
@@ -144,7 +145,7 @@ export default class Controls extends React.Component {
                   right: <Icon>calendar</Icon>,
                 }}
                 readOnly
-                value={dates[0] && dateFormat(dates[0], 'yyyy/mm/dd h:MM TT')}
+                value={dates[0] && dateFormat(dates[0], selectedDateFormat)}
               />
 
               <FormGroup
@@ -155,7 +156,7 @@ export default class Controls extends React.Component {
                   right: <Icon>calendar</Icon>,
                 }}
                 readOnly
-                value={dates[1] && dateFormat(dates[1], 'yyyy/mm/dd h:MM TT')}
+                value={dates[1] && dateFormat(dates[1], selectedDateFormat)}
               />
             </fieldset>
           )
@@ -190,6 +191,7 @@ Controls.propTypes = {
   onCancel: PropTypes.func,
   onChange: PropTypes.func,
   presets: PropTypes.bool,
+  showTime: PropTypes.bool,
 }
 
 Controls.defaultProps = {
@@ -197,4 +199,5 @@ Controls.defaultProps = {
   onCancel: noop,
   onChange: noop,
   presets: false,
+  showTime: false,
 }
