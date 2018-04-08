@@ -54,6 +54,10 @@
         padding-left: 30px;
         width: 100%;
 
+        &.current {
+          background-color: rgba($black, 0.125);
+        }
+
         &:hover {
           background-color: rgba($black, 0.15);
           color: $white;

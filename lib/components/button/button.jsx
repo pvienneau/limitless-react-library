@@ -114,17 +114,17 @@ export default class Button extends React.Component {
                 'full-width': fullWidth,
               })}
             >
-                <div className="inner">
+                <span className="inner">
                     {
                       icon && <Icon className="button-icon">{icon}</Icon>
                     }
                     {
-                      children && <label className="label">{children}</label>
+                      children && <span className="label">{children}</span>
                     }
                     {
                       !isUndefined(badge) && <Badge className="button-badge">{badge}</Badge>
                     }
-                </div>
+                </span>
             </Element>
         );
     }
