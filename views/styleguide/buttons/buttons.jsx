@@ -5,13 +5,21 @@ import './buttons.scss'
 
 const ITEMS = [
   {
-    label: 'Item 1',
+    label: 'Action',
+    icon: 'menu7',
   },
   {
-    label: 'Item 2',
+    label: 'Another action',
+    icon: 'screen-full',
   },
   {
-    label: 'Item 3',
+    label: 'One more action',
+    icon: 'mail5',
+  },
+  {
+    label: 'Separated line',
+    divider: true,
+    icon: 'cog',
   },
 ]
 

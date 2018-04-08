@@ -156,7 +156,9 @@ class DropdownMenu extends React.Component {
         <Button
           {...props}
           onClick={this.onClickHandler}
-          className={classNames('dropdown-button', `dropdown-button-position-${position}`)}
+          className={classNames('dropdown-button', `dropdown-button-position-${position}`, {
+            active: isOpen,
+          })}
           fullWidth
         >
           <span className="dropdown-button-content">
@@ -177,7 +179,7 @@ DropdownMenu.propTypes = {
 }
 
 DropdownMenu.defaultProps = {
-  position: false,
+  position: 'bottom',
   onSelect: noop,
   onToggle: noop,
   onClick: noop,

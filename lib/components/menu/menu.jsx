@@ -1,5 +1,4 @@
 import React from 'react'
-
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import isEmpty from 'lodash.isempty'
@@ -7,7 +6,6 @@ import noop from 'lodash.noop'
 
 import { hash } from 'utils/js'
 import MenuItem from './menu-item'
-import { Paper } from 'components'
 import './menu.scss'
 
 export default class Menu extends React.Component {
@@ -19,14 +17,16 @@ export default class Menu extends React.Component {
   }
 
   onClickHandler (item) {
-    const { onClick } = this.props
-    const { to } = item
+    const { onClick: propOnClick } = this.props
+    const { to, onClick: itemOnClick, items } = item
+
+    const hasSubItems = !isEmpty(items)
 
     return function (e) {
       !to && e.preventDefault()
 
-      item.onClick && item.onClick(e, item)
-      onClick && onClick(e, item)
+      itemOnClick && itemOnClick(e, item)
+      !hasSubItems && propOnClick && propOnClick(e, item)
     }
   }
 

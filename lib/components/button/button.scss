@@ -80,30 +80,26 @@ $padding: $padding-vertical $padding-horizontal;
   // SIZE
 
   &.xlarge {
-    padding: 10px 16px;
+    padding: 0px 16px;
     font-size: 14px;
-    line-height: 1.4285715;
     border-radius: 3px;
   }
 
   &.large {
-    padding: 9px 15px;
+    padding: 0px 15px;
     font-size: 14px;
-    line-height: 1.4285715;
     border-radius: 3px;
   }
 
   &.small {
-    padding: 6px 11px;
+    padding: 0px 11px;
     font-size: 12px;
-    line-height: 1.6666667;
     border-radius: 2px;
   }
 
   &.mini {
-    padding: 5px 10px;
+    padding: 0px 10px;
     font-size: 12px;
-    line-height: 1.6666667;
     border-radius: 2px;
   }
 
@@ -196,11 +192,16 @@ $padding: $padding-vertical $padding-horizontal;
   }
 
   &.labeled {
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
 
     .inner {
-      & > .Icon, & > .label {
+      & > .Icon {
         padding: $padding;
+      }
+
+      & > .label {
+        padding: 0 $padding-horizontal;
       }
     }
 

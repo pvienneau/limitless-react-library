@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { Menu, Panel, Container, Badge, Tag, Icon, Toggle, Checkbox, Radio } from 'components';
-import './menus.scss';
+import { Menu, Panel, Container, Badge, Tag, Icon, Toggle, Checkbox, Radio } from 'components'
+import './menus.scss'
 
 export default () => (
   <Container className="Menus">
@@ -29,7 +29,7 @@ export default () => (
                 {
                   divider: true,
                 },
-                'One more separated line'
+                'One more separated line',
               ]}
             />
           </Panel>
@@ -56,7 +56,7 @@ export default () => (
                 {
                   divider: true,
                 },
-                'One more separated line'
+                'One more separated line',
               ]}
             />
           </Panel>
@@ -79,11 +79,11 @@ export default () => (
                   label: 'Active item',
                   active: true,
                 },
-                'Something else here',,
+                'Something else here',
                 {
                   divider: true,
                 },
-                'One more separated line'
+                'One more separated line',
               ]}
             />
           </Panel>
@@ -118,7 +118,7 @@ export default () => (
                   header: true,
                 },
                 'Something else here',
-                'One more line'
+                'One more line',
               ]}
             />
           </Panel>
@@ -149,7 +149,7 @@ export default () => (
                   highlight: true,
                 },
                 'Something else here',
-                'One more line'
+                'One more line',
               ]}
             />
           </Panel>
@@ -327,12 +327,12 @@ export default () => (
                 {
                   label: 'Action',
                   icon: 'menu',
-                  children: (<Tag primary>Added</Tag>)
+                  children: (<Tag primary>Added</Tag>),
                 },
                 {
                   label: 'Another action',
                   icon: 'folder',
-                  children: (<Badge danger>98</Badge>)
+                  children: (<Badge danger>98</Badge>),
                 },
                 {
                   label: 'Something else here',
@@ -383,12 +383,12 @@ export default () => (
                 {
                   label: 'Action',
                   icon: 'menu',
-                  children: (<Tag primary>Added</Tag>)
+                  children: (<Tag primary>Added</Tag>),
                 },
                 {
                   label: 'Another action',
                   icon: 'folder',
-                  children: (<Badge danger>98</Badge>)
+                  children: (<Badge danger>98</Badge>),
                 },
                 {
                   label: 'Something else here',
@@ -439,12 +439,12 @@ export default () => (
                 {
                   label: 'Action',
                   icon: 'menu',
-                  children: (<Tag primary>Added</Tag>)
+                  children: (<Tag primary>Added</Tag>),
                 },
                 {
                   label: 'Another action',
                   icon: 'folder',
-                  children: (<Badge danger>98</Badge>)
+                  children: (<Badge danger>98</Badge>),
                 },
                 {
                   label: 'Something else here',
@@ -502,15 +502,15 @@ export default () => (
               items={[
                 {
                   label: 'Action',
-                  icon: 'menu'
+                  icon: 'menu',
                 },
                 {
                   label: 'Another action',
-                  icon: 'folder'
+                  icon: 'folder',
                 },
                 {
                   label: 'Something else here',
-                  icon: 'newspaper'
+                  icon: 'newspaper',
                 },
                 {
                   label: 'One more separated line',
@@ -533,15 +533,15 @@ export default () => (
               items={[
                 {
                   label: 'Action',
-                  icon: 'move-up'
+                  icon: 'move-up',
                 },
                 {
                   label: 'Another action',
-                  icon: 'move-down'
+                  icon: 'move-down',
                 },
                 {
                   label: 'Something else here',
-                  icon: 'make-group'
+                  icon: 'make-group',
                 },
                 {
                   label: 'One more separated line',
@@ -564,20 +564,20 @@ export default () => (
               items={[
                 {
                   label: 'Find',
-                  children: <span className="flex"><Icon>command</Icon>F</span>
+                  children: <span className="flex"><Icon>command</Icon>F</span>,
                 },
                 {
                   label: 'Find next',
-                  children: <span className="flex"><Icon>command</Icon>G</span>
+                  children: <span className="flex"><Icon>command</Icon>G</span>,
                 },
                 {
                   label: 'Find previous',
-                  children: <span className="flex"><Icon>shift</Icon><Icon>command</Icon>G</span>
+                  children: <span className="flex"><Icon>shift</Icon><Icon>command</Icon>G</span>,
                 },
                 {
                   label: 'Incremental find',
                   divider: true,
-                  children: <span className="flex"><Icon>command</Icon>I</span>
+                  children: <span className="flex"><Icon>command</Icon>I</span>,
                 },
               ]}
             />
@@ -597,20 +597,20 @@ export default () => (
               items={[
                 {
                   label: 'Action',
-                  children: <Tag primary>Added</Tag>
+                  children: <Tag primary>Added</Tag>,
                 },
                 {
                   label: 'Another action',
-                  children: <Tag danger>Bugs</Tag>
+                  children: <Tag danger>Bugs</Tag>,
                 },
                 {
                   label: 'Something else here',
-                  children: <Tag success>Done</Tag>
+                  children: <Tag success>Done</Tag>,
                 },
                 {
                   label: 'One more separated line',
                   divider: true,
-                  children: <Tag info>New</Tag>
+                  children: <Tag info>New</Tag>,
                 },
               ]}
             />
@@ -628,20 +628,20 @@ export default () => (
               items={[
                 {
                   label: 'Action',
-                  children: <Badge primary>65</Badge>
+                  children: <Badge primary>65</Badge>,
                 },
                 {
                   label: 'Another action',
-                  children: <Badge danger>23</Badge>
+                  children: <Badge danger>23</Badge>,
                 },
                 {
                   label: 'Something else here',
-                  children: <Badge success>83</Badge>
+                  children: <Badge success>83</Badge>,
                 },
                 {
                   label: 'One more separated line',
                   divider: true,
-                  children: <Badge info>98</Badge>
+                  children: <Badge info>98</Badge>,
                 },
               ]}
             />
@@ -665,20 +665,20 @@ export default () => (
               items={[
                 {
                   label: 'Some action',
-                  children: <Checkbox />
+                  children: <Checkbox />,
                 },
                 {
                   label: 'Selected action',
-                  children: <Checkbox checked />
+                  children: <Checkbox checked />,
                 },
                 {
                   label: 'Disabled action',
                   divider: true,
-                  children: <Checkbox disabled />
+                  children: <Checkbox disabled />,
                 },
                 {
                   label: 'Another action',
-                  children: <Checkbox checked />
+                  children: <Checkbox checked />,
                 },
               ]}
             />
@@ -696,20 +696,20 @@ export default () => (
               items={[
                 {
                   label: 'Some action',
-                  children: <Radio />
+                  children: <Radio />,
                 },
                 {
                   label: 'Selected action',
-                  children: <Radio checked />
+                  children: <Radio checked />,
                 },
                 {
                   label: 'Disabled action',
                   divider: true,
-                  children: <Radio disabled />
+                  children: <Radio disabled />,
                 },
                 {
                   label: 'Another action',
-                  children: <Radio checked />
+                  children: <Radio checked />,
                 },
               ]}
             />
@@ -727,20 +727,20 @@ export default () => (
               items={[
                 {
                   label: 'Some action',
-                  children: <Toggle mini />
+                  children: <Toggle mini />,
                 },
                 {
                   label: 'Selected action',
-                  children: <Toggle mini checked />
+                  children: <Toggle mini checked />,
                 },
                 {
                   label: 'Disabled action',
                   divider: true,
-                  children: <Toggle mini disabled />
+                  children: <Toggle mini disabled />,
                 },
                 {
                   label: 'Another action',
-                  children: <Toggle mini checked />
+                  children: <Toggle mini checked />,
                 },
               ]}
             />
