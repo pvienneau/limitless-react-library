@@ -28,7 +28,7 @@ export default class Tab extends Component {
   }
 
   buildTabHeaders () {
-    const { items } = this.props
+    const { items, render, rounded, highlight, justified, ...props } = this.props
     const { activeTabIndex } = this.state
 
     return map(items, ({ label, items }, index) => {
@@ -50,6 +50,7 @@ export default class Tab extends Component {
       return (
         <Element
           key={index}
+          {...props}
           {...computedProps}
           className={classNames('tab-header-item', {
             'tab-header-item-active': activeTabIndex[0] === index,
