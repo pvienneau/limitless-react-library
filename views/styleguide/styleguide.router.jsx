@@ -1,9 +1,20 @@
 import React from 'react'
 
-import { Switch, Redirect } from 'react-router'
-
 import { Route } from 'utils/react-router'
-import { Buttons, Dropdowns, Palette, Icons, Inputs, Panels, Checkboxes, Menus, DatePickers, InputGroups, Selects } from './'
+import {
+  Buttons,
+  Dropdowns,
+  Palette,
+  Icons,
+  Inputs,
+  Panels,
+  Checkboxes,
+  Menus,
+  DatePickers,
+  InputGroups,
+  Selects,
+  Tabs,
+} from './'
 
 export default class StyleguideRouter extends React.Component {
   render () {
@@ -16,6 +27,7 @@ export default class StyleguideRouter extends React.Component {
           <Route path="panels" component={Panels} />
           <Route path="icons" component={Icons} />
           <Route path="menus" component={Menus} />
+          <Route path="tabs" component={Tabs} />
           <Route path="form/inputs" component={Inputs} />
           <Route path="form/checkboxes" component={Checkboxes} />
           <Route path="form/input-groups" component={InputGroups} />

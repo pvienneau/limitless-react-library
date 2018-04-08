@@ -1,0 +1,81 @@
+@import '~styles/const/_palette.scss';
+
+$TAB-HEADER-BUTTONS: "
+  &.Button,
+  &.DropdownMenu > .dropdown-button
+";
+
+.Tab {
+  .tab-header {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #ddd;
+
+    .tab-header-item {
+      position: relative;
+      bottom: -1px;
+      z-index: 1;
+
+      #{$TAB-HEADER-BUTTONS} {
+        padding-left: 15px;
+        padding-right: 15px;
+        border: 1px solid transparent;
+        background-color: transparent;
+        transition: none;
+        color: #888;
+        text-align: center;
+
+        &:hover {
+          color: inherit;
+        }
+      }
+
+      &.tab-header-item-active {
+        #{$TAB-HEADER-BUTTONS} {
+          border-color: #ddd;
+          border-bottom-color: transparent;
+          background-color: #fff;
+          color: inherit;
+        }
+      }
+    }
+
+    &:not(.rounded) {
+      .tab-header-item {
+        #{$TAB-HEADER-BUTTONS} {
+          border-radius: 0;
+        }
+      }
+    }
+
+    &.justified {
+      .tab-header-item {
+        flex-grow: 1;
+        flex-basis: 0;
+      }
+    }
+
+    &.highlight {
+      .tab-header-item.tab-header-item-active {
+        #{$TAB-HEADER-BUTTONS} {
+          border-top: 2px solid $primary-500;
+        }
+      }
+    }
+  }
+
+  .tab-body {
+    padding: 20px 0 10px;
+  }
+
+  .DropdownMenu {
+    .dropdown-body {
+      transform: translateY(calc(100% - 1px));
+
+      > .Paper {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+  }
+}
