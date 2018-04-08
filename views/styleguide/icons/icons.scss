@@ -15,25 +15,37 @@
       width: 150px;
       margin: 0 5px 15px;
 
-      .icon-display {
-        display: block;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      .card-body {
+        transition: background-color 250ms ease-in-out;
 
-        .Icon {
-          font-size: 32px;
-          color: $white;
-          transition: transform ease-in-out 250ms;
+        .icon-display {
+          display: block;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .Icon {
+            font-size: 32px;
+            color: $white;
+            transition: transform ease-in-out 250ms;
+
+            &:hover {
+              transform: scale(1.5);
+            }
+          }
         }
       }
 
       &:hover {
-        .icon-display {
-          .Icon {
-            transform: scale(1.5);
+        .card-body {
+          background-color: darken(#37474f, 5);
+
+          .icon-display {
+            .Icon {
+              transform: scale(1.5);
+            }
           }
         }
       }
