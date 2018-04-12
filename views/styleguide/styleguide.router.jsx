@@ -14,6 +14,7 @@ import {
   InputGroups,
   Selects,
   Tabs,
+  Popups,
 } from './'
 
 export default class StyleguideRouter extends React.Component {
@@ -28,6 +29,7 @@ export default class StyleguideRouter extends React.Component {
           <Route path="icons" component={Icons} />
           <Route path="menus" component={Menus} />
           <Route path="tabs" component={Tabs} />
+          <Route path="popups" component={Popups} />
           <Route path="form/inputs" component={Inputs} />
           <Route path="form/checkboxes" component={Checkboxes} />
           <Route path="form/input-groups" component={InputGroups} />

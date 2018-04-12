@@ -1,0 +1,80 @@
+@import '~styles/const/_palette.scss';
+@import '~styles/scss/_font-weight.scss';
+
+.Popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+
+  &.modal:not(.no-backdrop) {
+    background-color: rgba($black, 0.5);
+  }
+
+  .popup-container {
+    max-width: 600px;
+    width: 100%;
+    margin: 50px auto 25px;
+    max-height: 600px;
+    height: auto;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+
+    @media (max-width: 620px) {
+      max-width: none;
+      margin: 0 10px;
+    }
+
+    .popup-header {
+      display: flex;
+      align-items: center;
+      margin: 0 -5px;
+      padding-bottom: 20px;
+
+      > * {
+        margin: 0px 5px;
+      }
+
+      .Icon {
+        font-size: 18px;
+      }
+
+      .title {
+        flex-grow: 1;
+        margin: 0;
+        font-size: 17px;
+        font-weight: $font-regular;
+      }
+
+      .Button {
+        color: #666;
+
+        &.button-close {
+          padding-left: 0;
+          padding-right: 0;
+
+          .button-icon {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .popup-body {
+      overflow-y: auto;
+    }
+
+    .popup-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 -5px;
+      padding-top: 20px;
+
+      > * {
+        margin: 0 5px;
+      }
+    }
+  }
+}
