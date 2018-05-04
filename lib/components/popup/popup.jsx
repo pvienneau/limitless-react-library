@@ -10,60 +10,65 @@ const Popup = ({
   className,
   children,
   title,
-  modal,
   noBackdrop,
   icon,
   close,
-}) => (
-  <div className={classNames('Popup', className, {
-    modal,
-    noBackdrop,
-  })}>
-    <Paper className="popup-container">
-      <div className="popup-header">
-        {
-          icon && (
-            <Icon>
-              {icon}
-            </Icon>
-          )
-        }
-        {
-          title && (
-            <h5 className="title">
-              {title}
-            </h5>
-          )
-        }
-        <Button
-          className="button-close"
-          fill={false}
-          icon="cross2"
-          onClick={close}
-        />
+}) => {
+  const modalClickHandler = noBackdrop ? noop : close
+
+  return (
+    (
+      <div
+        className={classNames('Popup', className, {
+          backdrop: !noBackdrop,
+        })}
+        onClick={modalClickHandler}
+      >
+        <Paper className="popup-inner">
+          <div className="popup-header">
+            {
+              icon && (
+                <Icon>
+                  {icon}
+                </Icon>
+              )
+            }
+            {
+              title && (
+                <h5 className="title">
+                  {title}
+                </h5>
+              )
+            }
+            <Button
+              className="button-close"
+              fill={false}
+              icon="cross2"
+              onClick={close}
+            />
+          </div>
+          <div className="popup-body">
+            {children}
+          </div>
+          <div className="popup-footer">
+            <Button fill={false} onClick={close}>Close</Button>
+            <Button primary onClick={close}>Save changes</Button>
+          </div>
+        </Paper>
       </div>
-      <div className="popup-body">
-        {children}
-      </div>
-      <div className="popup-footer">
-        <Button fill={false} onClick={close}>Close</Button>
-        <Button primary onClick={close}>Save changes</Button>
-      </div>
-    </Paper>
-  </div>
-)
+    )
+  )
+}
 
 Popup.propTypes = {
   icon: PropTypes.string,
   title: PropTypes.string,
-  modal: PropTypes.bool,
   noBackdrop: PropTypes.bool,
   children: PropTypes.node,
   close: PropTypes.func,
 }
 
 Popup.defaultProps = {
-  modal: true,
   noBackdrop: false,
   close: noop,
 }

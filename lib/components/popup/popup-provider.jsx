@@ -18,8 +18,6 @@ export default class PopupProvider extends Component {
   }
 
   handleOpen (popup) {
-    console.warn('handleOpen')
-
     this.setState({
       popup,
     })

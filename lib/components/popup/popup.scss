@@ -7,16 +7,19 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1000;
 
-  &.modal:not(.no-backdrop) {
+  &.backdrop {
     background-color: rgba($black, 0.5);
   }
 
-  .popup-container {
+  .popup-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
     max-width: 600px;
     width: 100%;
-    margin: 50px auto 25px;
     max-height: 600px;
     height: auto;
     padding: 20px;

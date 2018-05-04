@@ -22,6 +22,11 @@
 
   .panel-body {
     padding: 15px;
+
+    > table {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
   }
 
   @each $class, $color in $THEMES {
