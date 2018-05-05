@@ -1,0 +1,115 @@
+@import '~styles/const/_palette.scss';
+
+.Alert {
+  display: block;
+  height: 52px;
+  width: 100%;
+
+  .alert-container {
+    display: flex;
+    align-items: center;
+    height: inherit;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid transparent;
+
+    &::before {
+      height: 100%;
+      width: 44px;
+    }
+
+    &, &.primary {
+      $background-color: #e3f2fd;
+      $foreground-color: #104d92;
+
+      background-color: $background-color;
+      color: $foreground-color;
+
+      &.bordered:not(.solid) {
+        border-color: darken($background-color, 20%);
+      }
+
+      &.solid {
+        background-color: $primary-500;
+      }
+    }
+
+    &.warning {
+      $background-color: #fff3e0;
+      $foreground-color: #aa3510;
+
+      background-color: $background-color;
+      color: $foreground-color;
+
+      &.bordered:not(.solid) {
+        border-color: darken($background-color, 20%);
+      }
+
+      &.solid {
+        background-color: $warning-500;
+      }
+    }
+
+    &.info {
+      $background-color: #e0f7fa;
+      $foreground-color: #00545c;
+
+      background-color: $background-color;
+      color: $foreground-color;
+
+      &.bordered:not(.solid) {
+        border-color: darken($background-color, 20%);
+      }
+
+      &.solid {
+        background-color: $info-500;
+      }
+    }
+
+    &.success {
+      $background-color: #e8f5e9;
+      $foreground-color: #205823;
+
+      background-color: $background-color;
+      color: $foreground-color;
+
+      &.bordered:not(.solid) {
+        border-color: darken($background-color, 20%);
+      }
+
+      &.solid {
+        background-color: $success-500;
+      }
+    }
+
+    &.danger {
+      $background-color: #fbe9e7;
+      $foreground-color: #9c1f1f;
+
+      background-color: $background-color;
+      color: $foreground-color;
+
+      &.bordered:not(.solid) {
+        border-color: darken($background-color, 20%);
+      }
+
+      &.solid {
+        background-color: $danger-500;
+      }
+    }
+
+    &.solid {
+      color: #fff;
+    }
+
+    .alert-content {
+      flex-grow: 1;
+      flex-basis: 0;
+      padding: 0 10px;
+    }
+
+    .Button {
+      color: inherit;
+    }
+  }
+}

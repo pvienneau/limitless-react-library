@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Route } from 'utils/react-router'
 import {
+  Alerts,
   Buttons,
   Dropdowns,
   Palette,
@@ -22,6 +23,7 @@ export default class StyleguideRouter extends React.Component {
     return (
       <Route path="styleguide">
         <div>
+          <Route path="alerts" component={Alerts} />
           <Route path="buttons" component={Buttons} />
           <Route path="dropdowns" component={Dropdowns} />
           <Route path="palette" component={Palette} />
