@@ -8,6 +8,7 @@
   .alert-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: inherit;
     width: 100%;
     border-radius: 3px;
@@ -21,85 +22,106 @@
     &, &.primary {
       $background-color: #e3f2fd;
       $foreground-color: #104d92;
+      $border-color: darken($background-color, 45%);
 
       background-color: $background-color;
       color: $foreground-color;
 
       &.bordered:not(.solid) {
-        border-color: darken($background-color, 20%);
+        border-color: $border-color;
       }
 
       &.solid {
         background-color: $primary-500;
+      }
+
+      .icon-left {
+        background-color: $border-color;
       }
     }
 
     &.warning {
       $background-color: #fff3e0;
       $foreground-color: #aa3510;
+      $border-color: darken($background-color, 45%);
 
       background-color: $background-color;
       color: $foreground-color;
 
       &.bordered:not(.solid) {
-        border-color: darken($background-color, 20%);
+        border-color: $border-color;
       }
 
       &.solid {
         background-color: $warning-500;
+      }
+
+      .icon-left {
+        background-color: $border-color;
       }
     }
 
     &.info {
       $background-color: #e0f7fa;
       $foreground-color: #00545c;
+      $border-color: darken($background-color, 45%);
 
       background-color: $background-color;
       color: $foreground-color;
 
       &.bordered:not(.solid) {
-        border-color: darken($background-color, 20%);
+        border-color: $border-color;
       }
 
       &.solid {
         background-color: $info-500;
+      }
+
+      .icon-left {
+        background-color: $border-color;
       }
     }
 
     &.success {
       $background-color: #e8f5e9;
       $foreground-color: #205823;
+      $border-color: darken($background-color, 45%);
 
       background-color: $background-color;
       color: $foreground-color;
 
       &.bordered:not(.solid) {
-        border-color: darken($background-color, 20%);
+        border-color: $border-color;
       }
 
       &.solid {
         background-color: $success-500;
+      }
+
+      .icon-left {
+        background-color: $border-color;
       }
     }
 
     &.danger {
       $background-color: #fbe9e7;
       $foreground-color: #9c1f1f;
+      $border-color: darken($background-color, 45%);
 
       background-color: $background-color;
       color: $foreground-color;
 
       &.bordered:not(.solid) {
-        border-color: darken($background-color, 20%);
+        border-color: $border-color;
       }
 
       &.solid {
         background-color: $danger-500;
       }
-    }
 
-    &.solid {
-      color: #fff;
+      .icon-left {
+        background-color: $border-color;
+      }
     }
 
     .alert-content {
@@ -108,8 +130,27 @@
       padding: 0 10px;
     }
 
+    .icon-left {
+      width: 44px;
+      color: $white;
+      align-self: stretch;
+    }
+
     .Button {
       color: inherit;
+
+      .button-icon {
+        font-size: 12px;
+        opacity: 0.5;
+      }
+    }
+
+    &.solid {
+      color: #fff;
+
+      .icon-left {
+        background-color: rgba(0, 0, 0, 0.125);
+      }
     }
   }
 }

@@ -1,19 +1,51 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import { findKey } from 'lodash'
 
-import { Button } from 'components'
+import { Button, Icon } from 'components'
+import { isTruthy } from 'utils/js/boolean'
 import './alert.scss'
+
+const THEME_TO_ICON = {
+  primary: 'menu6',
+  warning: 'warning2',
+  info: 'info3',
+  success: 'checkmark3',
+  danger: 'blocked',
+}
 
 export default class Alert extends Component {
   constructor (props) {
     super(props)
 
     this.onDismissHandle = this.onDismissHandle.bind(this)
+    this.buildIcon = this.buildIcon.bind(this)
 
     this.state = {
       isVisible: true,
     }
+  }
+
+  buildIcon () {
+    const { primary, warning, info, success, danger } = this.props
+
+    const themes = {
+      primary,
+      warning,
+      info,
+      success,
+      danger,
+    }
+
+    const theme = findKey(themes, isTruthy)
+    const icon = THEME_TO_ICON[theme]
+
+    return (
+      <Icon className="icon-left">
+        {icon}
+      </Icon>
+    )
   }
 
   onDismissHandle () {
@@ -34,6 +66,7 @@ export default class Alert extends Component {
       dismissable,
       bordered,
       solid,
+      icon,
     } = this.props
     const { isVisible } = this.state
 
@@ -50,6 +83,8 @@ export default class Alert extends Component {
           bordered,
           solid,
         })}>
+          { icon && this.buildIcon() }
+
           <div className="alert-content">
             {children}
           </div>
@@ -57,7 +92,7 @@ export default class Alert extends Component {
           {
             dismissable && (
               <Button
-                icon="cross"
+                icon="cross2"
                 fill={false}
                 onClick={this.onDismissHandle}
               />
@@ -79,6 +114,7 @@ Alert.propTypes = {
   children: PropTypes.node,
   bordered: PropTypes.bool,
   solid: PropTypes.bool,
+  icon: PropTypes.bool,
 }
 
 Alert.defaultProps = {
@@ -90,4 +126,5 @@ Alert.defaultProps = {
   dismissable: false,
   bordered: false,
   solid: false,
+  icon: false,
 }
