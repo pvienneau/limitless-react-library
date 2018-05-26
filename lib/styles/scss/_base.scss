@@ -21,6 +21,10 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1;
     color: #999;
   }
+
+  .Icon {
+    margin-right: 7px;
+  }
 }
 
 h1 {
@@ -53,6 +57,12 @@ hr {
   border: 0;
   border-top: 1px solid #DDD;
   margin: 20px 0;
+}
+
+p {
+  .Icon {
+    margin-right: 7px;
+  }
 }
 
 strong {

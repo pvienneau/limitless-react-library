@@ -49,6 +49,10 @@
         margin: 0;
         font-size: 17px;
         font-weight: $font-regular;
+
+        h1, h2, h3, h4, h5, h6 {
+          font-weight: inherit;
+        }
       }
 
       .Button {
@@ -78,6 +82,30 @@
       > * {
         margin: 0 5px;
       }
+    }
+  }
+
+  &.mini {
+    .popup-inner {
+      max-width: 300px;
+    }
+  }
+
+  &.small {
+    .popup-inner {
+      max-width: 400px;
+    }
+  }
+
+  &.large {
+    .popup-inner {
+      max-width: 900px;
+    }
+  }
+
+  &.full {
+    .popup-inner {
+      max-width: 94%;
     }
   }
 }

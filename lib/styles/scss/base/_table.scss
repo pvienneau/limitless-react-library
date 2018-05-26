@@ -1,8 +1,12 @@
 @import '../font-weight';
+@import '../../const/_palette.scss';
 
 table {
+  width: 100%;
+  background-color: $white;
   border-collapse: collapse;
   text-align: left;
+  border: 1px solid #ddd;
 
   td, th {
     padding: 12px 20px;

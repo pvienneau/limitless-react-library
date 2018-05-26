@@ -10,6 +10,7 @@ export default class Popup extends Component {
 
   open () {
     this._open(this.props)
+    document.activeElement.blur()
   }
 
   render () {
